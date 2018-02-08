@@ -7,8 +7,8 @@ Le dépôt est structuré de la manière suivante:
 - Contient les textures et les sons utilisés pour créer le jeu.
 
 ### Documentation:
--Comporte les différents documents créés tout au long du projet.
--Inclut également une version PDF.
+- Comporte les différents documents créés tout au long du projet.
+- Inclut également une version PDF.
 
 ### Tablut:
 - Ce répertoire comprend la solution C# ainsi que le code de création de la base de données.
