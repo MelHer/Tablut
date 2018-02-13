@@ -1,14 +1,14 @@
 # Tablut
-Ce dépôt contient le code source d'un jeu développé en C#.  Le jeu en question est le Tablut.
+This repository contains the source code of a game made in C#. The current game is the Tablut.
 
-Le dépôt est structuré de la manière suivante:
+Here is the structure of the repo:
 
 ### Design:
-- Contient les textures et les sons utilisés pour créer le jeu.
+- Contains the textures and the sounds used to make the game.
 
 ### Documentation:
-- Comporte les différents documents créés tout au long du projet.
-- Inclut également une version PDF.
+- Holds the different documents made along the project.
+- Includes a PDF version of each file.
 
 ### Tablut:
-- Ce répertoire comprend la solution C# ainsi que le code de création de la base de données.
+- This directory holds the C# solution and the code to create the database. 
