@@ -12,3 +12,5 @@ Here is the structure of the repo:
 
 ### Tablut:
 - This directory holds the C# solution and the code to create the database. 
+
+_The code is written in English but all the rest of documents are in French_
