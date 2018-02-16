@@ -37,7 +37,15 @@ namespace Tablut
             //profile creation
             pic_Create.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
             pic_Cancel_Create_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+
+            //profile managment
+            pic_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
+
+        #region Main_Menu
+        ////////////////////////////////////
+        //            Main Menu           //
+        ////////////////////////////////////
 
         /// <summary>
         /// Close the menu and open the profile creation.
@@ -59,7 +67,10 @@ namespace Tablut
         /// <param name="e"></param>
         private void pic_Manage_Profile_Click(object sender, EventArgs e)
         {
+            play_Sound_Click();
 
+            pnl_Menu.Visible = false;
+            pnl_Manage_Profile.Visible = true;
         }
 
         //Close the menu and launch a game
@@ -77,7 +88,9 @@ namespace Tablut
         {
             this.Close();
         }
+        #endregion Main_Menu
 
+        #region Profile_Creation
         ////////////////////////////////////
         //      Controls Create Prolfile  //
         ////////////////////////////////////
@@ -101,13 +114,19 @@ namespace Tablut
             }
             catch(Exception_Invalid_Name ex)
             {
-                lbl_Fail_Create_Profile.Text = ex.Message;
-                lbl_Succes_Create_Profile.Visible = false;
-                lbl_Fail_Create_Profile.Visible = true;
+                display_Error_Create_Profile(ex.Message);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                if(ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                {
+                    display_Error_Create_Profile("Connexion à la base de données impossible.");
+                }
+                else if(ex.Message == "Duplicata du champ '"+txt_Profile_Name.Text+"' pour la clef 'Name_UNIQUE'")
+                {
+                    display_Error_Create_Profile("Profil avec un nom similaire déjà existant.");
+                }
+
             }
         }
 
@@ -130,8 +149,43 @@ namespace Tablut
         }
 
         /// <summary>
+        /// Get the message in parameter and print it on the screen to warn user
+        /// that the creation of the profile failed.
+        /// Called only in the profile creation.
+        /// </summary>
+        /// <param name="m_Message"></param>
+        private void display_Error_Create_Profile(string m_Message)
+        {
+            lbl_Fail_Create_Profile.Text = m_Message;
+            lbl_Succes_Create_Profile.Visible = false;
+            lbl_Fail_Create_Profile.Visible = true;
+        }
+        #endregion Profile_Creation
+
+        #region Profile_Management
+        ////////////////////////////////////
+        //      Controls Manage Prolfile  //
+        ////////////////////////////////////
+
+        /// <summary>
+        /// Close the profile managment tab and open the main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Menu_Click(object sender, EventArgs e)
+        {
+            play_Sound_Click();
+
+            pnl_Manage_Profile.Visible = false;
+            pnl_Menu.Visible = true;
+        }
+
+        #endregion Profile_Managment
+
+        #region Sound_Players
+        /// <summary>
         /// Play the click sound for each button.
-        /// Called in the click events
+        /// Called in the click events.
         /// </summary>
         private void play_Sound_Click()
         {
@@ -141,7 +195,7 @@ namespace Tablut
 
         /// <summary>
         /// Play a sound when the mouse enters the controls.
-        /// Applies to the button of the menus
+        /// Applies to the button of the menus.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -150,5 +204,6 @@ namespace Tablut
             player.SoundLocation = (@"P:\Tablut\Design\SFX\Menu_Move.wav");
             player.Play();
         }
+        #endregion Sound_Players
     }
 }

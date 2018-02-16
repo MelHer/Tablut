@@ -39,11 +39,16 @@ namespace Tablut
             Regex rgx = new Regex(@"^[a-zA-Z0-9_]+$");
             if (!rgx.IsMatch(m_Profile_Name))
             {
+                this.connection.Close();
                 throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z et '_'");
             }
 
-            //Opening the SQL connection
-            this.connection.Open();
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
 
             //Creating the querry
             MySqlCommand cmd = this.connection.CreateCommand();
