@@ -17,6 +17,8 @@ namespace Tablut
         //Connection with database
         DB_Connect db_link;
 
+        
+
         public frm_Tablut()
         {
             InitializeComponent();
@@ -71,6 +73,15 @@ namespace Tablut
 
             pnl_Menu.Visible = false;
             pnl_Manage_Profile.Visible = true;
+
+            //Populating the drop down list with profile name
+            List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+
+            foreach (string name in profile_Name)
+            {
+                cbo_Manage_Profile.Items.Add(name);
+            }
+
         }
 
         //Close the menu and launch a game
@@ -176,8 +187,50 @@ namespace Tablut
         {
             play_Sound_Click();
 
+            cbo_Manage_Profile.Items.Clear();
+
             pnl_Manage_Profile.Visible = false;
             pnl_Menu.Visible = true;
+        }
+
+        /// <summary>
+        /// Get the actual name to query the database for statistics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbo_Manage_Profile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(cbo_Manage_Profile.SelectedItem.ToString());
+        }
+
+        /// <summary>
+        /// Allow renaming the selected profile.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_Rename_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Resets the stats of the selected profile.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_Reset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Delete the selected profile in the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmd_Delete_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion Profile_Managment
@@ -205,5 +258,6 @@ namespace Tablut
             player.Play();
         }
         #endregion Sound_Players
+
     }
 }
