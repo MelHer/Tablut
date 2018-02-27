@@ -81,7 +81,7 @@ namespace Tablut
             cmd.CommandText = "SELECT Name FROM Tablut.Profile ORDER BY Name";
 
             //To store the result of the querry
-            List<string> db_Name = new List<String>();
+            List<string> db_Profile_Name = new List<String>();
 
             //Executing query and putting result in list
             MySqlDataReader reader;
@@ -90,7 +90,8 @@ namespace Tablut
             {
                 while (reader.Read())
                 {
-                    db_Name.Add(reader.GetString(0));
+                    db_Profile_Name.Add(reader.GetString(0));
+                    Console.WriteLine(reader[0]);
                 }
             }
             finally
@@ -100,7 +101,53 @@ namespace Tablut
                 this.connection.Close();
             }
 
-            return db_Name;
+            return db_Profile_Name;
+        }
+
+        /// <summary>
+        /// Return all the profile's name from the database
+        /// </summary>
+        public List<int>[] get_Profile_Stats(string m_Profile_Name)
+        {
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "SELECT Won_Attack, Lost_Attack, Won_Defence, Lost_Defence FROM Tablut.Profile WHERE Name = @m_Name LIMIT 0,1";
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+
+            //To store the result of the querry
+            List<int>[] db_Profile_Stats = new List<int>[4];
+
+            //Executing query and putting result in list
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.Read())
+                {
+                    db_Profile_Stats[0].Add((int)reader["Won_Attack"]);
+                    db_Profile_Stats[1].Add((int)reader["Lost_Attack"]);
+                    db_Profile_Stats[2].Add((int)reader["Won_Defence"]);
+                    db_Profile_Stats[3].Add((int)reader["Lost_Defence"]);
+                    
+                }
+            }
+            finally
+            {
+                //Close connections
+                reader.Close();
+                this.connection.Close();
+            }
+
+            return db_Profile_Stats;
         }
     }
 }

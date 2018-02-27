@@ -42,6 +42,9 @@ namespace Tablut
 
             //profile managment
             pic_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Rename.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Reset.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Delete.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
 
         #region Main_Menu
@@ -189,6 +192,9 @@ namespace Tablut
 
             cbo_Manage_Profile.Items.Clear();
 
+            //Reset controls availability
+            manage_Profile_Button_Locker(false);
+
             pnl_Manage_Profile.Visible = false;
             pnl_Menu.Visible = true;
         }
@@ -198,9 +204,12 @@ namespace Tablut
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbo_Manage_Profile_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbo_Manage_Profile_Selected_Index_Changed(object sender, EventArgs e)
         {
-            MessageBox.Show(cbo_Manage_Profile.SelectedItem.ToString());
+            manage_Profile_Button_Locker(true);
+
+            //Populating the statistics.
+            
         }
 
         /// <summary>
@@ -210,7 +219,7 @@ namespace Tablut
         /// <param name="e"></param>
         private void cmd_Rename_Click(object sender, EventArgs e)
         {
-            
+            play_Sound_Click();
         }
 
         /// <summary>
@@ -220,7 +229,7 @@ namespace Tablut
         /// <param name="e"></param>
         private void cmd_Reset_Click(object sender, EventArgs e)
         {
-
+            play_Sound_Click();
         }
 
         /// <summary>
@@ -230,7 +239,7 @@ namespace Tablut
         /// <param name="e"></param>
         private void cmd_Delete_Click(object sender, EventArgs e)
         {
-
+            play_Sound_Click();
         }
 
         #endregion Profile_Managment
@@ -258,6 +267,31 @@ namespace Tablut
             player.Play();
         }
         #endregion Sound_Players
+
+        /// <summary>
+        /// Enable or disable the profile managment buttons (delete, rename, reset)
+        /// Disabled if no profile selected else unlocked.
+        /// </summary>
+        /// <param name="m_State"></param>
+        private void manage_Profile_Button_Locker(bool m_State)
+        {
+            pic_Rename.Enabled = m_State;
+            pic_Reset.Enabled = m_State;
+            pic_Delete.Enabled = m_State;
+
+            if (m_State)
+            {
+                pic_Rename.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Renommer.png");
+                pic_Reset.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Reinitialiser.png");
+                pic_Delete.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Supprimer.png");
+            }
+            else
+            {
+                pic_Rename.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Renommer_Disable.png");
+                pic_Reset.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Reinitialiser_Disable.png");
+                pic_Delete.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Supprimer_Disable.png");
+            }
+        }
 
     }
 }

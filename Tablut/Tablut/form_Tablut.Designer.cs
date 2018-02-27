@@ -42,25 +42,25 @@
             this.lbl_Fail_Create_Profile = new System.Windows.Forms.Label();
             this.txt_Profile_Name = new System.Windows.Forms.TextBox();
             this.pnl_Manage_Profile = new System.Windows.Forms.Panel();
-            this.lbl_Num_Defense_Loses = new System.Windows.Forms.Label();
+            this.lbl_Num_Defence_Loses = new System.Windows.Forms.Label();
             this.lbl_Num_Attack_Loses = new System.Windows.Forms.Label();
-            this.lbl_Num_Defense_Victories = new System.Windows.Forms.Label();
+            this.lbl_Num_Defence_Victories = new System.Windows.Forms.Label();
             this.lbl_Num_Attack_Victories = new System.Windows.Forms.Label();
             this.lbl_Num_Global_Victories = new System.Windows.Forms.Label();
             this.lbl_Num_Games_Played = new System.Windows.Forms.Label();
-            this.lbl_Defense_Loses = new System.Windows.Forms.Label();
-            this.lbl_Defense_Victories = new System.Windows.Forms.Label();
-            this.lbl_Manage_Defense = new System.Windows.Forms.Label();
             this.lbl_Defence_Loses = new System.Windows.Forms.Label();
+            this.lbl_Defence_Victories = new System.Windows.Forms.Label();
+            this.lbl_Manage_Defence = new System.Windows.Forms.Label();
+            this.lbl_Attack_Loses = new System.Windows.Forms.Label();
             this.lbl_Attack_Victories = new System.Windows.Forms.Label();
             this.lbl_Manage_Attack = new System.Windows.Forms.Label();
             this.lbl_Global_Victories = new System.Windows.Forms.Label();
             this.lbl_Games_Played = new System.Windows.Forms.Label();
-            this.cmd_Delete = new System.Windows.Forms.PictureBox();
-            this.cmd_Reset = new System.Windows.Forms.PictureBox();
+            this.pic_Delete = new System.Windows.Forms.PictureBox();
+            this.pic_Reset = new System.Windows.Forms.PictureBox();
             this.cbo_Manage_Profile = new System.Windows.Forms.ComboBox();
             this.lbl_Profile_Edit = new System.Windows.Forms.Label();
-            this.cmd_Rename = new System.Windows.Forms.PictureBox();
+            this.pic_Rename = new System.Windows.Forms.PictureBox();
             this.pic_Menu = new System.Windows.Forms.PictureBox();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Close)).BeginInit();
@@ -71,9 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Cancel_Create_Profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Create)).BeginInit();
             this.pnl_Manage_Profile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Delete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Reset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Rename)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Delete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Reset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Rename)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Menu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,25 +220,25 @@
             // 
             this.pnl_Manage_Profile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Manage_Profile.BackgroundImage")));
             this.pnl_Manage_Profile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Defense_Loses);
+            this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Defence_Loses);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Attack_Loses);
-            this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Defense_Victories);
+            this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Defence_Victories);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Attack_Victories);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Global_Victories);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Num_Games_Played);
-            this.pnl_Manage_Profile.Controls.Add(this.lbl_Defense_Loses);
-            this.pnl_Manage_Profile.Controls.Add(this.lbl_Defense_Victories);
-            this.pnl_Manage_Profile.Controls.Add(this.lbl_Manage_Defense);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Defence_Loses);
+            this.pnl_Manage_Profile.Controls.Add(this.lbl_Defence_Victories);
+            this.pnl_Manage_Profile.Controls.Add(this.lbl_Manage_Defence);
+            this.pnl_Manage_Profile.Controls.Add(this.lbl_Attack_Loses);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Attack_Victories);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Manage_Attack);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Global_Victories);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Games_Played);
-            this.pnl_Manage_Profile.Controls.Add(this.cmd_Delete);
-            this.pnl_Manage_Profile.Controls.Add(this.cmd_Reset);
+            this.pnl_Manage_Profile.Controls.Add(this.pic_Delete);
+            this.pnl_Manage_Profile.Controls.Add(this.pic_Reset);
             this.pnl_Manage_Profile.Controls.Add(this.cbo_Manage_Profile);
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Profile_Edit);
-            this.pnl_Manage_Profile.Controls.Add(this.cmd_Rename);
+            this.pnl_Manage_Profile.Controls.Add(this.pic_Rename);
             this.pnl_Manage_Profile.Controls.Add(this.pic_Menu);
             this.pnl_Manage_Profile.Location = new System.Drawing.Point(0, 1);
             this.pnl_Manage_Profile.Name = "pnl_Manage_Profile";
@@ -246,17 +246,17 @@
             this.pnl_Manage_Profile.TabIndex = 9;
             this.pnl_Manage_Profile.Visible = false;
             // 
-            // lbl_Num_Defense_Loses
+            // lbl_Num_Defence_Loses
             // 
-            this.lbl_Num_Defense_Loses.AutoSize = true;
-            this.lbl_Num_Defense_Loses.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Num_Defense_Loses.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Num_Defense_Loses.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lbl_Num_Defense_Loses.Location = new System.Drawing.Point(517, 428);
-            this.lbl_Num_Defense_Loses.Name = "lbl_Num_Defense_Loses";
-            this.lbl_Num_Defense_Loses.Size = new System.Drawing.Size(41, 20);
-            this.lbl_Num_Defense_Loses.TabIndex = 33;
-            this.lbl_Num_Defense_Loses.Text = "0000";
+            this.lbl_Num_Defence_Loses.AutoSize = true;
+            this.lbl_Num_Defence_Loses.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Num_Defence_Loses.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Num_Defence_Loses.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_Num_Defence_Loses.Location = new System.Drawing.Point(517, 428);
+            this.lbl_Num_Defence_Loses.Name = "lbl_Num_Defence_Loses";
+            this.lbl_Num_Defence_Loses.Size = new System.Drawing.Size(41, 20);
+            this.lbl_Num_Defence_Loses.TabIndex = 33;
+            this.lbl_Num_Defence_Loses.Text = "0000";
             // 
             // lbl_Num_Attack_Loses
             // 
@@ -270,17 +270,17 @@
             this.lbl_Num_Attack_Loses.TabIndex = 32;
             this.lbl_Num_Attack_Loses.Text = "0000";
             // 
-            // lbl_Num_Defense_Victories
+            // lbl_Num_Defence_Victories
             // 
-            this.lbl_Num_Defense_Victories.AutoSize = true;
-            this.lbl_Num_Defense_Victories.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Num_Defense_Victories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Num_Defense_Victories.ForeColor = System.Drawing.Color.Green;
-            this.lbl_Num_Defense_Victories.Location = new System.Drawing.Point(517, 408);
-            this.lbl_Num_Defense_Victories.Name = "lbl_Num_Defense_Victories";
-            this.lbl_Num_Defense_Victories.Size = new System.Drawing.Size(41, 20);
-            this.lbl_Num_Defense_Victories.TabIndex = 31;
-            this.lbl_Num_Defense_Victories.Text = "0000";
+            this.lbl_Num_Defence_Victories.AutoSize = true;
+            this.lbl_Num_Defence_Victories.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Num_Defence_Victories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Num_Defence_Victories.ForeColor = System.Drawing.Color.Green;
+            this.lbl_Num_Defence_Victories.Location = new System.Drawing.Point(517, 408);
+            this.lbl_Num_Defence_Victories.Name = "lbl_Num_Defence_Victories";
+            this.lbl_Num_Defence_Victories.Size = new System.Drawing.Size(41, 20);
+            this.lbl_Num_Defence_Victories.TabIndex = 31;
+            this.lbl_Num_Defence_Victories.Text = "0000";
             // 
             // lbl_Num_Attack_Victories
             // 
@@ -316,52 +316,52 @@
             this.lbl_Num_Games_Played.TabIndex = 28;
             this.lbl_Num_Games_Played.Text = "0000";
             // 
-            // lbl_Defense_Loses
-            // 
-            this.lbl_Defense_Loses.AutoSize = true;
-            this.lbl_Defense_Loses.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Defense_Loses.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Defense_Loses.Location = new System.Drawing.Point(453, 426);
-            this.lbl_Defense_Loses.Name = "lbl_Defense_Loses";
-            this.lbl_Defense_Loses.Size = new System.Drawing.Size(67, 20);
-            this.lbl_Defense_Loses.TabIndex = 27;
-            this.lbl_Defense_Loses.Text = "Défaites:";
-            this.lbl_Defense_Loses.UseMnemonic = false;
-            // 
-            // lbl_Defense_Victories
-            // 
-            this.lbl_Defense_Victories.AutoSize = true;
-            this.lbl_Defense_Victories.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Defense_Victories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Defense_Victories.Location = new System.Drawing.Point(452, 407);
-            this.lbl_Defense_Victories.Name = "lbl_Defense_Victories";
-            this.lbl_Defense_Victories.Size = new System.Drawing.Size(69, 20);
-            this.lbl_Defense_Victories.TabIndex = 26;
-            this.lbl_Defense_Victories.Text = "Victoires:";
-            this.lbl_Defense_Victories.UseMnemonic = false;
-            // 
-            // lbl_Manage_Defense
-            // 
-            this.lbl_Manage_Defense.AutoSize = true;
-            this.lbl_Manage_Defense.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Manage_Defense.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Manage_Defense.Location = new System.Drawing.Point(452, 376);
-            this.lbl_Manage_Defense.Name = "lbl_Manage_Defense";
-            this.lbl_Manage_Defense.Size = new System.Drawing.Size(84, 20);
-            this.lbl_Manage_Defense.TabIndex = 25;
-            this.lbl_Manage_Defense.Text = "En défense:";
-            // 
             // lbl_Defence_Loses
             // 
             this.lbl_Defence_Loses.AutoSize = true;
             this.lbl_Defence_Loses.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Defence_Loses.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Defence_Loses.Location = new System.Drawing.Point(213, 426);
+            this.lbl_Defence_Loses.Location = new System.Drawing.Point(453, 426);
             this.lbl_Defence_Loses.Name = "lbl_Defence_Loses";
             this.lbl_Defence_Loses.Size = new System.Drawing.Size(67, 20);
-            this.lbl_Defence_Loses.TabIndex = 24;
+            this.lbl_Defence_Loses.TabIndex = 27;
             this.lbl_Defence_Loses.Text = "Défaites:";
             this.lbl_Defence_Loses.UseMnemonic = false;
+            // 
+            // lbl_Defence_Victories
+            // 
+            this.lbl_Defence_Victories.AutoSize = true;
+            this.lbl_Defence_Victories.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Defence_Victories.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Defence_Victories.Location = new System.Drawing.Point(452, 407);
+            this.lbl_Defence_Victories.Name = "lbl_Defence_Victories";
+            this.lbl_Defence_Victories.Size = new System.Drawing.Size(69, 20);
+            this.lbl_Defence_Victories.TabIndex = 26;
+            this.lbl_Defence_Victories.Text = "Victoires:";
+            this.lbl_Defence_Victories.UseMnemonic = false;
+            // 
+            // lbl_Manage_Defence
+            // 
+            this.lbl_Manage_Defence.AutoSize = true;
+            this.lbl_Manage_Defence.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Manage_Defence.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Manage_Defence.Location = new System.Drawing.Point(452, 376);
+            this.lbl_Manage_Defence.Name = "lbl_Manage_Defence";
+            this.lbl_Manage_Defence.Size = new System.Drawing.Size(84, 20);
+            this.lbl_Manage_Defence.TabIndex = 25;
+            this.lbl_Manage_Defence.Text = "En défense:";
+            // 
+            // lbl_Attack_Loses
+            // 
+            this.lbl_Attack_Loses.AutoSize = true;
+            this.lbl_Attack_Loses.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Attack_Loses.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Attack_Loses.Location = new System.Drawing.Point(213, 426);
+            this.lbl_Attack_Loses.Name = "lbl_Attack_Loses";
+            this.lbl_Attack_Loses.Size = new System.Drawing.Size(67, 20);
+            this.lbl_Attack_Loses.TabIndex = 24;
+            this.lbl_Attack_Loses.Text = "Défaites:";
+            this.lbl_Attack_Loses.UseMnemonic = false;
             // 
             // lbl_Attack_Victories
             // 
@@ -408,29 +408,29 @@
             this.lbl_Games_Played.TabIndex = 20;
             this.lbl_Games_Played.Text = "Parties jouées:";
             // 
-            // cmd_Delete
+            // pic_Delete
             // 
-            this.cmd_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmd_Delete.BackgroundImage")));
-            this.cmd_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmd_Delete.Enabled = false;
-            this.cmd_Delete.Location = new System.Drawing.Point(732, 427);
-            this.cmd_Delete.Name = "cmd_Delete";
-            this.cmd_Delete.Size = new System.Drawing.Size(166, 42);
-            this.cmd_Delete.TabIndex = 19;
-            this.cmd_Delete.TabStop = false;
-            this.cmd_Delete.Click += new System.EventHandler(this.cmd_Delete_Click);
+            this.pic_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Delete.BackgroundImage")));
+            this.pic_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Delete.Enabled = false;
+            this.pic_Delete.Location = new System.Drawing.Point(732, 427);
+            this.pic_Delete.Name = "pic_Delete";
+            this.pic_Delete.Size = new System.Drawing.Size(166, 42);
+            this.pic_Delete.TabIndex = 19;
+            this.pic_Delete.TabStop = false;
+            this.pic_Delete.Click += new System.EventHandler(this.cmd_Delete_Click);
             // 
-            // cmd_Reset
+            // pic_Reset
             // 
-            this.cmd_Reset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmd_Reset.BackgroundImage")));
-            this.cmd_Reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmd_Reset.Enabled = false;
-            this.cmd_Reset.Location = new System.Drawing.Point(732, 360);
-            this.cmd_Reset.Name = "cmd_Reset";
-            this.cmd_Reset.Size = new System.Drawing.Size(166, 42);
-            this.cmd_Reset.TabIndex = 18;
-            this.cmd_Reset.TabStop = false;
-            this.cmd_Reset.Click += new System.EventHandler(this.cmd_Reset_Click);
+            this.pic_Reset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Reset.BackgroundImage")));
+            this.pic_Reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Reset.Enabled = false;
+            this.pic_Reset.Location = new System.Drawing.Point(732, 360);
+            this.pic_Reset.Name = "pic_Reset";
+            this.pic_Reset.Size = new System.Drawing.Size(166, 42);
+            this.pic_Reset.TabIndex = 18;
+            this.pic_Reset.TabStop = false;
+            this.pic_Reset.Click += new System.EventHandler(this.cmd_Reset_Click);
             // 
             // cbo_Manage_Profile
             // 
@@ -442,7 +442,7 @@
             this.cbo_Manage_Profile.Name = "cbo_Manage_Profile";
             this.cbo_Manage_Profile.Size = new System.Drawing.Size(277, 38);
             this.cbo_Manage_Profile.TabIndex = 17;
-            this.cbo_Manage_Profile.SelectedIndexChanged += new System.EventHandler(this.cbo_Manage_Profile_SelectedIndexChanged);
+            this.cbo_Manage_Profile.SelectedIndexChanged += new System.EventHandler(this.cbo_Manage_Profile_Selected_Index_Changed);
             // 
             // lbl_Profile_Edit
             // 
@@ -456,17 +456,17 @@
             this.lbl_Profile_Edit.TabIndex = 16;
             this.lbl_Profile_Edit.Text = "Profil à éditer:";
             // 
-            // cmd_Rename
+            // pic_Rename
             // 
-            this.cmd_Rename.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmd_Rename.BackgroundImage")));
-            this.cmd_Rename.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmd_Rename.Enabled = false;
-            this.cmd_Rename.Location = new System.Drawing.Point(732, 296);
-            this.cmd_Rename.Name = "cmd_Rename";
-            this.cmd_Rename.Size = new System.Drawing.Size(166, 42);
-            this.cmd_Rename.TabIndex = 13;
-            this.cmd_Rename.TabStop = false;
-            this.cmd_Rename.Click += new System.EventHandler(this.cmd_Rename_Click);
+            this.pic_Rename.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Rename.BackgroundImage")));
+            this.pic_Rename.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Rename.Enabled = false;
+            this.pic_Rename.Location = new System.Drawing.Point(732, 296);
+            this.pic_Rename.Name = "pic_Rename";
+            this.pic_Rename.Size = new System.Drawing.Size(166, 42);
+            this.pic_Rename.TabIndex = 13;
+            this.pic_Rename.TabStop = false;
+            this.pic_Rename.Click += new System.EventHandler(this.cmd_Rename_Click);
             // 
             // pic_Menu
             // 
@@ -505,9 +505,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Create)).EndInit();
             this.pnl_Manage_Profile.ResumeLayout(false);
             this.pnl_Manage_Profile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Delete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Reset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmd_Rename)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Delete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Reset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Rename)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Menu)).EndInit();
             this.ResumeLayout(false);
 
@@ -530,13 +530,13 @@
         private System.Windows.Forms.PictureBox pic_Menu;
         private System.Windows.Forms.ComboBox cbo_Manage_Profile;
         private System.Windows.Forms.Label lbl_Profile_Edit;
-        private System.Windows.Forms.PictureBox cmd_Rename;
-        private System.Windows.Forms.PictureBox cmd_Delete;
-        private System.Windows.Forms.PictureBox cmd_Reset;
-        private System.Windows.Forms.Label lbl_Defense_Loses;
-        private System.Windows.Forms.Label lbl_Defense_Victories;
-        private System.Windows.Forms.Label lbl_Manage_Defense;
+        private System.Windows.Forms.PictureBox pic_Rename;
+        private System.Windows.Forms.PictureBox pic_Delete;
+        private System.Windows.Forms.PictureBox pic_Reset;
         private System.Windows.Forms.Label lbl_Defence_Loses;
+        private System.Windows.Forms.Label lbl_Defence_Victories;
+        private System.Windows.Forms.Label lbl_Manage_Defence;
+        private System.Windows.Forms.Label lbl_Attack_Loses;
         private System.Windows.Forms.Label lbl_Attack_Victories;
         private System.Windows.Forms.Label lbl_Manage_Attack;
         private System.Windows.Forms.Label lbl_Global_Victories;
@@ -544,9 +544,9 @@
         private System.Windows.Forms.Label lbl_Num_Attack_Victories;
         private System.Windows.Forms.Label lbl_Num_Global_Victories;
         private System.Windows.Forms.Label lbl_Num_Games_Played;
-        private System.Windows.Forms.Label lbl_Num_Defense_Loses;
+        private System.Windows.Forms.Label lbl_Num_Defence_Loses;
         private System.Windows.Forms.Label lbl_Num_Attack_Loses;
-        private System.Windows.Forms.Label lbl_Num_Defense_Victories;
+        private System.Windows.Forms.Label lbl_Num_Defence_Victories;
     }
 }
 
