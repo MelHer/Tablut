@@ -50,6 +50,18 @@
   <ItemGroup>
     <Compile Include="DB_Connect.cs" />
     <Compile Include="Exception_Invalid_Name.cs" />
+    <Compile Include="form_Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Confirmation.Designer.cs">
+      <DependentUpon>form_Confirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Renaming.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Renaming.Designer.cs">
+      <DependentUpon>form_Renaming.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_Tablut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +70,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_Confirmation.resx">
+      <DependentUpon>form_Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Renaming.resx">
+      <DependentUpon>form_Renaming.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_Tablut.resx">
       <DependentUpon>form_Tablut.cs</DependentUpon>
     </EmbeddedResource>

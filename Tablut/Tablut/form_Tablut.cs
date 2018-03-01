@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Tablut
 {
@@ -16,8 +17,6 @@ namespace Tablut
 
         //Connection with database
         DB_Connect db_link;
-
-        
 
         public frm_Tablut()
         {
@@ -45,6 +44,10 @@ namespace Tablut
             pic_Rename.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
             pic_Reset.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
             pic_Delete.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+
+            //Player selection
+            pic_Start_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Cancel_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
 
         #region Main_Menu
@@ -53,7 +56,7 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Close the menu and open the profile creation.
+        /// Closes the menu and open the profile creation.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +69,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Close the menu and open the profile managment
+        /// Closes the menu and open the profile managment
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -77,24 +80,39 @@ namespace Tablut
             pnl_Menu.Visible = false;
             pnl_Manage_Profile.Visible = true;
 
-            //Populating the drop down list with profile name
-            List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
-
-            foreach (string name in profile_Name)
-            {
-                cbo_Manage_Profile.Items.Add(name);
-            }
-
+            populate_Profile_List();
         }
 
         //Close the menu and launch a game
         private void pic_Play_Click(object sender, EventArgs e)
         {
+            play_Sound_Click();
 
+            pnl_Menu.Visible = false;
+            pnl_Play_Profile_Selection.Visible = true;
+
+            //populating both combo box in the player selection
+            try
+            {
+                List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+
+                foreach (string name in profile_Name)
+                {
+                    cbo_Player_Selection_Attack.Items.Add(name);
+                    cbo_Player_Selection_Defence.Items.Add(name);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                {
+                    lbl_Player_Selection_Fail.Visible = true;
+                }
+            }
         }
 
         /// <summary>
-        /// Exit the application.
+        /// Exits the application.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -110,7 +128,7 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Send a profile creation request to the DB_Connect object.
+        /// Sends a profile creation request to the DB_Connect object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -130,13 +148,13 @@ namespace Tablut
             {
                 display_Error_Create_Profile(ex.Message);
             }
-            catch(Exception ex)
+            catch(MySqlException ex)
             {
-                if(ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                if(ex.Number == 1042)
                 {
                     display_Error_Create_Profile("Connexion à la base de données impossible.");
                 }
-                else if(ex.Message == "Duplicata du champ '"+txt_Profile_Name.Text+"' pour la clef 'Name_UNIQUE'")
+                else if(ex.Number == 1062)
                 {
                     display_Error_Create_Profile("Profil avec un nom similaire déjà existant.");
                 }
@@ -145,7 +163,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Close the profile creation and return to the menu
+        /// Closes the profile creation and return to the menu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -163,7 +181,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Get the message in parameter and print it on the screen to warn user
+        /// Gets the message in parameter and print it on the screen to warn user
         /// that the creation of the profile failed.
         /// Called only in the profile creation.
         /// </summary>
@@ -182,7 +200,7 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Close the profile managment tab and open the main menu.
+        /// Closes the profile managment tab and open the main menu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -195,12 +213,19 @@ namespace Tablut
             //Reset controls availability
             manage_Profile_Button_Locker(false);
 
+            if(lbl_Managment_Fail.Visible == true)
+            {
+                lbl_Managment_Fail.Visible = false;
+            }
+
+            reset_Stat_Board();
+
             pnl_Manage_Profile.Visible = false;
             pnl_Menu.Visible = true;
         }
 
         /// <summary>
-        /// Get the actual name to query the database for statistics
+        /// Gets the actual name to query the database for statistics
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -208,18 +233,32 @@ namespace Tablut
         {
             manage_Profile_Button_Locker(true);
 
-            //Populating the statistics.
-            
+            if(!(cbo_Manage_Profile.SelectedIndex == -1))
+            {
+                populate_Stat_Board();
+            }
         }
 
         /// <summary>
-        /// Allow renaming the selected profile.
+        /// Allows renaming the selected profile.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cmd_Rename_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
+
+            frm_Renaming renaming = new frm_Renaming(cbo_Manage_Profile.SelectedItem.ToString());
+
+            if (renaming.ShowDialog(this) == DialogResult.OK)
+            {
+                //Reloads the list and selects the modified profile
+                cbo_Manage_Profile.Items.Clear();
+                populate_Profile_List();
+                cbo_Manage_Profile.SelectedIndex = cbo_Manage_Profile.FindStringExact(renaming.validated_New_Name);
+            }
+
+            renaming.Dispose();
         }
 
         /// <summary>
@@ -230,46 +269,104 @@ namespace Tablut
         private void cmd_Reset_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
+
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment réinitialiser les statistiques de: \n" + cbo_Manage_Profile.SelectedItem.ToString());
+
+            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            {
+                db_link.Reset_Profile(cbo_Manage_Profile.SelectedItem.ToString());
+
+                reset_Stat_Board();
+                populate_Stat_Board();
+            }
+
+            confirmation.Dispose();
         }
 
         /// <summary>
-        /// Delete the selected profile in the database.
+        /// Deletes the selected profile in the database.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cmd_Delete_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
+
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment supprimer le profil: \n"+cbo_Manage_Profile.SelectedItem.ToString());
+            
+
+            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            {
+                db_link.Remove_Profile(cbo_Manage_Profile.SelectedItem.ToString());
+
+                cbo_Manage_Profile.Items.Clear();
+                populate_Profile_List();
+                reset_Stat_Board();
+            }
+
+            confirmation.Dispose();
         }
 
-        #endregion Profile_Managment
-
-        #region Sound_Players
         /// <summary>
-        /// Play the click sound for each button.
-        /// Called in the click events.
+        /// Populates the drop down list containing each name of the profiles
+        /// in the profile managment menu.
         /// </summary>
-        private void play_Sound_Click()
+        private void populate_Profile_List()
         {
-            player.SoundLocation = (@"P:\Tablut\Design\SFX\Menu_Click.wav");
-            player.Play();
+            try
+            {
+                List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+
+                foreach (string name in profile_Name)
+                {
+                    cbo_Manage_Profile.Items.Add(name);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                {
+                    lbl_Managment_Fail.Visible = true;
+                }
+            }
         }
 
         /// <summary>
-        /// Play a sound when the mouse enters the controls.
-        /// Applies to the button of the menus.
+        /// Populates the zone which shows the statistics of the
+        /// selected profile in the managment profile menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void play_Sound_Enter(object sender, EventArgs e)
+        private void populate_Stat_Board()
         {
-            player.SoundLocation = (@"P:\Tablut\Design\SFX\Menu_Move.wav");
-            player.Play();
+   
+            int[] statistics = new int[4];
+            db_link.get_Profile_Stats(cbo_Manage_Profile.SelectedItem.ToString()).CopyTo(statistics, 0);
+
+            lbl_Num_Attack_Victories.Text = statistics[0].ToString();
+            lbl_Num_Attack_Loses.Text = statistics[1].ToString();
+            lbl_Num_Defence_Victories.Text = statistics[2].ToString();
+            lbl_Num_Defence_Loses.Text = statistics[3].ToString();
+
+            lbl_Num_Games_Played.Text = (statistics[0] + statistics[1] + statistics[2] + statistics[3]).ToString();
+            lbl_Num_Global_Victories.Text = (statistics[0] + statistics[2]).ToString();
+           
         }
-        #endregion Sound_Players
 
         /// <summary>
-        /// Enable or disable the profile managment buttons (delete, rename, reset)
+        /// Resets the statistics in the profile managment menu.
+        /// Called when the menu is loaded, a profile is deleted;
+        /// </summary>
+        private void reset_Stat_Board()
+        {
+            lbl_Num_Global_Victories.Text = "";
+            lbl_Num_Games_Played.Text = "";
+            lbl_Num_Attack_Victories.Text = "";
+            lbl_Num_Attack_Loses.Text = "";
+            lbl_Num_Defence_Victories.Text = "";
+            lbl_Num_Defence_Loses.Text = "";
+        }
+
+        /// <summary>
+        /// Enables or disable the profile managment buttons (delete, rename, reset)
         /// Disabled if no profile selected else unlocked.
         /// </summary>
         /// <param name="m_State"></param>
@@ -292,6 +389,97 @@ namespace Tablut
                 pic_Delete.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Supprimer_Disable.png");
             }
         }
+        #endregion Profile_Managment
+
+        #region Player_Selection
+        ////////////////////////////////////
+        //        Player Selection        //
+        ////////////////////////////////////
+
+        /// <summary>
+        /// Launches the game when both profiles are selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Start_Player_Selection_Click(object sender, EventArgs e)
+        {
+            play_Sound_Click();
+        }
+
+        /// <summary>
+        /// Exits the player selection and return to the main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Cancel_Player_Selection_Click(object sender, EventArgs e)
+        {
+            play_Sound_Click();
+
+            //Reseting combo box
+            cbo_Player_Selection_Attack.Items.Clear();
+            cbo_Player_Selection_Defence.Items.Clear();
+
+            pnl_Play_Profile_Selection.Visible = false;
+            pnl_Menu.Visible = true;
+        }
+
+        /// <summary>
+        /// Removes the selected profile from the defence list
+        /// and check if "Launch" button can be unlocked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbo_Player_Selection_Attack_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Removes the selected profile the attack list
+        /// and check if "Launch" button can be unlocked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbo_Player_Selection_Defence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Checks if the two selected profiles are difrents.
+        /// If yes the "Launch" button is unlocked.
+        /// else show an error.
+        /// </summary>
+        /// <param name="m_State"></param>
+        private void profile_Selection_Button_Locker()
+        {
+
+        }
+        #endregion Player_Selection
+
+            #region Sound_Players
+            /// <summary>
+            /// Play the click sound for each button.
+            /// Called in the click events.
+            /// </summary>
+        private void play_Sound_Click()
+        {
+            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Click.wav");
+            player.Play();
+        }
+
+        /// <summary>
+        /// Play a sound when the mouse enters the controls.
+        /// Applies to the button of the menus.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void play_Sound_Enter(object sender, EventArgs e)
+        {
+            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Move.wav");
+            player.Play();
+        }
+        #endregion Sound_Players
 
     }
 }

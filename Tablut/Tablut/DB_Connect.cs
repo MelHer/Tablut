@@ -29,8 +29,8 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Check if the name is syntactically correct.
-        /// Then add the profile in the database.
+        /// Checks if the name is syntactically correct.
+        /// Then adds the profile in the database.
         /// </summary>
         /// <param name="m_Profile_Name"></param>
         public void Add_Profile(string m_Profile_Name)
@@ -49,10 +49,10 @@ namespace Tablut
                 //Opening the SQL connection
                 this.connection.Open();
             }
-
+            
             //Creating the querry
             MySqlCommand cmd = this.connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO profile (Name) VALUES (@m_Name)";
+            cmd.CommandText = "INSERT INTO Tablut.profile (Name) VALUES (@m_Name)";
 
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
@@ -65,7 +65,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Return all the profile's name from the database
+        /// Returns all the profile's name from the database
         /// </summary>
         public List<string> get_Profile_Name()
         {
@@ -91,7 +91,6 @@ namespace Tablut
                 while (reader.Read())
                 {
                     db_Profile_Name.Add(reader.GetString(0));
-                    Console.WriteLine(reader[0]);
                 }
             }
             finally
@@ -105,9 +104,9 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Return all the profile's name from the database
+        /// Returns all the profile's name from the database
         /// </summary>
-        public List<int>[] get_Profile_Stats(string m_Profile_Name)
+        public int[] get_Profile_Stats(string m_Profile_Name)
         {
             //Checking if connection not already opened
             if (connection != null && connection.State == System.Data.ConnectionState.Closed)
@@ -124,7 +123,7 @@ namespace Tablut
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
             //To store the result of the querry
-            List<int>[] db_Profile_Stats = new List<int>[4];
+            int[] db_Profile_Stats = new int[4];
 
             //Executing query and putting result in list
             MySqlDataReader reader;
@@ -133,10 +132,10 @@ namespace Tablut
             {
                 if (reader.Read())
                 {
-                    db_Profile_Stats[0].Add((int)reader["Won_Attack"]);
-                    db_Profile_Stats[1].Add((int)reader["Lost_Attack"]);
-                    db_Profile_Stats[2].Add((int)reader["Won_Defence"]);
-                    db_Profile_Stats[3].Add((int)reader["Lost_Defence"]);
+                    db_Profile_Stats[0] = reader.GetInt32("Won_Attack");
+                    db_Profile_Stats[1] = reader.GetInt32("Lost_Attack");
+                    db_Profile_Stats[2] = reader.GetInt32("Won_Defence");
+                    db_Profile_Stats[3] = reader.GetInt32("Lost_Defence");
                     
                 }
             }
@@ -148,6 +147,99 @@ namespace Tablut
             }
 
             return db_Profile_Stats;
+        }
+
+        /// <summary>
+        /// Deletes the current profile in the database.
+        /// The profile is selected in the profile managment menu.
+        /// </summary>
+        /// <param name="m_Profile_Name"></param>
+        public void Remove_Profile(string m_Profile_Name)
+        {
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "DELETE FROM Tablut.profile WHERE Name = (@m_Name)";
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            this.connection.Close();
+        }
+
+        /// <summary>
+        /// Sets to 0 all statistics of the selected profile
+        /// in the profile managment menu.
+        /// </summary>
+        /// <param name="m_Profile_Name"></param>
+        public void Reset_Profile(string m_Profile_Name)
+        {
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "UPDATE Tablut.profile SET Won_Attack=0, Lost_Attack=0, Won_Defence=0, Lost_Defence=0 WHERE Name = (@m_Name)";
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            this.connection.Close();
+        }
+
+        /// <summary>
+        /// Renames the profile selected in the profile managment menu.
+        /// </summary>
+        /// <param name="m_New_Name"></param>
+        /// <param name="m_Profile_Name"></param>
+        public void Rename_Profile(string m_New_Name, string m_Profile_Name)
+        {
+            //Verifying the syntax of the name
+            Regex rgx = new Regex(@"^[a-zA-Z0-9_]+$");
+            if (!rgx.IsMatch(m_New_Name))
+            {
+                this.connection.Close();
+                throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z et '_'");
+            }
+
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "UPDATE Tablut.profile SET Name = (@m_New_Name) WHERE Name=(@m_Name)";
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_New_Name", m_New_Name);
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            this.connection.Close();
         }
     }
 }
