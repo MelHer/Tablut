@@ -48,6 +48,10 @@ namespace Tablut
             //Player selection
             pic_Start_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
             pic_Cancel_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+
+            //Game
+            pic_Game_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Game_Close.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
 
         #region Main_Menu
@@ -102,10 +106,11 @@ namespace Tablut
                     cbo_Player_Selection_Defence.Items.Add(name);
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                if (ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                if (ex.Number == 1042)
                 {
+                    lbl_Player_Selection_Fail.Text = "Connexion à la base de données impossible.";
                     lbl_Player_Selection_Fail.Visible = true;
                 }
             }
@@ -322,9 +327,9 @@ namespace Tablut
                     cbo_Manage_Profile.Items.Add(name);
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                if (ex.Message == "Unable to connect to any of the specified MySQL hosts.")
+                if (ex.Number == 1042)
                 {
                     lbl_Managment_Fail.Visible = true;
                 }
@@ -404,6 +409,30 @@ namespace Tablut
         private void pic_Start_Player_Selection_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
+
+            //Reseting combo box
+            cbo_Player_Selection_Attack.Items.Clear();
+            cbo_Player_Selection_Defence.Items.Clear();
+
+            pnl_Play_Profile_Selection.Visible = false;
+            pnl_Game.Visible = true;
+
+            //TODO delete prototype
+            TextBox case11 = new TextBox();
+            case11.Width = tlp_Board.Width / 9;
+
+            TextBox case12 = new TextBox();
+            case12.Width = tlp_Board.Width / 9;
+
+            TextBox case13 = new TextBox();
+            case13.Width = tlp_Board.Width / 9;
+
+            tlp_Board.Controls.Add(case11, 0, 0);
+            tlp_Board.Controls.Add(case12, 1, 0);
+            tlp_Board.Controls.Add(case13, 2, 0);
+            
+
+
         }
 
         /// <summary>
@@ -421,6 +450,10 @@ namespace Tablut
 
             pnl_Play_Profile_Selection.Visible = false;
             pnl_Menu.Visible = true;
+
+            //Reset start button and lists
+            pic_Start_Player_Selection.Enabled = false;
+            pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer_Disable.png");
         }
 
         /// <summary>
@@ -431,7 +464,7 @@ namespace Tablut
         /// <param name="e"></param>
         private void cbo_Player_Selection_Attack_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            profile_Selection_Checker();
         }
 
         /// <summary>
@@ -442,26 +475,99 @@ namespace Tablut
         /// <param name="e"></param>
         private void cbo_Player_Selection_Defence_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            profile_Selection_Checker();
         }
 
         /// <summary>
-        /// Checks if the two selected profiles are difrents.
-        /// If yes the "Launch" button is unlocked.
-        /// else show an error.
+        /// Check if both profile are diffrent.
+        /// Else "Launch" button keep disabled and
+        /// print an error message.
         /// </summary>
-        /// <param name="m_State"></param>
-        private void profile_Selection_Button_Locker()
+        private void profile_Selection_Checker()
         {
+            //Cant be true as long as both combo box don't have a value select.
+            if (!(cbo_Player_Selection_Attack.SelectedIndex == -1) && !(cbo_Player_Selection_Defence.SelectedIndex == -1))
+            {
+                if (cbo_Player_Selection_Attack.SelectedItem == cbo_Player_Selection_Defence.SelectedItem)
+                {
+                    lbl_Player_Selection_Fail.Text = "Veuillez choisir 2 profils différents pour lancer une partie.";
+                    lbl_Player_Selection_Fail.Visible = true;
 
+                    //To center the label
+                    lbl_Player_Selection_Fail.Left = (this.ClientSize.Width - lbl_Player_Selection_Fail.Width) / 2;
+
+                    if(pic_Start_Player_Selection.Enabled == true)
+                    {
+                        pic_Start_Player_Selection.Enabled = false;
+                        pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer_Disable.png");
+                    }
+                }
+                else
+                {
+                    lbl_Player_Selection_Fail.Visible = false;
+
+                    //Enables the "Launch" button.
+                    pic_Start_Player_Selection.Enabled = true;
+                    pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer.png");
+
+                }
+            }
         }
         #endregion Player_Selection
 
-            #region Sound_Players
-            /// <summary>
-            /// Play the click sound for each button.
-            /// Called in the click events.
-            /// </summary>
+        #region Game
+        ////////////////////////////////////
+        //              Game              //
+        ////////////////////////////////////
+
+        /// <summary>
+        /// Leaves the game, doesn't save anything and brings back the main menu (after confirmation)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Game_Menu_Click(object sender, EventArgs e)
+        {
+            play_Sound_Click();
+
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez-vous vraiment retourner au menu principal? Aucun changement ne sera enregistré.");
+
+            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            {
+                //TODO reset game
+
+                pnl_Game.Visible = false;
+                pnl_Menu.Visible = true;
+            }
+
+            confirmation.Dispose();
+        }
+
+        /// <summary>
+        /// Leaves the game without saving and close the application (after confirmation)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Game_Close_Click(object sender, EventArgs e)
+        {
+            play_Sound_Click();
+
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez-vous vraiment quitter le jeu? Aucun changement ne sera enregistré.");
+
+            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            {
+                Close();
+            }
+
+            confirmation.Dispose();
+
+        }
+        #endregion Game
+
+        #region Sound_Players
+        /// <summary>
+        /// Play the click sound for each button.
+        /// Called in the click events.
+        /// </summary>
         private void play_Sound_Click()
         {
             player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Click.wav");

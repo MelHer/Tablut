@@ -64,13 +64,18 @@
             this.pic_Rename = new System.Windows.Forms.PictureBox();
             this.pic_Menu = new System.Windows.Forms.PictureBox();
             this.pnl_Play_Profile_Selection = new System.Windows.Forms.Panel();
-            this.pic_Cancel_Player_Selection = new System.Windows.Forms.PictureBox();
-            this.pic_Start_Player_Selection = new System.Windows.Forms.PictureBox();
+            this.cbo_Player_Selection_Defence = new System.Windows.Forms.ComboBox();
+            this.lbl_Player_Selection_Defence = new System.Windows.Forms.Label();
             this.lbl_Player_Selection_Fail = new System.Windows.Forms.Label();
             this.cbo_Player_Selection_Attack = new System.Windows.Forms.ComboBox();
             this.lbl_Player_Selection_Attack = new System.Windows.Forms.Label();
-            this.cbo_Player_Selection_Defence = new System.Windows.Forms.ComboBox();
-            this.lbl_Player_Selection_Defence = new System.Windows.Forms.Label();
+            this.pic_Cancel_Player_Selection = new System.Windows.Forms.PictureBox();
+            this.pic_Start_Player_Selection = new System.Windows.Forms.PictureBox();
+            this.pnl_Game = new System.Windows.Forms.Panel();
+            this.pic_Game_Menu = new System.Windows.Forms.PictureBox();
+            this.pic_Game_Close = new System.Windows.Forms.PictureBox();
+            this.lbl_Current_Player = new System.Windows.Forms.Label();
+            this.tlp_Board = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Play)).BeginInit();
@@ -87,6 +92,9 @@
             this.pnl_Play_Profile_Selection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Cancel_Player_Selection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Start_Player_Selection)).BeginInit();
+            this.pnl_Game.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Close)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -100,9 +108,9 @@
             this.pnl_Menu.Controls.Add(this.pic_Play);
             this.pnl_Menu.Controls.Add(this.pic_Manage_Profile);
             this.pnl_Menu.Controls.Add(this.pic_Create_Profile);
-            this.pnl_Menu.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Menu.Location = new System.Drawing.Point(-1, -2);
             this.pnl_Menu.Name = "pnl_Menu";
-            this.pnl_Menu.Size = new System.Drawing.Size(974, 659);
+            this.pnl_Menu.Size = new System.Drawing.Size(975, 661);
             this.pnl_Menu.TabIndex = 7;
             // 
             // pic_Close
@@ -155,9 +163,9 @@
             this.pnl_Create_Profile.Controls.Add(this.lbl_Profile_Name);
             this.pnl_Create_Profile.Controls.Add(this.lbl_Fail_Create_Profile);
             this.pnl_Create_Profile.Controls.Add(this.txt_Profile_Name);
-            this.pnl_Create_Profile.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Create_Profile.Location = new System.Drawing.Point(-1, -2);
             this.pnl_Create_Profile.Name = "pnl_Create_Profile";
-            this.pnl_Create_Profile.Size = new System.Drawing.Size(974, 659);
+            this.pnl_Create_Profile.Size = new System.Drawing.Size(975, 661);
             this.pnl_Create_Profile.TabIndex = 8;
             this.pnl_Create_Profile.Visible = false;
             // 
@@ -253,9 +261,9 @@
             this.pnl_Manage_Profile.Controls.Add(this.lbl_Profile_Edit);
             this.pnl_Manage_Profile.Controls.Add(this.pic_Rename);
             this.pnl_Manage_Profile.Controls.Add(this.pic_Menu);
-            this.pnl_Manage_Profile.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Manage_Profile.Location = new System.Drawing.Point(-1, -2);
             this.pnl_Manage_Profile.Name = "pnl_Manage_Profile";
-            this.pnl_Manage_Profile.Size = new System.Drawing.Size(974, 659);
+            this.pnl_Manage_Profile.Size = new System.Drawing.Size(975, 661);
             this.pnl_Manage_Profile.TabIndex = 9;
             this.pnl_Manage_Profile.Visible = false;
             // 
@@ -509,32 +517,35 @@
             this.pnl_Play_Profile_Selection.Controls.Add(this.lbl_Player_Selection_Attack);
             this.pnl_Play_Profile_Selection.Controls.Add(this.pic_Cancel_Player_Selection);
             this.pnl_Play_Profile_Selection.Controls.Add(this.pic_Start_Player_Selection);
-            this.pnl_Play_Profile_Selection.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Play_Profile_Selection.Location = new System.Drawing.Point(-1, -2);
             this.pnl_Play_Profile_Selection.Name = "pnl_Play_Profile_Selection";
-            this.pnl_Play_Profile_Selection.Size = new System.Drawing.Size(974, 659);
+            this.pnl_Play_Profile_Selection.Size = new System.Drawing.Size(975, 661);
             this.pnl_Play_Profile_Selection.TabIndex = 10;
             this.pnl_Play_Profile_Selection.Visible = false;
             // 
-            // pic_Cancel_Player_Selection
+            // cbo_Player_Selection_Defence
             // 
-            this.pic_Cancel_Player_Selection.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Cancel_Player_Selection.BackgroundImage")));
-            this.pic_Cancel_Player_Selection.Location = new System.Drawing.Point(505, 461);
-            this.pic_Cancel_Player_Selection.Name = "pic_Cancel_Player_Selection";
-            this.pic_Cancel_Player_Selection.Size = new System.Drawing.Size(222, 61);
-            this.pic_Cancel_Player_Selection.TabIndex = 38;
-            this.pic_Cancel_Player_Selection.TabStop = false;
-            this.pic_Cancel_Player_Selection.Click += new System.EventHandler(this.pic_Cancel_Player_Selection_Click);
+            this.cbo_Player_Selection_Defence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_Player_Selection_Defence.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_Player_Selection_Defence.FormattingEnabled = true;
+            this.cbo_Player_Selection_Defence.Location = new System.Drawing.Point(491, 312);
+            this.cbo_Player_Selection_Defence.MaxLength = 20;
+            this.cbo_Player_Selection_Defence.Name = "cbo_Player_Selection_Defence";
+            this.cbo_Player_Selection_Defence.Size = new System.Drawing.Size(277, 38);
+            this.cbo_Player_Selection_Defence.TabIndex = 43;
+            this.cbo_Player_Selection_Defence.SelectedIndexChanged += new System.EventHandler(this.cbo_Player_Selection_Defence_SelectedIndexChanged);
             // 
-            // pic_Start_Player_Selection
+            // lbl_Player_Selection_Defence
             // 
-            this.pic_Start_Player_Selection.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Start_Player_Selection.BackgroundImage")));
-            this.pic_Start_Player_Selection.Enabled = false;
-            this.pic_Start_Player_Selection.Location = new System.Drawing.Point(247, 461);
-            this.pic_Start_Player_Selection.Name = "pic_Start_Player_Selection";
-            this.pic_Start_Player_Selection.Size = new System.Drawing.Size(222, 61);
-            this.pic_Start_Player_Selection.TabIndex = 37;
-            this.pic_Start_Player_Selection.TabStop = false;
-            this.pic_Start_Player_Selection.Click += new System.EventHandler(this.pic_Start_Player_Selection_Click);
+            this.lbl_Player_Selection_Defence.AutoSize = true;
+            this.lbl_Player_Selection_Defence.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Player_Selection_Defence.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Player_Selection_Defence.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Player_Selection_Defence.Location = new System.Drawing.Point(484, 273);
+            this.lbl_Player_Selection_Defence.Name = "lbl_Player_Selection_Defence";
+            this.lbl_Player_Selection_Defence.Size = new System.Drawing.Size(125, 40);
+            this.lbl_Player_Selection_Defence.TabIndex = 42;
+            this.lbl_Player_Selection_Defence.Text = "Défense:";
             // 
             // lbl_Player_Selection_Fail
             // 
@@ -574,29 +585,103 @@
             this.lbl_Player_Selection_Attack.TabIndex = 39;
             this.lbl_Player_Selection_Attack.Text = "Attaque:";
             // 
-            // cbo_Player_Selection_Defence
+            // pic_Cancel_Player_Selection
             // 
-            this.cbo_Player_Selection_Defence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_Player_Selection_Defence.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_Player_Selection_Defence.FormattingEnabled = true;
-            this.cbo_Player_Selection_Defence.Location = new System.Drawing.Point(491, 312);
-            this.cbo_Player_Selection_Defence.MaxLength = 20;
-            this.cbo_Player_Selection_Defence.Name = "cbo_Player_Selection_Defence";
-            this.cbo_Player_Selection_Defence.Size = new System.Drawing.Size(277, 38);
-            this.cbo_Player_Selection_Defence.TabIndex = 43;
-            this.cbo_Player_Selection_Defence.SelectedIndexChanged += new System.EventHandler(this.cbo_Player_Selection_Defence_SelectedIndexChanged);
+            this.pic_Cancel_Player_Selection.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Cancel_Player_Selection.BackgroundImage")));
+            this.pic_Cancel_Player_Selection.Location = new System.Drawing.Point(505, 461);
+            this.pic_Cancel_Player_Selection.Name = "pic_Cancel_Player_Selection";
+            this.pic_Cancel_Player_Selection.Size = new System.Drawing.Size(222, 61);
+            this.pic_Cancel_Player_Selection.TabIndex = 38;
+            this.pic_Cancel_Player_Selection.TabStop = false;
+            this.pic_Cancel_Player_Selection.Click += new System.EventHandler(this.pic_Cancel_Player_Selection_Click);
             // 
-            // lbl_Player_Selection_Defence
+            // pic_Start_Player_Selection
             // 
-            this.lbl_Player_Selection_Defence.AutoSize = true;
-            this.lbl_Player_Selection_Defence.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Player_Selection_Defence.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Player_Selection_Defence.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Player_Selection_Defence.Location = new System.Drawing.Point(484, 273);
-            this.lbl_Player_Selection_Defence.Name = "lbl_Player_Selection_Defence";
-            this.lbl_Player_Selection_Defence.Size = new System.Drawing.Size(125, 40);
-            this.lbl_Player_Selection_Defence.TabIndex = 42;
-            this.lbl_Player_Selection_Defence.Text = "Défense:";
+            this.pic_Start_Player_Selection.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Start_Player_Selection.BackgroundImage")));
+            this.pic_Start_Player_Selection.Enabled = false;
+            this.pic_Start_Player_Selection.Location = new System.Drawing.Point(247, 461);
+            this.pic_Start_Player_Selection.Name = "pic_Start_Player_Selection";
+            this.pic_Start_Player_Selection.Size = new System.Drawing.Size(222, 61);
+            this.pic_Start_Player_Selection.TabIndex = 37;
+            this.pic_Start_Player_Selection.TabStop = false;
+            this.pic_Start_Player_Selection.Click += new System.EventHandler(this.pic_Start_Player_Selection_Click);
+            // 
+            // pnl_Game
+            // 
+            this.pnl_Game.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Game.BackgroundImage")));
+            this.pnl_Game.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_Game.Controls.Add(this.tlp_Board);
+            this.pnl_Game.Controls.Add(this.lbl_Current_Player);
+            this.pnl_Game.Controls.Add(this.pic_Game_Close);
+            this.pnl_Game.Controls.Add(this.pic_Game_Menu);
+            this.pnl_Game.Location = new System.Drawing.Point(-1, -2);
+            this.pnl_Game.Name = "pnl_Game";
+            this.pnl_Game.Size = new System.Drawing.Size(975, 661);
+            this.pnl_Game.TabIndex = 11;
+            this.pnl_Game.Visible = false;
+            // 
+            // pic_Game_Menu
+            // 
+            this.pic_Game_Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Menu.BackgroundImage")));
+            this.pic_Game_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Game_Menu.Location = new System.Drawing.Point(23, 18);
+            this.pic_Game_Menu.Name = "pic_Game_Menu";
+            this.pic_Game_Menu.Size = new System.Drawing.Size(125, 34);
+            this.pic_Game_Menu.TabIndex = 14;
+            this.pic_Game_Menu.TabStop = false;
+            this.pic_Game_Menu.Click += new System.EventHandler(this.pic_Game_Menu_Click);
+            // 
+            // pic_Game_Close
+            // 
+            this.pic_Game_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Close.BackgroundImage")));
+            this.pic_Game_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Game_Close.Location = new System.Drawing.Point(23, 68);
+            this.pic_Game_Close.Name = "pic_Game_Close";
+            this.pic_Game_Close.Size = new System.Drawing.Size(125, 34);
+            this.pic_Game_Close.TabIndex = 15;
+            this.pic_Game_Close.TabStop = false;
+            this.pic_Game_Close.Click += new System.EventHandler(this.pic_Game_Close_Click);
+            // 
+            // lbl_Current_Player
+            // 
+            this.lbl_Current_Player.AutoSize = true;
+            this.lbl_Current_Player.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Current_Player.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Current_Player.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Current_Player.Location = new System.Drawing.Point(805, 28);
+            this.lbl_Current_Player.Name = "lbl_Current_Player";
+            this.lbl_Current_Player.Size = new System.Drawing.Size(82, 21);
+            this.lbl_Current_Player.TabIndex = 42;
+            this.lbl_Current_Player.Text = "Doit jouer:";
+            this.lbl_Current_Player.Visible = false;
+            // 
+            // tlp_Board
+            // 
+            this.tlp_Board.BackColor = System.Drawing.Color.Transparent;
+            this.tlp_Board.ColumnCount = 9;
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.Location = new System.Drawing.Point(216, 60);
+            this.tlp_Board.Name = "tlp_Board";
+            this.tlp_Board.RowCount = 9;
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.Size = new System.Drawing.Size(541, 536);
+            this.tlp_Board.TabIndex = 43;
             // 
             // frm_Tablut
             // 
@@ -604,6 +689,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(973, 658);
+            this.Controls.Add(this.pnl_Game);
             this.Controls.Add(this.pnl_Play_Profile_Selection);
             this.Controls.Add(this.pnl_Manage_Profile);
             this.Controls.Add(this.pnl_Create_Profile);
@@ -634,6 +720,10 @@
             this.pnl_Play_Profile_Selection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Cancel_Player_Selection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Start_Player_Selection)).EndInit();
+            this.pnl_Game.ResumeLayout(false);
+            this.pnl_Game.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Close)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -681,6 +771,11 @@
         private System.Windows.Forms.Label lbl_Player_Selection_Fail;
         private System.Windows.Forms.ComboBox cbo_Player_Selection_Attack;
         private System.Windows.Forms.Label lbl_Player_Selection_Attack;
+        private System.Windows.Forms.Panel pnl_Game;
+        private System.Windows.Forms.PictureBox pic_Game_Close;
+        private System.Windows.Forms.PictureBox pic_Game_Menu;
+        private System.Windows.Forms.Label lbl_Current_Player;
+        private System.Windows.Forms.TableLayoutPanel tlp_Board;
     }
 }
 
