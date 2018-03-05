@@ -414,25 +414,63 @@ namespace Tablut
             cbo_Player_Selection_Attack.Items.Clear();
             cbo_Player_Selection_Defence.Items.Clear();
 
+ 
+            //TODO create and add game class
+            //Populating the board with the pawns
+            Dictionary<string, Square> board = new Dictionary<string, Square>();
+
+            for(int row = 0; row <= 8; row++)
+            {
+                for(int column = 0; column <= 8; column++)
+                {
+                    board.Add("SQ" + column + "" + row, new Square());
+                    board["SQ" + column + "" + row].Name = "SQ" + column + "" + row;
+                    board["SQ" + column + "" + row].Width = tlp_Board.Width / 9;
+                    board["SQ" + column + "" + row].Height = tlp_Board.Width / 9;
+                    board["SQ" + column + "" + row].Click += new System.EventHandler(this.square_Click);
+
+                    tlp_Board.Controls.Add(board["SQ" + column + "" + row], column, row);
+                }
+            }
+
+            //Putting images in the initial state of the board
+            //Attackers (Black pawns)
+            board["SQ30"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ40"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ50"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ41"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ03"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ83"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ04"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ14"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ74"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ84"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ05"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ85"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ47"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ38"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ48"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ58"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+
+            //Defenders (White pawns)
+            board["SQ42"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ43"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ24"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ34"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ44"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
+            board["SQ54"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ64"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ45"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ46"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+
+            //Can potentially include a loading screen because it may takes a few sec to generate the board.
             pnl_Play_Profile_Selection.Visible = false;
             pnl_Game.Visible = true;
+        }
 
-            //TODO delete prototype
-            TextBox case11 = new TextBox();
-            case11.Width = tlp_Board.Width / 9;
-
-            TextBox case12 = new TextBox();
-            case12.Width = tlp_Board.Width / 9;
-
-            TextBox case13 = new TextBox();
-            case13.Width = tlp_Board.Width / 9;
-
-            tlp_Board.Controls.Add(case11, 0, 0);
-            tlp_Board.Controls.Add(case12, 1, 0);
-            tlp_Board.Controls.Add(case13, 2, 0);
-            
-
-
+        private void square_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(((Square)sender).occupant.ToString());
         }
 
         /// <summary>

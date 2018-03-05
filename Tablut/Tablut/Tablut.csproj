@@ -68,8 +68,12 @@
     <Compile Include="form_Tablut.Designer.cs">
       <DependentUpon>form_Tablut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Occupant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Square.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="form_Confirmation.resx">
       <DependentUpon>form_Confirmation.cs</DependentUpon>
     </EmbeddedResource>

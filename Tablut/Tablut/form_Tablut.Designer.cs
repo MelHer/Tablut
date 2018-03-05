@@ -72,10 +72,10 @@
             this.pic_Cancel_Player_Selection = new System.Windows.Forms.PictureBox();
             this.pic_Start_Player_Selection = new System.Windows.Forms.PictureBox();
             this.pnl_Game = new System.Windows.Forms.Panel();
-            this.pic_Game_Menu = new System.Windows.Forms.PictureBox();
-            this.pic_Game_Close = new System.Windows.Forms.PictureBox();
-            this.lbl_Current_Player = new System.Windows.Forms.Label();
             this.tlp_Board = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_Current_Player = new System.Windows.Forms.Label();
+            this.pic_Game_Close = new System.Windows.Forms.PictureBox();
+            this.pic_Game_Menu = new System.Windows.Forms.PictureBox();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Play)).BeginInit();
@@ -93,8 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Cancel_Player_Selection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Start_Player_Selection)).BeginInit();
             this.pnl_Game.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -620,27 +620,33 @@
             this.pnl_Game.TabIndex = 11;
             this.pnl_Game.Visible = false;
             // 
-            // pic_Game_Menu
+            // tlp_Board
             // 
-            this.pic_Game_Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Menu.BackgroundImage")));
-            this.pic_Game_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pic_Game_Menu.Location = new System.Drawing.Point(23, 18);
-            this.pic_Game_Menu.Name = "pic_Game_Menu";
-            this.pic_Game_Menu.Size = new System.Drawing.Size(125, 34);
-            this.pic_Game_Menu.TabIndex = 14;
-            this.pic_Game_Menu.TabStop = false;
-            this.pic_Game_Menu.Click += new System.EventHandler(this.pic_Game_Menu_Click);
-            // 
-            // pic_Game_Close
-            // 
-            this.pic_Game_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Close.BackgroundImage")));
-            this.pic_Game_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pic_Game_Close.Location = new System.Drawing.Point(23, 68);
-            this.pic_Game_Close.Name = "pic_Game_Close";
-            this.pic_Game_Close.Size = new System.Drawing.Size(125, 34);
-            this.pic_Game_Close.TabIndex = 15;
-            this.pic_Game_Close.TabStop = false;
-            this.pic_Game_Close.Click += new System.EventHandler(this.pic_Game_Close_Click);
+            this.tlp_Board.BackColor = System.Drawing.Color.Transparent;
+            this.tlp_Board.ColumnCount = 9;
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.Location = new System.Drawing.Point(216, 57);
+            this.tlp_Board.Name = "tlp_Board";
+            this.tlp_Board.RowCount = 9;
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tlp_Board.Size = new System.Drawing.Size(541, 540);
+            this.tlp_Board.TabIndex = 43;
             // 
             // lbl_Current_Player
             // 
@@ -655,33 +661,27 @@
             this.lbl_Current_Player.Text = "Doit jouer:";
             this.lbl_Current_Player.Visible = false;
             // 
-            // tlp_Board
+            // pic_Game_Close
             // 
-            this.tlp_Board.BackColor = System.Drawing.Color.Transparent;
-            this.tlp_Board.ColumnCount = 9;
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.Location = new System.Drawing.Point(216, 60);
-            this.tlp_Board.Name = "tlp_Board";
-            this.tlp_Board.RowCount = 9;
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tlp_Board.Size = new System.Drawing.Size(541, 536);
-            this.tlp_Board.TabIndex = 43;
+            this.pic_Game_Close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Close.BackgroundImage")));
+            this.pic_Game_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Game_Close.Location = new System.Drawing.Point(23, 68);
+            this.pic_Game_Close.Name = "pic_Game_Close";
+            this.pic_Game_Close.Size = new System.Drawing.Size(125, 34);
+            this.pic_Game_Close.TabIndex = 15;
+            this.pic_Game_Close.TabStop = false;
+            this.pic_Game_Close.Click += new System.EventHandler(this.pic_Game_Close_Click);
+            // 
+            // pic_Game_Menu
+            // 
+            this.pic_Game_Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Menu.BackgroundImage")));
+            this.pic_Game_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Game_Menu.Location = new System.Drawing.Point(23, 18);
+            this.pic_Game_Menu.Name = "pic_Game_Menu";
+            this.pic_Game_Menu.Size = new System.Drawing.Size(125, 34);
+            this.pic_Game_Menu.TabIndex = 14;
+            this.pic_Game_Menu.TabStop = false;
+            this.pic_Game_Menu.Click += new System.EventHandler(this.pic_Game_Menu_Click);
             // 
             // frm_Tablut
             // 
@@ -722,8 +722,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Start_Player_Selection)).EndInit();
             this.pnl_Game.ResumeLayout(false);
             this.pnl_Game.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).EndInit();
             this.ResumeLayout(false);
 
         }
