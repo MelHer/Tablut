@@ -5,9 +5,18 @@ using System.Text;
 
 namespace Tablut
 {
-    class Exception_Invalid_Pawn : Exception
+    class Exception_Game_Error : Exception
     {
-         public Exception_Invalid_Pawn(string message) : base(message)
-        {}
+        public string Title { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="m_Title"></param>
+        public Exception_Game_Error(string message, string m_Title) : base(message)
+        {
+            this.Title = m_Title;
+        }
     }
 }

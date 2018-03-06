@@ -473,11 +473,6 @@ namespace Tablut
             pnl_Game.Visible = true;
         }
 
-        private void square_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(((Square)sender).occupant.ToString());
-        }
-
         /// <summary>
         /// Exits the player selection and return to the main menu.
         /// </summary>
@@ -562,6 +557,19 @@ namespace Tablut
         ////////////////////////////////////
         //              Game              //
         ////////////////////////////////////
+
+        //TODO Game phase, select move...
+        private void square_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Console.WriteLine(((Square)sender).occupant.ToString());
+            }
+            catch (Exception_Game_Error ex)
+            {
+
+            }
+        }
 
         /// <summary>
         /// Leaves the game, doesn't save anything and brings back the main menu (after confirmation)
