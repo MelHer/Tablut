@@ -410,12 +410,12 @@ namespace Tablut
         {
             play_Sound_Click();
 
-            //Reseting combo box
-            cbo_Player_Selection_Attack.Items.Clear();
-            cbo_Player_Selection_Defence.Items.Clear();
+            //Creates the games and the player objects.
+            Game game = new Game(cbo_Player_Selection_Attack.SelectedItem.ToString(), cbo_Player_Selection_Defence.SelectedItem.ToString());
 
- 
-            //TODO create and add game class
+            //Indicates the player round.
+            lbl_Current_Player.Text = game.Defender.Name;
+
             //Populating the board with the pawns
             Dictionary<string, Square> board = new Dictionary<string, Square>();
 
@@ -435,33 +435,38 @@ namespace Tablut
 
             //Putting images in the initial state of the board
             //Attackers (Black pawns)
-            board["SQ30"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ40"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ50"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ41"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ03"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ83"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ04"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ14"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ74"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ84"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ05"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ85"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ47"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ38"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ48"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ58"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ30"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ30"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ40"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ50"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ41"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ03"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ83"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ04"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ14"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ74"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ84"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ05"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ85"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ47"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ38"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ48"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ58"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
 
             //Defenders (White pawns)
-            board["SQ42"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ43"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ24"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ34"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ44"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
-            board["SQ54"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ64"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ45"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ46"].Image = Image.FromFile(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ42"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ43"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ24"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ34"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ44"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
+            board["SQ54"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ64"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ45"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ46"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+
+            //Reseting combo box
+            cbo_Player_Selection_Attack.Items.Clear();
+            cbo_Player_Selection_Defence.Items.Clear();
 
             //Can potentially include a loading screen because it may takes a few sec to generate the board.
             pnl_Play_Profile_Selection.Visible = false;

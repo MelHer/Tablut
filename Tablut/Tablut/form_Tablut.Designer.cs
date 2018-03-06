@@ -73,9 +73,10 @@
             this.pic_Start_Player_Selection = new System.Windows.Forms.PictureBox();
             this.pnl_Game = new System.Windows.Forms.Panel();
             this.tlp_Board = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_Current_Player = new System.Windows.Forms.Label();
+            this.lbl_Has_To_Play = new System.Windows.Forms.Label();
             this.pic_Game_Close = new System.Windows.Forms.PictureBox();
             this.pic_Game_Menu = new System.Windows.Forms.PictureBox();
+            this.lbl_Current_Player = new System.Windows.Forms.Label();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Play)).BeginInit();
@@ -610,8 +611,9 @@
             // 
             this.pnl_Game.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_Game.BackgroundImage")));
             this.pnl_Game.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_Game.Controls.Add(this.tlp_Board);
             this.pnl_Game.Controls.Add(this.lbl_Current_Player);
+            this.pnl_Game.Controls.Add(this.tlp_Board);
+            this.pnl_Game.Controls.Add(this.lbl_Has_To_Play);
             this.pnl_Game.Controls.Add(this.pic_Game_Close);
             this.pnl_Game.Controls.Add(this.pic_Game_Menu);
             this.pnl_Game.Location = new System.Drawing.Point(-1, -2);
@@ -648,18 +650,17 @@
             this.tlp_Board.Size = new System.Drawing.Size(541, 540);
             this.tlp_Board.TabIndex = 43;
             // 
-            // lbl_Current_Player
+            // lbl_Has_To_Play
             // 
-            this.lbl_Current_Player.AutoSize = true;
-            this.lbl_Current_Player.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Current_Player.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Current_Player.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Current_Player.Location = new System.Drawing.Point(805, 28);
-            this.lbl_Current_Player.Name = "lbl_Current_Player";
-            this.lbl_Current_Player.Size = new System.Drawing.Size(82, 21);
-            this.lbl_Current_Player.TabIndex = 42;
-            this.lbl_Current_Player.Text = "Doit jouer:";
-            this.lbl_Current_Player.Visible = false;
+            this.lbl_Has_To_Play.AutoSize = true;
+            this.lbl_Has_To_Play.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Has_To_Play.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Has_To_Play.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Has_To_Play.Location = new System.Drawing.Point(805, 28);
+            this.lbl_Has_To_Play.Name = "lbl_Has_To_Play";
+            this.lbl_Has_To_Play.Size = new System.Drawing.Size(82, 21);
+            this.lbl_Has_To_Play.TabIndex = 42;
+            this.lbl_Has_To_Play.Text = "Doit jouer:";
             // 
             // pic_Game_Close
             // 
@@ -682,6 +683,18 @@
             this.pic_Game_Menu.TabIndex = 14;
             this.pic_Game_Menu.TabStop = false;
             this.pic_Game_Menu.Click += new System.EventHandler(this.pic_Game_Menu_Click);
+            // 
+            // lbl_Current_Player
+            // 
+            this.lbl_Current_Player.AutoSize = true;
+            this.lbl_Current_Player.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Current_Player.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Current_Player.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Current_Player.Location = new System.Drawing.Point(805, 49);
+            this.lbl_Current_Player.Name = "lbl_Current_Player";
+            this.lbl_Current_Player.Size = new System.Drawing.Size(110, 21);
+            this.lbl_Current_Player.TabIndex = 44;
+            this.lbl_Current_Player.Text = "Current player";
             // 
             // frm_Tablut
             // 
@@ -774,8 +787,9 @@
         private System.Windows.Forms.Panel pnl_Game;
         private System.Windows.Forms.PictureBox pic_Game_Close;
         private System.Windows.Forms.PictureBox pic_Game_Menu;
-        private System.Windows.Forms.Label lbl_Current_Player;
+        private System.Windows.Forms.Label lbl_Has_To_Play;
         private System.Windows.Forms.TableLayoutPanel tlp_Board;
+        private System.Windows.Forms.Label lbl_Current_Player;
     }
 }
 
