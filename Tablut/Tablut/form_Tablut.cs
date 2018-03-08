@@ -18,6 +18,16 @@ namespace Tablut
         //Connection with database
         DB_Connect db_link;
 
+        //Contains the movement algorithms and the player, created at every beginning
+        //of a game.
+        Game game;
+
+        //Contains all the squares of the board.
+        Dictionary<string, Square> board;
+
+        //Contains the name of all highlighted squares.
+        List<string> possible_Move;
+
         public frm_Tablut()
         {
             InitializeComponent();
@@ -411,13 +421,13 @@ namespace Tablut
             play_Sound_Click();
 
             //Creates the games and the player objects.
-            Game game = new Game(cbo_Player_Selection_Attack.SelectedItem.ToString(), cbo_Player_Selection_Defence.SelectedItem.ToString());
+            game = new Game(cbo_Player_Selection_Attack.SelectedItem.ToString(), cbo_Player_Selection_Defence.SelectedItem.ToString());
 
             //Indicates the player round.
             lbl_Current_Player.Text = game.Defender.Name;
 
             //Populating the board with the pawns
-            Dictionary<string, Square> board = new Dictionary<string, Square>();
+            board = new Dictionary<string, Square>();
 
             for(int row = 0; row <= 8; row++)
             {
@@ -435,34 +445,34 @@ namespace Tablut
 
             //Putting images in the initial state of the board
             //Attackers (Black pawns)
-            board["SQ30"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ30"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ40"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ50"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ41"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ03"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ83"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ04"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ14"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ74"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ84"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ05"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ85"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ47"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ38"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ48"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ58"].change_image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ30"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ30"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ40"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ50"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ41"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ03"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ83"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ04"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ14"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ74"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ84"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ05"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ85"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ47"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ38"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ48"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ58"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
 
             //Defenders (White pawns)
-            board["SQ42"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ43"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ24"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ34"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ44"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
-            board["SQ54"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ64"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ45"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ46"].change_image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ42"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ43"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ24"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ34"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ44"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
+            board["SQ54"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ64"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ45"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ46"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
 
             //Reseting combo box
             cbo_Player_Selection_Attack.Items.Clear();
@@ -558,16 +568,78 @@ namespace Tablut
         //              Game              //
         ////////////////////////////////////
 
-        //TODO Game phase, select move...
+        /// <summary>
+        /// Updates were the pawn are on the board.
+        /// Calls the diffrents game checker of the game class
+        /// like "should some pawn be destroyed ?" or "Is the movement valid ?" 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void square_Click(object sender, EventArgs e)
         {
-            try
+            
+            if(game.Phase == Game_Phase.picking)
             {
-                Console.WriteLine(((Square)sender).occupant.ToString());
-            }
-            catch (Exception_Game_Error ex)
-            {
+                //Will Contain all the possible square where the player
+                //can move his selected pawn.
+                possible_Move = new List<string>();
 
+                possible_Move = game.Pawn_Click((Square)sender, board);
+
+                foreach(String square_Name in possible_Move)
+                {
+                    board[square_Name].change_Image(@"P:\Tablut\Design\Pion\Surbrillance.png");
+                }
+            }
+            else if(game.Phase == Game_Phase.moving)
+            {
+                string result = game.Square_Click((Square)sender, possible_Move);
+
+                if(result != "invalid")
+                {
+                    //resets possible moves indications. 
+                    foreach (String square_Name in possible_Move)
+                    {
+                        board[square_Name].clear_Image();
+                    }
+                }
+                
+                if(result == "move")
+                {
+                    //Update the board after the move
+                    if(game.Current_Player.role == Occupant.Attacker)
+                    {
+                        ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+                    }
+                    else
+                    {
+                        if (game.selected_Pawn.Occupant == Occupant.King)
+                        {
+                            ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
+                        }
+                        else
+                        {
+                            ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+                        }
+                    }
+                    //Resets the pawn ancient location
+                    board[game.selected_Pawn.Name].clear_Image();
+
+                    List<string> pawn_To_Remove = new List<string>(game.search_Eliminated_Pawn((Square)sender, board));
+
+                    foreach (string pawn_Name in pawn_To_Remove)
+                    {
+                        board[pawn_Name].clear_Image();
+                    }
+
+                    if (game.is_Over(board))
+                    {
+                        Console.WriteLine("Game Over Winner is "+ game.Current_Player.Name);
+                    }
+
+                    //Change player name who has to play
+                    lbl_Current_Player.Text = game.Current_Player.Name;
+                }
             }
         }
 

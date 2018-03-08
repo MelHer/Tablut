@@ -11,15 +11,15 @@ namespace Tablut
     class Square : PictureBox
     {
 
-        public Occupant occupant { get; private set; }
+        public Occupant Occupant { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="m_occupant"></param>
-        public Square(Occupant m_occupant = Occupant.Empty) : base()
+        /// <param name="m_Occupant"></param>
+        public Square(Occupant m_Occupant = Occupant.Empty) : base()
         {
-            occupant = m_occupant;
+            Occupant = m_Occupant;
         }
 
         /// <summary>
@@ -28,26 +28,32 @@ namespace Tablut
         /// to determine the occupant of the square
         /// </summary>
         /// <param name="path"></param>
-        public void change_image(string m_path)
+        public void change_Image(string m_path)
         {
             this.BackgroundImage = Image.FromFile(m_path);
 
             if (m_path.Contains("Roi"))
             {
-                this.occupant = Occupant.King;
+                this.Occupant = Occupant.King;
             }
             else if (m_path.Contains("Blanc"))
             {
-                this.occupant = Occupant.Defender;
+                this.Occupant = Occupant.Defender;
             }
             else if (m_path.Contains("Noir"))
             {
-                this.occupant = Occupant.Attacker;
+                this.Occupant = Occupant.Attacker;
             }
             else
             {
-                this.occupant = Occupant.Empty;
+                this.Occupant = Occupant.Empty;
             }
+        }
+
+        public void clear_Image()
+        {
+            this.BackgroundImage = null;
+            this.Occupant = Occupant.Empty;
         }
     }
 }
