@@ -241,5 +241,77 @@ namespace Tablut
             //Close connection
             this.connection.Close();
         }
+
+        /// <summary>
+        /// Adds a victory to the player for his previous role.
+        /// </summary>
+        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_Role"></param>
+        public void Add_Victory(string m_Profile_Name, Occupant m_Role)
+        {
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            if (m_Role == Occupant.Attacker)
+            {
+                cmd.CommandText = "UPDATE Tablut.profile SET Won_Attack = Won_Attack + 1 WHERE Name=(@m_Name)";
+            }
+            else
+            {
+                cmd.CommandText = "UPDATE Tablut.profile SET Won_Defence = Won_Defence + 1 WHERE Name=(@m_Name)";
+            }
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+            
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            this.connection.Close();
+        }
+
+        /// <summary>
+        /// Adds a defeat to the player for his previous role.
+        /// </summary>
+        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_Role"></param>
+        public void Add_Defeat(string m_Profile_Name, Occupant m_Role)
+        {
+            //Checking if connection not already opened
+            if (connection != null && connection.State == System.Data.ConnectionState.Closed)
+            {
+                //Opening the SQL connection
+                this.connection.Open();
+            }
+
+            //Creating the querry
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            if (m_Role == Occupant.Attacker)
+            {
+                cmd.CommandText = "UPDATE Tablut.profile SET Lost_Attack = Lost_Attack + 1 WHERE Name=(@m_Name)";
+            }
+            else
+            {
+                cmd.CommandText = "UPDATE Tablut.profile SET Lost_Defence = Lost_Defence + 1 WHERE Name=(@m_Name)";
+            }
+
+            //Inserting the parameter
+            cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
+
+            //Execute query
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            this.connection.Close();
+        }
     }
 }

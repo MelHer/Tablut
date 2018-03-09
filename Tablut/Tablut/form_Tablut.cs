@@ -634,7 +634,30 @@ namespace Tablut
 
                     if (game.is_Over(board))
                     {
-                        Console.WriteLine("Game Over Winner is "+ game.Current_Player.Name);
+                        //Updating victory banner and database stats
+                        if(game.Current_Player.role == Occupant.Attacker)
+                        {
+                            lbl_Game_Over_Winner.Text = "Victoire des attaquants";
+                            db_link.Add_Victory(game.Attacker.Name, game.Attacker.role);
+                            db_link.Add_Defeat(game.Defender.Name, game.Defender.role);
+                        }
+                        else
+                        {
+                            lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
+                            db_link.Add_Victory(game.Defender.Name, game.Defender.role);
+                            db_link.Add_Defeat(game.Attacker.Name, game.Attacker.role);
+                        }
+
+                        //Updating stats
+                        lbl_Game_Over_Num_Move_Attack.Text = game.Attacker.Total_Moves.ToString();
+                        lbl_Game_Over_Num_Elimination_Attack.Text = game.Attacker.Total_Enemy_Pawn_Eliminated.ToString();
+                        lbl_Game_Over_Num_Move_Defence.Text = game.Defender.Total_Moves.ToString();
+                        lbl_Game_Over_Num_Elimination_Defence.Text = game.Defender.Total_Enemy_Pawn_Eliminated.ToString();
+
+                        pnl_Game.Visible = false;
+                        pnl_Game_Over.Visible = true;
+
+                        reset_Game();
                     }
 
                     //Change player name who has to play
@@ -656,10 +679,10 @@ namespace Tablut
 
             if (confirmation.ShowDialog(this) == DialogResult.OK)
             {
-                //TODO reset game
-
                 pnl_Game.Visible = false;
                 pnl_Menu.Visible = true;
+
+                reset_Game();
             }
 
             confirmation.Dispose();
@@ -684,7 +707,36 @@ namespace Tablut
             confirmation.Dispose();
 
         }
+
+        /// <summary>
+        /// Resets the game (for a new game) after returning to the menu
+        /// or ending a game.
+        /// </summary>
+        private void reset_Game()
+        {
+            board.Clear();
+            tlp_Board.Controls.Clear();
+        }
+
         #endregion Game
+
+        #region Game_Over
+        ////////////////////////////////////
+        //           Game Over            //
+        ////////////////////////////////////
+
+        /// <summary>
+        /// Leaves the game over screen and returns to the main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Game_Over_Menu_Click(object sender, EventArgs e)
+        {
+            pnl_Game_Over.Visible = false;
+            pnl_Menu.Visible = true;
+        }
+
+        #endregion Game_Over
 
         #region Sound_Players
         /// <summary>
@@ -709,6 +761,5 @@ namespace Tablut
             player.Play();
         }
         #endregion Sound_Players
-
     }
 }
