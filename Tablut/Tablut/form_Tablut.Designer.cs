@@ -78,18 +78,18 @@
             this.pic_Game_Close = new System.Windows.Forms.PictureBox();
             this.pic_Game_Menu = new System.Windows.Forms.PictureBox();
             this.pnl_Game_Over = new System.Windows.Forms.Panel();
-            this.lbl_Game_Over_Winner = new System.Windows.Forms.Label();
-            this.pic_Game_Over_Menu = new System.Windows.Forms.PictureBox();
-            this.lbl_Game_Over_Move_Attack = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Atttack = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Elimination_Attack = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Num_Elimination_Defence = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Num_Move_Defence = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Num_Elimination_Attack = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Num_Move_Attack = new System.Windows.Forms.Label();
             this.lbl_Game_Over_Elimination_Defence = new System.Windows.Forms.Label();
             this.lbl_Game_Over_Move_Defence = new System.Windows.Forms.Label();
             this.lbl_Game_Over_Defence = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Num_Move_Attack = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Num_Elimination_Attack = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Num_Move_Defence = new System.Windows.Forms.Label();
-            this.lbl_Game_Over_Num_Elimination_Defence = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Elimination_Attack = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Move_Attack = new System.Windows.Forms.Label();
+            this.lbl_Game_Over_Atttack = new System.Windows.Forms.Label();
+            this.pic_Game_Over_Menu = new System.Windows.Forms.PictureBox();
+            this.lbl_Game_Over_Winner = new System.Windows.Forms.Label();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Play)).BeginInit();
@@ -733,62 +733,53 @@
             this.pnl_Game_Over.TabIndex = 12;
             this.pnl_Game_Over.Visible = false;
             // 
-            // lbl_Game_Over_Winner
+            // lbl_Game_Over_Num_Elimination_Defence
             // 
-            this.lbl_Game_Over_Winner.AutoSize = true;
-            this.lbl_Game_Over_Winner.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Winner.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Winner.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Game_Over_Winner.Location = new System.Drawing.Point(351, 180);
-            this.lbl_Game_Over_Winner.Name = "lbl_Game_Over_Winner";
-            this.lbl_Game_Over_Winner.Size = new System.Drawing.Size(310, 40);
-            this.lbl_Game_Over_Winner.TabIndex = 44;
-            this.lbl_Game_Over_Winner.Text = "Victoire des attaquants";
+            this.lbl_Game_Over_Num_Elimination_Defence.AutoSize = true;
+            this.lbl_Game_Over_Num_Elimination_Defence.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Num_Elimination_Defence.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Num_Elimination_Defence.Location = new System.Drawing.Point(656, 401);
+            this.lbl_Game_Over_Num_Elimination_Defence.Name = "lbl_Game_Over_Num_Elimination_Defence";
+            this.lbl_Game_Over_Num_Elimination_Defence.Size = new System.Drawing.Size(27, 20);
+            this.lbl_Game_Over_Num_Elimination_Defence.TabIndex = 55;
+            this.lbl_Game_Over_Num_Elimination_Defence.Text = "XX";
+            this.lbl_Game_Over_Num_Elimination_Defence.UseMnemonic = false;
             // 
-            // pic_Game_Over_Menu
+            // lbl_Game_Over_Num_Move_Defence
             // 
-            this.pic_Game_Over_Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Over_Menu.BackgroundImage")));
-            this.pic_Game_Over_Menu.Location = new System.Drawing.Point(379, 558);
-            this.pic_Game_Over_Menu.Name = "pic_Game_Over_Menu";
-            this.pic_Game_Over_Menu.Size = new System.Drawing.Size(222, 61);
-            this.pic_Game_Over_Menu.TabIndex = 45;
-            this.pic_Game_Over_Menu.TabStop = false;
-            this.pic_Game_Over_Menu.Click += new System.EventHandler(this.pic_Game_Over_Menu_Click);
+            this.lbl_Game_Over_Num_Move_Defence.AutoSize = true;
+            this.lbl_Game_Over_Num_Move_Defence.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Num_Move_Defence.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Num_Move_Defence.Location = new System.Drawing.Point(592, 372);
+            this.lbl_Game_Over_Num_Move_Defence.Name = "lbl_Game_Over_Num_Move_Defence";
+            this.lbl_Game_Over_Num_Move_Defence.Size = new System.Drawing.Size(27, 20);
+            this.lbl_Game_Over_Num_Move_Defence.TabIndex = 54;
+            this.lbl_Game_Over_Num_Move_Defence.Text = "XX";
+            this.lbl_Game_Over_Num_Move_Defence.UseMnemonic = false;
             // 
-            // lbl_Game_Over_Move_Attack
+            // lbl_Game_Over_Num_Elimination_Attack
             // 
-            this.lbl_Game_Over_Move_Attack.AutoSize = true;
-            this.lbl_Game_Over_Move_Attack.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Move_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Move_Attack.Location = new System.Drawing.Point(248, 371);
-            this.lbl_Game_Over_Move_Attack.Name = "lbl_Game_Over_Move_Attack";
-            this.lbl_Game_Over_Move_Attack.Size = new System.Drawing.Size(57, 20);
-            this.lbl_Game_Over_Move_Attack.TabIndex = 47;
-            this.lbl_Game_Over_Move_Attack.Text = "Coups :";
-            this.lbl_Game_Over_Move_Attack.UseMnemonic = false;
+            this.lbl_Game_Over_Num_Elimination_Attack.AutoSize = true;
+            this.lbl_Game_Over_Num_Elimination_Attack.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Num_Elimination_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Num_Elimination_Attack.Location = new System.Drawing.Point(378, 401);
+            this.lbl_Game_Over_Num_Elimination_Attack.Name = "lbl_Game_Over_Num_Elimination_Attack";
+            this.lbl_Game_Over_Num_Elimination_Attack.Size = new System.Drawing.Size(27, 20);
+            this.lbl_Game_Over_Num_Elimination_Attack.TabIndex = 53;
+            this.lbl_Game_Over_Num_Elimination_Attack.Text = "XX";
+            this.lbl_Game_Over_Num_Elimination_Attack.UseMnemonic = false;
             // 
-            // lbl_Game_Over_Atttack
+            // lbl_Game_Over_Num_Move_Attack
             // 
-            this.lbl_Game_Over_Atttack.AutoSize = true;
-            this.lbl_Game_Over_Atttack.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Atttack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Atttack.Location = new System.Drawing.Point(247, 331);
-            this.lbl_Game_Over_Atttack.Name = "lbl_Game_Over_Atttack";
-            this.lbl_Game_Over_Atttack.Size = new System.Drawing.Size(103, 25);
-            this.lbl_Game_Over_Atttack.TabIndex = 46;
-            this.lbl_Game_Over_Atttack.Text = "Attaquants";
-            // 
-            // lbl_Game_Over_Elimination_Attack
-            // 
-            this.lbl_Game_Over_Elimination_Attack.AutoSize = true;
-            this.lbl_Game_Over_Elimination_Attack.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Elimination_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Elimination_Attack.Location = new System.Drawing.Point(247, 401);
-            this.lbl_Game_Over_Elimination_Attack.Name = "lbl_Game_Over_Elimination_Attack";
-            this.lbl_Game_Over_Elimination_Attack.Size = new System.Drawing.Size(125, 20);
-            this.lbl_Game_Over_Elimination_Attack.TabIndex = 48;
-            this.lbl_Game_Over_Elimination_Attack.Text = "Pièces capturées :";
-            this.lbl_Game_Over_Elimination_Attack.UseMnemonic = false;
+            this.lbl_Game_Over_Num_Move_Attack.AutoSize = true;
+            this.lbl_Game_Over_Num_Move_Attack.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Num_Move_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Num_Move_Attack.Location = new System.Drawing.Point(305, 372);
+            this.lbl_Game_Over_Num_Move_Attack.Name = "lbl_Game_Over_Num_Move_Attack";
+            this.lbl_Game_Over_Num_Move_Attack.Size = new System.Drawing.Size(27, 20);
+            this.lbl_Game_Over_Num_Move_Attack.TabIndex = 52;
+            this.lbl_Game_Over_Num_Move_Attack.Text = "XX";
+            this.lbl_Game_Over_Num_Move_Attack.UseMnemonic = false;
             // 
             // lbl_Game_Over_Elimination_Defence
             // 
@@ -825,53 +816,62 @@
             this.lbl_Game_Over_Defence.TabIndex = 49;
             this.lbl_Game_Over_Defence.Text = "Défenseurs";
             // 
-            // lbl_Game_Over_Num_Move_Attack
+            // lbl_Game_Over_Elimination_Attack
             // 
-            this.lbl_Game_Over_Num_Move_Attack.AutoSize = true;
-            this.lbl_Game_Over_Num_Move_Attack.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Num_Move_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Num_Move_Attack.Location = new System.Drawing.Point(305, 372);
-            this.lbl_Game_Over_Num_Move_Attack.Name = "lbl_Game_Over_Num_Move_Attack";
-            this.lbl_Game_Over_Num_Move_Attack.Size = new System.Drawing.Size(27, 20);
-            this.lbl_Game_Over_Num_Move_Attack.TabIndex = 52;
-            this.lbl_Game_Over_Num_Move_Attack.Text = "XX";
-            this.lbl_Game_Over_Num_Move_Attack.UseMnemonic = false;
+            this.lbl_Game_Over_Elimination_Attack.AutoSize = true;
+            this.lbl_Game_Over_Elimination_Attack.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Elimination_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Elimination_Attack.Location = new System.Drawing.Point(247, 401);
+            this.lbl_Game_Over_Elimination_Attack.Name = "lbl_Game_Over_Elimination_Attack";
+            this.lbl_Game_Over_Elimination_Attack.Size = new System.Drawing.Size(125, 20);
+            this.lbl_Game_Over_Elimination_Attack.TabIndex = 48;
+            this.lbl_Game_Over_Elimination_Attack.Text = "Pièces capturées :";
+            this.lbl_Game_Over_Elimination_Attack.UseMnemonic = false;
             // 
-            // lbl_Game_Over_Num_Elimination_Attack
+            // lbl_Game_Over_Move_Attack
             // 
-            this.lbl_Game_Over_Num_Elimination_Attack.AutoSize = true;
-            this.lbl_Game_Over_Num_Elimination_Attack.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Num_Elimination_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Num_Elimination_Attack.Location = new System.Drawing.Point(378, 401);
-            this.lbl_Game_Over_Num_Elimination_Attack.Name = "lbl_Game_Over_Num_Elimination_Attack";
-            this.lbl_Game_Over_Num_Elimination_Attack.Size = new System.Drawing.Size(27, 20);
-            this.lbl_Game_Over_Num_Elimination_Attack.TabIndex = 53;
-            this.lbl_Game_Over_Num_Elimination_Attack.Text = "XX";
-            this.lbl_Game_Over_Num_Elimination_Attack.UseMnemonic = false;
+            this.lbl_Game_Over_Move_Attack.AutoSize = true;
+            this.lbl_Game_Over_Move_Attack.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Move_Attack.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Move_Attack.Location = new System.Drawing.Point(248, 371);
+            this.lbl_Game_Over_Move_Attack.Name = "lbl_Game_Over_Move_Attack";
+            this.lbl_Game_Over_Move_Attack.Size = new System.Drawing.Size(57, 20);
+            this.lbl_Game_Over_Move_Attack.TabIndex = 47;
+            this.lbl_Game_Over_Move_Attack.Text = "Coups :";
+            this.lbl_Game_Over_Move_Attack.UseMnemonic = false;
             // 
-            // lbl_Game_Over_Num_Move_Defence
+            // lbl_Game_Over_Atttack
             // 
-            this.lbl_Game_Over_Num_Move_Defence.AutoSize = true;
-            this.lbl_Game_Over_Num_Move_Defence.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Num_Move_Defence.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Num_Move_Defence.Location = new System.Drawing.Point(592, 372);
-            this.lbl_Game_Over_Num_Move_Defence.Name = "lbl_Game_Over_Num_Move_Defence";
-            this.lbl_Game_Over_Num_Move_Defence.Size = new System.Drawing.Size(27, 20);
-            this.lbl_Game_Over_Num_Move_Defence.TabIndex = 54;
-            this.lbl_Game_Over_Num_Move_Defence.Text = "XX";
-            this.lbl_Game_Over_Num_Move_Defence.UseMnemonic = false;
+            this.lbl_Game_Over_Atttack.AutoSize = true;
+            this.lbl_Game_Over_Atttack.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Atttack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Atttack.Location = new System.Drawing.Point(247, 331);
+            this.lbl_Game_Over_Atttack.Name = "lbl_Game_Over_Atttack";
+            this.lbl_Game_Over_Atttack.Size = new System.Drawing.Size(103, 25);
+            this.lbl_Game_Over_Atttack.TabIndex = 46;
+            this.lbl_Game_Over_Atttack.Text = "Attaquants";
             // 
-            // lbl_Game_Over_Num_Elimination_Defence
+            // pic_Game_Over_Menu
             // 
-            this.lbl_Game_Over_Num_Elimination_Defence.AutoSize = true;
-            this.lbl_Game_Over_Num_Elimination_Defence.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Game_Over_Num_Elimination_Defence.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Game_Over_Num_Elimination_Defence.Location = new System.Drawing.Point(656, 401);
-            this.lbl_Game_Over_Num_Elimination_Defence.Name = "lbl_Game_Over_Num_Elimination_Defence";
-            this.lbl_Game_Over_Num_Elimination_Defence.Size = new System.Drawing.Size(27, 20);
-            this.lbl_Game_Over_Num_Elimination_Defence.TabIndex = 55;
-            this.lbl_Game_Over_Num_Elimination_Defence.Text = "XX";
-            this.lbl_Game_Over_Num_Elimination_Defence.UseMnemonic = false;
+            this.pic_Game_Over_Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Game_Over_Menu.BackgroundImage")));
+            this.pic_Game_Over_Menu.Location = new System.Drawing.Point(379, 558);
+            this.pic_Game_Over_Menu.Name = "pic_Game_Over_Menu";
+            this.pic_Game_Over_Menu.Size = new System.Drawing.Size(222, 61);
+            this.pic_Game_Over_Menu.TabIndex = 45;
+            this.pic_Game_Over_Menu.TabStop = false;
+            this.pic_Game_Over_Menu.Click += new System.EventHandler(this.pic_Game_Over_Menu_Click);
+            // 
+            // lbl_Game_Over_Winner
+            // 
+            this.lbl_Game_Over_Winner.AutoSize = true;
+            this.lbl_Game_Over_Winner.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Game_Over_Winner.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Game_Over_Winner.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Game_Over_Winner.Location = new System.Drawing.Point(351, 180);
+            this.lbl_Game_Over_Winner.Name = "lbl_Game_Over_Winner";
+            this.lbl_Game_Over_Winner.Size = new System.Drawing.Size(310, 40);
+            this.lbl_Game_Over_Winner.TabIndex = 44;
+            this.lbl_Game_Over_Winner.Text = "Victoire des attaquants";
             // 
             // frm_Tablut
             // 

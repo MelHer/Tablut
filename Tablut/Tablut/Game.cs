@@ -268,7 +268,7 @@ namespace Tablut
                 //Top
                 if (row > 1)
                 {
-                    if (m_board["SQ" + column + "" + (row - 1)].Occupant == Occupant.Attacker && m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.Defender)
+                    if (m_board["SQ" + column + "" + (row - 1)].Occupant == Occupant.Attacker && (m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.Defender|| m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.King))
                     {
                         eliminated_Pawn.Add(m_board["SQ" + column + "" + (row - 1)].Name);
                     }
@@ -276,7 +276,7 @@ namespace Tablut
                 //Right
                 if (column < 7)
                 {
-                    if (m_board["SQ" + (column + 1) + "" + row].Occupant == Occupant.Attacker && m_board["SQ" + (column + 2) + "" + row].Occupant == Occupant.Defender)
+                    if (m_board["SQ" + (column + 1) + "" + row].Occupant == Occupant.Attacker && (m_board["SQ" + (column + 2) + "" + row].Occupant == Occupant.Defender || m_board["SQ" + (column + 2) + "" + row].Occupant == Occupant.King))
                     {
                         eliminated_Pawn.Add(m_board["SQ" + (column + 1) + "" + row].Name);
                     }
@@ -284,7 +284,7 @@ namespace Tablut
                 //Bottom
                 if (row < 7)
                 {
-                    if (m_board["SQ" + column + "" + (row + 1)].Occupant == Occupant.Attacker && m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.Defender)
+                    if (m_board["SQ" + column + "" + (row + 1)].Occupant == Occupant.Attacker && (m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.Defender || m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.King))
                     {
                         eliminated_Pawn.Add(m_board["SQ" + column + "" + (row + 1)].Name);
                     }
@@ -292,7 +292,7 @@ namespace Tablut
                 //Left
                 if (column > 1)
                 {
-                    if (m_board["SQ" + (column - 1) + "" + row].Occupant == Occupant.Attacker && m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.Defender)
+                    if (m_board["SQ" + (column - 1) + "" + row].Occupant == Occupant.Attacker && (m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.Defender || m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.King))
                     {
                         eliminated_Pawn.Add(m_board["SQ" + (column - 1) + "" + row].Name);
                     }

@@ -25,3 +25,10 @@ CREATE TABLE IF NOT EXISTS `Profile` (
   PRIMARY KEY (`idProfile`),
   UNIQUE INDEX `Name_UNIQUE` (`Name` ASC)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------
+-- Create user to use the database
+-- --------------------------------
+DROP USER IF EXISTS 'Tablut_User';
+CREATE USER 'Tablut_User' IDENTIFIED BY 'T@blutI5gr8';
+GRANT DELETE, INSERT, SELECT, UPDATE ON tablut.* TO 'Tablut_User';

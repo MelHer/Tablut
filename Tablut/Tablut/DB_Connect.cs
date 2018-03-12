@@ -8,6 +8,11 @@ using System.Text.RegularExpressions;
 
 namespace Tablut
 {
+    /// <summary>
+    /// This class connects to the MySQL database to interract
+    /// with the different profiles. The functions work mainly with
+    /// profile's name since their are unique in the database.
+    /// </summary>
     class DB_Connect
     {
         private MySqlConnection connection;
@@ -24,7 +29,7 @@ namespace Tablut
         private void Init_Connecton()
         {
             //Creating the connection
-            string connection_String = "SERVER=127.0.0.1; DATABASE=tablut; UID=root; PASSWORD=";
+            string connection_String = "SERVER=127.0.0.1; DATABASE=tablut; UID=Tablut_User; PASSWORD=T@blutI5gr8";
             this.connection = new MySqlConnection(connection_String);
         }
 
@@ -32,7 +37,7 @@ namespace Tablut
         /// Checks if the name is syntactically correct.
         /// Then adds the profile in the database.
         /// </summary>
-        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_Profile_Name">Value from the text box in the profile creation menu.</param>
         public void Add_Profile(string m_Profile_Name)
         {
             //Verifying the syntax of the name
@@ -46,21 +51,21 @@ namespace Tablut
             //Checking if connection not already opened
             if (connection != null && connection.State == System.Data.ConnectionState.Closed)
             {
-                //Opening the SQL connection
+                //Opens the SQL connection
                 this.connection.Open();
             }
             
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "INSERT INTO Tablut.profile (Name) VALUES (@m_Name)";
 
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
-            //Execute query
+            //Executing query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
 
@@ -76,7 +81,7 @@ namespace Tablut
                 this.connection.Open();
             }
 
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "SELECT Name FROM Tablut.Profile ORDER BY Name";
 
@@ -95,7 +100,7 @@ namespace Tablut
             }
             finally
             {
-                //Close connections
+                //Closes connections
                 reader.Close();
                 this.connection.Close();
             }
@@ -104,8 +109,10 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Returns all the profile's name from the database
+        /// For a given profile, returns all his statistics.
         /// </summary>
+        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
+        /// <returns>Int array containing the number of [0] attacks won, [1] attacks lost, [2] defence won, [3] Defence lost.</returns>
         public int[] get_Profile_Stats(string m_Profile_Name)
         {
             //Checking if connection not already opened
@@ -115,7 +122,7 @@ namespace Tablut
                 this.connection.Open();
             }
 
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "SELECT Won_Attack, Lost_Attack, Won_Defence, Lost_Defence FROM Tablut.Profile WHERE Name = @m_Name LIMIT 0,1";
 
@@ -141,7 +148,7 @@ namespace Tablut
             }
             finally
             {
-                //Close connections
+                //Closes connections
                 reader.Close();
                 this.connection.Close();
             }
@@ -150,10 +157,9 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Deletes the current profile in the database.
-        /// The profile is selected in the profile managment menu.
+        /// Deletes the given profile in the database.
         /// </summary>
-        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
         public void Remove_Profile(string m_Profile_Name)
         {
             //Checking if connection not already opened
@@ -163,25 +169,24 @@ namespace Tablut
                 this.connection.Open();
             }
 
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "DELETE FROM Tablut.profile WHERE Name = (@m_Name)";
 
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
-            //Execute query
+            //Executes query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
 
         /// <summary>
-        /// Sets to 0 all statistics of the selected profile
-        /// in the profile managment menu.
+        /// Reset to 0 all statistics of the given profile.
         /// </summary>
-        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
         public void Reset_Profile(string m_Profile_Name)
         {
             //Checking if connection not already opened
@@ -191,25 +196,25 @@ namespace Tablut
                 this.connection.Open();
             }
 
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "UPDATE Tablut.profile SET Won_Attack=0, Lost_Attack=0, Won_Defence=0, Lost_Defence=0 WHERE Name = (@m_Name)";
 
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
-            //Execute query
+            //Executes query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
 
         /// <summary>
-        /// Renames the profile selected in the profile managment menu.
+        /// Renames the given profile.
         /// </summary>
-        /// <param name="m_New_Name"></param>
-        /// <param name="m_Profile_Name"></param>
+        /// <param name="m_New_Name"> Value from the text box in the renaming form. (New name)</param>
+        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu. (Old name)</param>
         public void Rename_Profile(string m_New_Name, string m_Profile_Name)
         {
             //Verifying the syntax of the name
@@ -227,7 +232,7 @@ namespace Tablut
                 this.connection.Open();
             }
 
-            //Creating the querry
+            //Creating the query
             MySqlCommand cmd = this.connection.CreateCommand();
             cmd.CommandText = "UPDATE Tablut.profile SET Name = (@m_New_Name) WHERE Name=(@m_Name)";
 
@@ -235,18 +240,18 @@ namespace Tablut
             cmd.Parameters.AddWithValue("@m_New_Name", m_New_Name);
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
-            //Execute query
+            //Executes query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
 
         /// <summary>
-        /// Adds a victory to the player for his previous role.
+        /// Adds a victory to the given player for his previous role.
         /// </summary>
-        /// <param name="m_Profile_Name"></param>
-        /// <param name="m_Role"></param>
+        /// <param name="m_Profile_Name">The winner of the game</param>
+        /// <param name="m_Role">His role: attacker or defender</param>
         public void Add_Victory(string m_Profile_Name, Occupant m_Role)
         {
             //Checking if connection not already opened
@@ -271,18 +276,18 @@ namespace Tablut
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
             
-            //Execute query
+            //Executes query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
 
         /// <summary>
-        /// Adds a defeat to the player for his previous role.
+        /// Adds a defeat to the given player for his previous role.
         /// </summary>
-        /// <param name="m_Profile_Name"></param>
-        /// <param name="m_Role"></param>
+        /// <param name="m_Profile_Name">The loser of the game</param>
+        /// <param name="m_Role">His role: attacker or defender</param>
         public void Add_Defeat(string m_Profile_Name, Occupant m_Role)
         {
             //Checking if connection not already opened
@@ -307,10 +312,10 @@ namespace Tablut
             //Inserting the parameter
             cmd.Parameters.AddWithValue("@m_Name", m_Profile_Name);
 
-            //Execute query
+            //Executes query
             cmd.ExecuteNonQuery();
 
-            //Close connection
+            //Closes connection
             this.connection.Close();
         }
     }
