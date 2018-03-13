@@ -12,8 +12,7 @@ namespace Tablut
 {
     public partial class frm_Tablut : Form
     {
-        //Player for sound event
-        System.Media.SoundPlayer player;
+        System.Media.SoundPlayer sound_Player;
 
         //Connection with database
         DB_Connect db_link;
@@ -30,9 +29,7 @@ namespace Tablut
 
         public frm_Tablut()
         {
-            InitializeComponent();
-
-            player = new System.Media.SoundPlayer();
+            InitializeComponent();   
 
             db_link = new DB_Connect();
 
@@ -393,15 +390,15 @@ namespace Tablut
 
             if (m_State)
             {
-                pic_Rename.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Renommer.png");
-                pic_Reset.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Reinitialiser.png");
-                pic_Delete.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Supprimer.png");
+                pic_Rename.Image = Tablut.Properties.Resources.s_btn_Rename;
+                pic_Reset.Image = Tablut.Properties.Resources.s_btn_Reset;
+                pic_Delete.Image = Tablut.Properties.Resources.s_btn_Delete;
             }
             else
             {
-                pic_Rename.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Renommer_Disable.png");
-                pic_Reset.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Reinitialiser_Disable.png");
-                pic_Delete.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\s_btn_Supprimer_Disable.png");
+                pic_Rename.Image = Tablut.Properties.Resources.s_btn_Rename_Disable;
+                pic_Reset.Image = Tablut.Properties.Resources.s_btn_Reset_Disable;
+                pic_Delete.Image = Tablut.Properties.Resources.s_btn_Delete_Disable;
             }
         }
         #endregion Profile_Managment
@@ -445,34 +442,34 @@ namespace Tablut
 
             //Putting images in the initial state of the board
             //Attackers (Black pawns)
-            board["SQ30"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ30"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ40"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ50"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ41"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ03"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ83"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ04"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ14"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ74"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ84"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ05"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ85"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ47"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ38"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ48"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
-            board["SQ58"].change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+            board["SQ30"].change_Image(Occupant.Attacker);
+            board["SQ30"].change_Image(Occupant.Attacker);
+            board["SQ40"].change_Image(Occupant.Attacker);
+            board["SQ50"].change_Image(Occupant.Attacker);
+            board["SQ41"].change_Image(Occupant.Attacker);
+            board["SQ03"].change_Image(Occupant.Attacker);
+            board["SQ83"].change_Image(Occupant.Attacker);
+            board["SQ04"].change_Image(Occupant.Attacker);
+            board["SQ14"].change_Image(Occupant.Attacker);
+            board["SQ74"].change_Image(Occupant.Attacker);
+            board["SQ84"].change_Image(Occupant.Attacker);
+            board["SQ05"].change_Image(Occupant.Attacker);
+            board["SQ85"].change_Image(Occupant.Attacker);
+            board["SQ47"].change_Image(Occupant.Attacker);
+            board["SQ38"].change_Image(Occupant.Attacker);
+            board["SQ48"].change_Image(Occupant.Attacker);
+            board["SQ58"].change_Image(Occupant.Attacker);
 
             //Defenders (White pawns)
-            board["SQ42"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ43"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ24"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ34"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ44"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
-            board["SQ54"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ64"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ45"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
-            board["SQ46"].change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+            board["SQ42"].change_Image(Occupant.Defender);
+            board["SQ43"].change_Image(Occupant.Defender);
+            board["SQ24"].change_Image(Occupant.Defender);
+            board["SQ34"].change_Image(Occupant.Defender);
+            board["SQ44"].change_Image(Occupant.King);
+            board["SQ54"].change_Image(Occupant.Defender);
+            board["SQ64"].change_Image(Occupant.Defender);
+            board["SQ45"].change_Image(Occupant.Defender);
+            board["SQ46"].change_Image(Occupant.Defender);
 
             //Reseting combo box
             cbo_Player_Selection_Attack.Items.Clear();
@@ -501,7 +498,7 @@ namespace Tablut
 
             //Reset start button and lists
             pic_Start_Player_Selection.Enabled = false;
-            pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer_Disable.png");
+            pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start_Disable;
         }
 
         /// <summary>
@@ -547,7 +544,7 @@ namespace Tablut
                     if(pic_Start_Player_Selection.Enabled == true)
                     {
                         pic_Start_Player_Selection.Enabled = false;
-                        pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer_Disable.png");
+                        pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start_Disable;
                     }
                 }
                 else
@@ -556,7 +553,7 @@ namespace Tablut
 
                     //Enables the "Launch" button.
                     pic_Start_Player_Selection.Enabled = true;
-                    pic_Start_Player_Selection.Image = Image.FromFile(@"P:\Tablut\Design\Bouton\btn_Demarrer.png");
+                    pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start;
 
                 }
             }
@@ -588,7 +585,7 @@ namespace Tablut
 
                 foreach(String square_Name in possible_Move)
                 {
-                    board[square_Name].change_Image(@"P:\Tablut\Design\Pion\Surbrillance.png");
+                    board[square_Name].change_Image(Occupant.Empty);
                 }
             }
             else if(game.Phase == Game_Phase.moving)
@@ -609,17 +606,17 @@ namespace Tablut
                     //Update the board after the move
                     if(game.Current_Player.role == Occupant.Attacker)
                     {
-                        ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Noir.png");
+                        ((Square)sender).change_Image(Occupant.Attacker);
                     }
                     else
                     {
                         if (game.selected_Pawn.Occupant == Occupant.King)
                         {
-                            ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc_Roi.png");
+                            ((Square)sender).change_Image(Occupant.King);
                         }
                         else
                         {
-                            ((Square)sender).change_Image(@"P:\Tablut\Design\Pion\Pion_Blanc.png");
+                            ((Square)sender).change_Image(Occupant.Defender);
                         }
                     }
                     //Resets the pawn ancient location
@@ -745,8 +742,8 @@ namespace Tablut
         /// </summary>
         private void play_Sound_Click()
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Click.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Click);
+            sound_Player.Play();
         }
 
         /// <summary>
@@ -757,8 +754,8 @@ namespace Tablut
         /// <param name="e"></param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Move.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);
+            sound_Player.Play();
         }
         #endregion Sound_Players
     }

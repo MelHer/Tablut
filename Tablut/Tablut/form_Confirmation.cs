@@ -9,16 +9,22 @@ using System.Windows.Forms;
 
 namespace Tablut
 {
+    /// <summary>
+    /// Form shown when the user has to confirm an important action
+    /// like deleting, renaming, reseting a profile or leaving a game while playing.
+    /// </summary>
     public partial class frm_Confirmation : Form
     {
-        //Player for sound event
-        System.Media.SoundPlayer player;
+        System.Media.SoundPlayer sound_Player;
 
+        /// <summary>
+        /// Constructor. Displays the confirmation message and instantiates
+        /// the sound player and the even handlers.
+        /// </summary>
+        /// <param name="m_Message"></param>
         public frm_Confirmation(string m_Message)
         {
             InitializeComponent();
-
-            player = new System.Media.SoundPlayer();
 
             lbl_Confirmation_Message.Text = m_Message;
 
@@ -28,11 +34,10 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Confirms the previous action from the player
-        /// Delete, Reset a profile or leave the game while playing.
+        /// Confirms the previous action from the player.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The control that called the function.</param>
+        /// <param name="e">Contains informations about the raised event.</param>
         private void pic_Confirmation_Confirm_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -40,11 +45,10 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Cancels the previous action from the player
-        /// Delete, Reset a profile or leave the game while playing.
+        /// Cancels the previous action from the player.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The control that called the function.</param>
+        /// <param name="e">Contains informations about the raised event.</param>
         private void pic_Confirmation_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -53,25 +57,24 @@ namespace Tablut
 
         #region Sound_Players
         /// <summary>
-        /// Play the click sound for each button.
-        /// Called in the click events.
+        /// Plays the click sound for each button.
         /// </summary>
         private void play_Sound_Click()
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Click.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Click);
+            sound_Player.Play();
         }
 
         /// <summary>
-        /// Play a sound when the mouse enters the controls.
-        /// Applies to the button of the menus.
+        /// Plays a sound when the mouse enters the controls.
+        /// It applies only to the buttons.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The control that called the function.</param>
+        /// <param name="e">Contains informations about the raised event.</param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Move.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);
+            sound_Player.Play();
         }
         #endregion Sound_Players
     }

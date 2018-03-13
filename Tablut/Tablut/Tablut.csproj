@@ -94,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -104,6 +105,48 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Click.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_Move.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Start_Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Reset_Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Rename_Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_btn_Delete_Disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_Pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_Pawn_King.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_Pawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square_Highlight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

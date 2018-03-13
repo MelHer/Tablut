@@ -17,14 +17,16 @@ namespace Tablut
     {
         private MySqlConnection connection;
 
-        //Constructor
+        /// <summary>
+        /// Constructor. Calls the connexion initializing function.
+        /// </summary>
         public DB_Connect()
         {
             this.Init_Connecton();
         }
 
         /// <summary>
-        /// Method to open a connection with our Database.
+        /// Initializes the connexion with the database.
         /// </summary>
         private void Init_Connecton()
         {

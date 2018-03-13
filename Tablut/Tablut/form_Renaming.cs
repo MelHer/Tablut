@@ -15,7 +15,7 @@ namespace Tablut
     {
 
         //Player for sound event
-        System.Media.SoundPlayer player;
+        System.Media.SoundPlayer sound_Player;
 
         //Connection with database
         DB_Connect db_link;
@@ -28,8 +28,6 @@ namespace Tablut
         public frm_Renaming(string m_Current_Name)
         {
             InitializeComponent();
-
-            player = new System.Media.SoundPlayer();
 
             db_link = new DB_Connect();
 
@@ -106,8 +104,8 @@ namespace Tablut
         /// </summary>
         private void play_Sound_Click()
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Click.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Click);
+            sound_Player.Play();
         }
 
         /// <summary>
@@ -118,8 +116,8 @@ namespace Tablut
         /// <param name="e"></param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
-            player.SoundLocation = (@"P:\Tablut\Design\Son\Menu_Move.wav");
-            player.Play();
+            sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);
+            sound_Player.Play();
         }
         #endregion Sound_Players
 
