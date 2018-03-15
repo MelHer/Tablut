@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Renaming));
-            this.lbl_New_Name = new System.Windows.Forms.Label();
-            this.lbl_Fail_Renaming = new System.Windows.Forms.Label();
+            this.lbl_Renaming_New_Name = new System.Windows.Forms.Label();
+            this.lbl_Renaming_Fail = new System.Windows.Forms.Label();
             this.txt_Renaming_Profile_Name = new System.Windows.Forms.TextBox();
             this.pic_Renaming_Confirm = new System.Windows.Forms.PictureBox();
             this.pic_Renaming_Cancel = new System.Windows.Forms.PictureBox();
@@ -38,30 +38,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Renaming_Cancel)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_New_Name
+            // lbl_Renaming_New_Name
             // 
-            this.lbl_New_Name.AutoSize = true;
-            this.lbl_New_Name.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_New_Name.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_New_Name.ForeColor = System.Drawing.Color.Black;
-            this.lbl_New_Name.Location = new System.Drawing.Point(63, 109);
-            this.lbl_New_Name.Name = "lbl_New_Name";
-            this.lbl_New_Name.Size = new System.Drawing.Size(204, 40);
-            this.lbl_New_Name.TabIndex = 13;
-            this.lbl_New_Name.Text = "Nouveau nom:";
+            this.lbl_Renaming_New_Name.AutoSize = true;
+            this.lbl_Renaming_New_Name.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Renaming_New_Name.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Renaming_New_Name.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Renaming_New_Name.Location = new System.Drawing.Point(63, 109);
+            this.lbl_Renaming_New_Name.Name = "lbl_Renaming_New_Name";
+            this.lbl_Renaming_New_Name.Size = new System.Drawing.Size(204, 40);
+            this.lbl_Renaming_New_Name.TabIndex = 13;
+            this.lbl_Renaming_New_Name.Text = "Nouveau nom:";
             // 
-            // lbl_Fail_Renaming
+            // lbl_Renaming_Fail
             // 
-            this.lbl_Fail_Renaming.AutoSize = true;
-            this.lbl_Fail_Renaming.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Fail_Renaming.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Fail_Renaming.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Fail_Renaming.Location = new System.Drawing.Point(66, 190);
-            this.lbl_Fail_Renaming.Name = "lbl_Fail_Renaming";
-            this.lbl_Fail_Renaming.Size = new System.Drawing.Size(136, 21);
-            this.lbl_Fail_Renaming.TabIndex = 12;
-            this.lbl_Fail_Renaming.Text = "lbl_Fail_Renaming";
-            this.lbl_Fail_Renaming.Visible = false;
+            this.lbl_Renaming_Fail.AutoSize = true;
+            this.lbl_Renaming_Fail.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Renaming_Fail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Renaming_Fail.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Renaming_Fail.Location = new System.Drawing.Point(66, 190);
+            this.lbl_Renaming_Fail.Name = "lbl_Renaming_Fail";
+            this.lbl_Renaming_Fail.Size = new System.Drawing.Size(136, 21);
+            this.lbl_Renaming_Fail.TabIndex = 12;
+            this.lbl_Renaming_Fail.Text = "lbl_Fail_Renaming";
+            this.lbl_Renaming_Fail.Visible = false;
             // 
             // txt_Renaming_Profile_Name
             // 
@@ -101,8 +101,8 @@
             this.ClientSize = new System.Drawing.Size(601, 367);
             this.Controls.Add(this.pic_Renaming_Confirm);
             this.Controls.Add(this.pic_Renaming_Cancel);
-            this.Controls.Add(this.lbl_New_Name);
-            this.Controls.Add(this.lbl_Fail_Renaming);
+            this.Controls.Add(this.lbl_Renaming_New_Name);
+            this.Controls.Add(this.lbl_Renaming_Fail);
             this.Controls.Add(this.txt_Renaming_Profile_Name);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -117,8 +117,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbl_New_Name;
-        private System.Windows.Forms.Label lbl_Fail_Renaming;
+        private System.Windows.Forms.Label lbl_Renaming_New_Name;
+        private System.Windows.Forms.Label lbl_Renaming_Fail;
         private System.Windows.Forms.TextBox txt_Renaming_Profile_Name;
         private System.Windows.Forms.PictureBox pic_Renaming_Confirm;
         private System.Windows.Forms.PictureBox pic_Renaming_Cancel;

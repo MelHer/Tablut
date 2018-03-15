@@ -15,6 +15,10 @@ namespace Tablut
     /// </summary>
     class DB_Connect
     {
+
+        /// <summary>
+        /// Connection with the database
+        /// </summary>
         private MySqlConnection connection;
 
         /// <summary>

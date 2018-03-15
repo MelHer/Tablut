@@ -16,13 +16,25 @@ namespace Tablut
     /// </summary>
     public partial class frm_Renaming : Form
     {
-        System.Media.SoundPlayer sound_Player; /*!< sound player used when click on button(picture box).*/
+        /// <summary>
+        /// Sound player used when click on button(picture box).
+        /// </summary>
+        System.Media.SoundPlayer sound_Player; 
 
-        DB_Connect db_link;  /*!< Connection with database. */
+        /// <summary>
+        /// Connection with database. 
+        /// </summary>
+        DB_Connect db_link; 
 
-        string current_Name; /*!< Store the name of the current profile we are renaming. */
+        /// <summary>
+        /// Store the name of the current profile we are renaming. 
+        /// </summary>
+        string current_Name;
 
-        public string validated_New_Name{ get; private set; } /*!< The profile's new name after validation. */
+        /// <summary>
+        /// The profile's new name after validation. 
+        /// </summary>
+        public string validated_New_Name{ get; private set; }
 
         /// <summary>
         /// Constructor. Instantiates the sound player and the even handlers.
@@ -97,8 +109,8 @@ namespace Tablut
         /// <param name="m_Message"> The message of the error displayed to the user.</param>
         private void display_Error_Renaming(string m_Message)
         {
-            lbl_Fail_Renaming.Text = m_Message;
-            lbl_Fail_Renaming.Visible = true;
+            lbl_Renaming_Fail.Text = m_Message;
+            lbl_Renaming_Fail.Visible = true;
         }
 
         #region Sound_Players

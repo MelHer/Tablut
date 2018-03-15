@@ -15,7 +15,10 @@ namespace Tablut
     class Square : PictureBox
     {
 
-        public Occupant Occupant { get; private set; } /*!< Defining the content of the square */
+        /// <summary>
+        /// Defining the content of the square 
+        /// </summary>
+        public Occupant Occupant { get; private set; }
 
         /// <summary>
         /// Constructor. Sets all squares as empty.

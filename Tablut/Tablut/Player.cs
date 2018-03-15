@@ -10,15 +10,30 @@ namespace Tablut
     /// </summary>
     class Player
     {
-        public string Name { get; private set; } /*!< Player's name */
+        /// <summary>
+        /// Player's name
+        /// </summary>
+        public string Name { get; private set; }
 
-        public int Total_Moves { get; private set; } /*!< Total moves done by the player */
+        /// <summary>
+        /// Total moves done by the player
+        /// </summary>
+        public int Total_Moves { get; private set; }
 
-        public int Total_Enemy_Pawn_Eliminated { get; private set; } /*!< The number of enemy pawns eliminated */
+        /// <summary>
+        /// The number of enemy pawns eliminated
+        /// </summary>
+        public int Total_Enemy_Pawn_Eliminated { get; private set; }
 
-        public int Pawn_Left { get; private set; } /*!< The number of owning pawn remaining */
+        /// <summary>
+        /// The number of owning pawn remaining
+        /// </summary>
+        public int Pawn_Left { get; private set; }
 
-        public Player_Role Role { get; private set; } /*!< The player role, attacker or defender */
+        /// <summary>
+        /// The player role, attacker or defender
+        /// </summary>
+        public Player_Role Role { get; private set; }
 
         /// <summary>
         /// Constructor

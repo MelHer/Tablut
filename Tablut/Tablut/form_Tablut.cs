@@ -16,15 +16,30 @@ namespace Tablut
     /// </summary>
     public partial class frm_Tablut : Form
     {
-        System.Media.SoundPlayer sound_Player;  /*!< sound player used when click on button(picture box).*/
+        /// <summary>
+        /// Sound player used when click on button(picture box).
+        /// </summary>
+        System.Media.SoundPlayer sound_Player;
 
-        DB_Connect db_link;  /*!< Connection with database. */
+        /// <summary>
+        /// Connection with database.
+        /// </summary>
+        DB_Connect db_link;
 
-        Game game; /*!< Contains the movement algorithms and the player, created at every beginning of a game.*/
+        /// <summary>
+        /// Contains the movement algorithms and the player, created at every beginning of a game.
+        /// </summary>
+        Game game;
 
-        Dictionary<string, Square> board; /*!< Contains all the squares of the board. */
+        /// <summary>
+        /// Contains all the squares of the board. 
+        /// </summary>
+        Dictionary<string, Square> board;
 
-        List<string> possible_Move; /*!< Contains the name of all highlighted squares.  */
+        /// <summary>
+        /// Contains the name of all highlighted squares.  
+        /// </summary>
+        List<string> possible_Move;
 
         /// <summary>
         /// Constructor. Instantiates the sound player and the even handlers.
@@ -40,24 +55,24 @@ namespace Tablut
             
             //Sound cues
             //menu
-            pic_Create_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Manage_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Play.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Close.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Menu_Create_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Menu_Manage_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Menu_Play.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Menu_Close.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
 
             //profile creation
-            pic_Create.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Cancel_Create_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Create_Profile_Create.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Create_Profile_Cancel.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
 
             //profile managment
-            pic_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Rename.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Reset.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Delete.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Manage_Profile_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Manage_Profile_Rename.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Manage_Profile_Reset.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Manage_Profile_Delete.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
 
             //Player selection
-            pic_Start_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
-            pic_Cancel_Player_Selection.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Player_Selection_Start.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+            pic_Player_Selection_Cancel.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
 
             //Game
             pic_Game_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
@@ -74,7 +89,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in main menu "Create profile".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Create_Profile_Click(object sender, EventArgs e)
+        private void pic_Menu_Create_Profile_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
@@ -87,7 +102,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender"> The button in main menu "Manage profile".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Manage_Profile_Click(object sender, EventArgs e)
+        private void pic_Menu_Manage_Profile_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
@@ -102,7 +117,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender"> The button in main menu "Play".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Play_Click(object sender, EventArgs e)
+        private void pic_Menu_Play_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
@@ -135,7 +150,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender"> The button in main menu "Play".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Close_Click(object sender, EventArgs e)
+        private void pic_Menu_Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -151,17 +166,17 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile creation "Create".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Create_Click(object sender, EventArgs e)
+        private void pic_Create_Profile_Create_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
             try
             {
-                db_link.Add_Profile(txt_Profile_Name.Text);
-                txt_Profile_Name.Text = "";
+                db_link.Add_Profile(txt_Profile_Creation_Name.Text);
+                txt_Profile_Creation_Name.Text = "";
 
-                lbl_Fail_Create_Profile.Visible = false;
-                lbl_Succes_Create_Profile.Visible = true;
+                lbl_Create_Profile_Fail.Visible = false;
+                lbl_Create_Profile_Success.Visible = true;
             }
             catch(Exception_Invalid_Name ex)
             {
@@ -186,14 +201,14 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile creation "Cancel".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Cancel_Create_Profile_Click(object sender, EventArgs e)
+        private void pic_Create_Profile_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
-            txt_Profile_Name.Text = "";
+            txt_Profile_Creation_Name.Text = "";
 
-            lbl_Fail_Create_Profile.Visible = false; //If visible, will be hidden when re-opening this menu.
-            lbl_Succes_Create_Profile.Visible = false;
+            lbl_Create_Profile_Fail.Visible = false; //If visible, will be hidden when re-opening this menu.
+            lbl_Create_Profile_Success.Visible = false;
 
             pnl_Create_Profile.Visible = false;
             pnl_Menu.Visible = true;
@@ -207,9 +222,9 @@ namespace Tablut
         /// <param name="m_Message">The message display to th user about the error</param>
         private void display_Error_Create_Profile(string m_Message)
         {
-            lbl_Fail_Create_Profile.Text = m_Message;
-            lbl_Succes_Create_Profile.Visible = false;
-            lbl_Fail_Create_Profile.Visible = true;
+            lbl_Create_Profile_Fail.Text = m_Message;
+            lbl_Create_Profile_Success.Visible = false;
+            lbl_Create_Profile_Fail.Visible = true;
         }
         #endregion Profile_Creation
 
@@ -223,18 +238,18 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile managment "Menu".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Menu_Click(object sender, EventArgs e)
+        private void pic_Manage_Profile_Menu_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
-            cbo_Manage_Profile.Items.Clear();
+            cbo_Manage_Profile_Name.Items.Clear();
 
             //Reset controls availability
             manage_Profile_Button_Locker(false);
 
-            if(lbl_Managment_Fail.Visible == true)
+            if(lbl_Manage_Profile_Fail.Visible == true)
             {
-                lbl_Managment_Fail.Visible = false;
+                lbl_Manage_Profile_Fail.Visible = false;
             }
 
             reset_Stat_Board();
@@ -248,11 +263,11 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The drop down list to chose a profile in the profile managment menu.</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void cbo_Manage_Profile_Selected_Index_Changed(object sender, EventArgs e)
+        private void cbo_Manage_Profile_Name_Selected_Index_Changed(object sender, EventArgs e)
         {
             manage_Profile_Button_Locker(true);
 
-            if(!(cbo_Manage_Profile.SelectedIndex == -1))
+            if(!(cbo_Manage_Profile_Name.SelectedIndex == -1))
             {
                 populate_Stat_Board();
             }
@@ -263,18 +278,18 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile managment "Rename".</param>
         /// <param name="e">Contains informations about the raised event.<param>
-        private void cmd_Rename_Click(object sender, EventArgs e)
+        private void pic_Manage_Profile_Rename_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
-            frm_Renaming renaming = new frm_Renaming(cbo_Manage_Profile.SelectedItem.ToString());
+            frm_Renaming renaming = new frm_Renaming(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
             if (renaming.ShowDialog(this) == DialogResult.OK)
             {
                 //Reloads the list and selects the modified profile
-                cbo_Manage_Profile.Items.Clear();
+                cbo_Manage_Profile_Name.Items.Clear();
                 populate_Profile_List();
-                cbo_Manage_Profile.SelectedIndex = cbo_Manage_Profile.FindStringExact(renaming.validated_New_Name);
+                cbo_Manage_Profile_Name.SelectedIndex = cbo_Manage_Profile_Name.FindStringExact(renaming.validated_New_Name);
             }
 
             renaming.Dispose();
@@ -285,15 +300,15 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile managment "Reset".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void cmd_Reset_Click(object sender, EventArgs e)
+        private void pic_Manage_Profile_Reset_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
-            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment réinitialiser les statistiques de: \n" + cbo_Manage_Profile.SelectedItem.ToString());
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment réinitialiser les statistiques de: \n" + cbo_Manage_Profile_Name.SelectedItem.ToString());
 
             if (confirmation.ShowDialog(this) == DialogResult.OK)
             {
-                db_link.Reset_Profile(cbo_Manage_Profile.SelectedItem.ToString());
+                db_link.Reset_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
                 reset_Stat_Board();
                 populate_Stat_Board();
@@ -307,18 +322,18 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in profile managment "Delete".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void cmd_Delete_Click(object sender, EventArgs e)
+        private void pic_Manage_Profile_Delete_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
-            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment supprimer le profil: \n"+cbo_Manage_Profile.SelectedItem.ToString());
+            frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment supprimer le profil: \n"+cbo_Manage_Profile_Name.SelectedItem.ToString());
             
 
             if (confirmation.ShowDialog(this) == DialogResult.OK)
             {
-                db_link.Remove_Profile(cbo_Manage_Profile.SelectedItem.ToString());
+                db_link.Remove_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
-                cbo_Manage_Profile.Items.Clear();
+                cbo_Manage_Profile_Name.Items.Clear();
                 populate_Profile_List();
                 reset_Stat_Board();
             }
@@ -337,14 +352,14 @@ namespace Tablut
 
                 foreach (string name in profile_Name)
                 {
-                    cbo_Manage_Profile.Items.Add(name);
+                    cbo_Manage_Profile_Name.Items.Add(name);
                 }
             }
             catch (MySqlException ex)
             {
                 if (ex.Number == 1042)
                 {
-                    lbl_Managment_Fail.Visible = true;
+                    lbl_Manage_Profile_Fail.Visible = true;
                 }
             }
         }
@@ -357,7 +372,7 @@ namespace Tablut
         {
    
             int[] statistics = new int[4];
-            db_link.get_Profile_Stats(cbo_Manage_Profile.SelectedItem.ToString()).CopyTo(statistics, 0);
+            db_link.get_Profile_Stats(cbo_Manage_Profile_Name.SelectedItem.ToString()).CopyTo(statistics, 0);
 
             lbl_Num_Attack_Victories.Text = statistics[0].ToString();
             lbl_Num_Attack_Loses.Text = statistics[1].ToString();
@@ -390,21 +405,21 @@ namespace Tablut
         /// <param name="m_State">To unlock set as true.</param>
         private void manage_Profile_Button_Locker(bool m_State)
         {
-            pic_Rename.Enabled = m_State;
-            pic_Reset.Enabled = m_State;
-            pic_Delete.Enabled = m_State;
+            pic_Manage_Profile_Rename.Enabled = m_State;
+            pic_Manage_Profile_Reset.Enabled = m_State;
+            pic_Manage_Profile_Delete.Enabled = m_State;
 
             if (m_State)
             {
-                pic_Rename.Image = Tablut.Properties.Resources.s_btn_Rename;
-                pic_Reset.Image = Tablut.Properties.Resources.s_btn_Reset;
-                pic_Delete.Image = Tablut.Properties.Resources.s_btn_Delete;
+                pic_Manage_Profile_Rename.Image = Tablut.Properties.Resources.s_btn_Rename;
+                pic_Manage_Profile_Reset.Image = Tablut.Properties.Resources.s_btn_Reset;
+                pic_Manage_Profile_Delete.Image = Tablut.Properties.Resources.s_btn_Delete;
             }
             else
             {
-                pic_Rename.Image = Tablut.Properties.Resources.s_btn_Rename_Disable;
-                pic_Reset.Image = Tablut.Properties.Resources.s_btn_Reset_Disable;
-                pic_Delete.Image = Tablut.Properties.Resources.s_btn_Delete_Disable;
+                pic_Manage_Profile_Rename.Image = Tablut.Properties.Resources.s_btn_Rename_Disable;
+                pic_Manage_Profile_Reset.Image = Tablut.Properties.Resources.s_btn_Reset_Disable;
+                pic_Manage_Profile_Delete.Image = Tablut.Properties.Resources.s_btn_Delete_Disable;
             }
         }
         #endregion Profile_Managment
@@ -419,7 +434,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in the player selection menu "Start".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Start_Player_Selection_Click(object sender, EventArgs e)
+        private void pic_Player_Selection_Start_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
@@ -427,7 +442,7 @@ namespace Tablut
             game = new Game(cbo_Player_Selection_Attack.SelectedItem.ToString(), cbo_Player_Selection_Defence.SelectedItem.ToString());
 
             //Indicates the player round.
-            lbl_Current_Player.Text = game.Defender.Name;
+            lbl_Game_Current_Player.Text = game.Defender.Name;
 
             //Populating the board with the pawns
             board = new Dictionary<string, Square>();
@@ -438,11 +453,11 @@ namespace Tablut
                 {
                     board.Add(column + "" + row, new Square());
                     board[column + "" + row].Name = column + "" + row;
-                    board[column + "" + row].Width = tlp_Board.Width / 9;
-                    board[column + "" + row].Height = tlp_Board.Width / 9;
+                    board[column + "" + row].Width = tlp_Game_Board.Width / 9;
+                    board[column + "" + row].Height = tlp_Game_Board.Width / 9;
                     board[column + "" + row].Click += new System.EventHandler(this.square_Click);
 
-                    tlp_Board.Controls.Add(board[column + "" + row], column, row);
+                    tlp_Game_Board.Controls.Add(board[column + "" + row], column, row);
                 }
             }
 
@@ -491,7 +506,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The button in the player selection menu "Cancel".</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void pic_Cancel_Player_Selection_Click(object sender, EventArgs e)
+        private void pic_Player_Selection_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
@@ -503,8 +518,8 @@ namespace Tablut
             pnl_Menu.Visible = true;
 
             //Reset start button and lists
-            pic_Start_Player_Selection.Enabled = false;
-            pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start_Disable;
+            pic_Player_Selection_Start.Enabled = false;
+            pic_Player_Selection_Start.Image = Tablut.Properties.Resources.btn_Start_Disable;
         }
 
         /// <summary>
@@ -513,7 +528,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void cbo_Player_Selection_Attack_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbo_Player_Selection_Attack_Selected_Index_Changed(object sender, EventArgs e)
         {
             profile_Selection_Checker();
         }
@@ -524,7 +539,7 @@ namespace Tablut
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
         /// <param name="e">Contains informations about the raised event.</param>
-        private void cbo_Player_Selection_Defence_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbo_Player_Selection_Defence_Selected_Index_Changed(object sender, EventArgs e)
         {
             profile_Selection_Checker();
         }
@@ -547,10 +562,10 @@ namespace Tablut
                     //To center the label
                     lbl_Player_Selection_Fail.Left = (this.ClientSize.Width - lbl_Player_Selection_Fail.Width) / 2;
 
-                    if(pic_Start_Player_Selection.Enabled == true)
+                    if(pic_Player_Selection_Start.Enabled == true)
                     {
-                        pic_Start_Player_Selection.Enabled = false;
-                        pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start_Disable;
+                        pic_Player_Selection_Start.Enabled = false;
+                        pic_Player_Selection_Start.Image = Tablut.Properties.Resources.btn_Start_Disable;
                     }
                 }
                 else
@@ -558,8 +573,8 @@ namespace Tablut
                     lbl_Player_Selection_Fail.Visible = false;
 
                     //Enables the "Launch" button.
-                    pic_Start_Player_Selection.Enabled = true;
-                    pic_Start_Player_Selection.Image = Tablut.Properties.Resources.btn_Start;
+                    pic_Player_Selection_Start.Enabled = true;
+                    pic_Player_Selection_Start.Image = Tablut.Properties.Resources.btn_Start;
 
                 }
             }
@@ -664,7 +679,7 @@ namespace Tablut
                     }
 
                     //Change player name who has to play
-                    lbl_Current_Player.Text = game.Current_Player.Name;
+                    lbl_Game_Current_Player.Text = game.Current_Player.Name;
                 }
             }
         }
@@ -718,7 +733,7 @@ namespace Tablut
         private void reset_Game()
         {
             board.Clear();
-            tlp_Board.Controls.Clear();
+            tlp_Game_Board.Controls.Clear();
         }
 
         #endregion Game

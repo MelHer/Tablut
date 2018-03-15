@@ -15,8 +15,10 @@ namespace Tablut
     /// </summary>
     public partial class frm_Confirmation : Form
     {
-
-        System.Media.SoundPlayer sound_Player; /*!< sound player used when click on button(picture box) */
+        /// <summary>
+        /// Sound player used when click on button(picture box).
+        /// </summary>
+        System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Constructor. Displays the confirmation message and instantiates

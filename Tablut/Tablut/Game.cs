@@ -10,14 +10,40 @@ namespace Tablut
     /// </summary>
     class Game
     {
-        public Player Current_Player { get; private set; } /*!< The player who has to play. */
-        public Player Attacker { get; private set; } /*!< The attacker player object. */
-        public Player Defender { get; private set; } /*!< The defender player object. */
-        public Game_Phase Phase { get; private set; } /*!< Store the game phase of the current player. */
-        public Square selected_Pawn { get; private set; } /*!< Store the selected pawn. */
-        public bool Over { get; set; } /*!< Is the game over ? */
+        /// <summary>
+        /// The player who has to play.
+        /// </summary>
+        public Player Current_Player { get; private set; }
 
-        private List<string> possible_Move; /*!< List containing all possible square to move the selected pawn. */
+        /// <summary>
+        /// The attacker player object.
+        /// </summary>
+        public Player Attacker { get; private set; }
+
+        /// <summary>
+        /// The defender player object.
+        /// </summary>
+        public Player Defender { get; private set; }
+
+        /// <summary>
+        /// Store the game phase of the current player.
+        /// </summary>
+        public Game_Phase Phase { get; private set; }
+
+        /// <summary>
+        /// Store the selected pawn.
+        /// </summary>
+        public Square selected_Pawn { get; private set; }
+
+        /// <summary>
+        /// Is the game over ?
+        /// </summary>
+        public bool Over { get; set; }
+
+        /// <summary>
+        /// List containing all possible square to move the selected pawn.
+        /// </summary>
+        private List<string> possible_Move; 
 
         /// <summary>
         /// Constructor. It creates the two players and sets the game.
