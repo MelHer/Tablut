@@ -652,19 +652,35 @@ namespace Tablut
 
                     if (game.is_Over(board))
                     {
+
+                        frm_Confirmation_Game_Over game_Over_Confirmation;
+
+
                         //Updating victory banner and database stats
                         if(game.Current_Player.Role == Player_Role.Attacker)
                         {
-                            lbl_Game_Over_Winner.Text = "Victoire des attaquants";
-                            db_link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
-                            db_link.Add_Defeat(game.Defender.Name, game.Defender.Role);
+                            game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des attaquants");
+
+                            if(game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
+                            {
+                                lbl_Game_Over_Winner.Text = "Victoire des attaquants";
+                                db_link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
+                                db_link.Add_Defeat(game.Defender.Name, game.Defender.Role);
+                            }
                         }
                         else
                         {
-                            lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
-                            db_link.Add_Victory(game.Defender.Name, game.Defender.Role);
-                            db_link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
+                            game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des défenseurs");
+
+                            if (game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
+                            {
+                                lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
+                                db_link.Add_Victory(game.Defender.Name, game.Defender.Role);
+                                db_link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
+                            }
                         }
+
+                        game_Over_Confirmation.Dispose();
 
                         //Updating stats
                         lbl_Game_Over_Num_Move_Attack.Text = game.Attacker.Total_Moves.ToString();
