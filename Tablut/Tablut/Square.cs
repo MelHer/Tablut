@@ -15,15 +15,14 @@ namespace Tablut
     class Square : PictureBox
     {
 
-        public Occupant Occupant { get; private set; }
+        public Occupant Occupant { get; private set; } /*!< Defining the content of the square */
 
         /// <summary>
         /// Constructor. Sets all squares as empty.
         /// </summary>
-        /// <param name="m_Occupant"></param>
-        public Square(Occupant m_Occupant = Occupant.Empty) : base()
+        public Square() : base()
         {
-            Occupant = m_Occupant;
+            this.Occupant = Occupant.Empty;
         }
 
         /// <summary>

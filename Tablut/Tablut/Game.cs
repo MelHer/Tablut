@@ -5,56 +5,56 @@ using System.Text;
 
 namespace Tablut
 {
+    /// <summary>
+    /// Class containing all the game logic.
+    /// </summary>
     class Game
     {
-        public Player Current_Player { get; private set; }
-        public Player Attacker { get; private set; }
-        public Player Defender { get; private set; }
-        public Game_Phase Phase { get; private set; }
-        public Square selected_Pawn { get; private set; }
-        public bool Over { get; set; }
+        public Player Current_Player { get; private set; } /*!< The player who has to play. */
+        public Player Attacker { get; private set; } /*!< The attacker player object. */
+        public Player Defender { get; private set; } /*!< The defender player object. */
+        public Game_Phase Phase { get; private set; } /*!< Store the game phase of the current player. */
+        public Square selected_Pawn { get; private set; } /*!< Store the selected pawn. */
+        public bool Over { get; set; } /*!< Is the game over ? */
 
-        private List<string> possible_Move;
+        private List<string> possible_Move; /*!< List containing all possible square to move the selected pawn. */
 
         /// <summary>
-        /// Constructor.
-        /// Creates the players aswell and sets the first player.
+        /// Constructor. It creates the two players and sets the game.
         /// The first player is always the defender.
         /// </summary>
-        /// <param name="m_Attacker_Name"></param>
-        /// <param name="m_Defender_Name"></param>
+        /// <param name="m_Attacker_Name"> Attacker's name from player selection attacker drop down list.</param>
+        /// <param name="m_Defender_Name"> Defender's name from player selection defender drop down list.</param>
         public Game(string m_Attacker_Name, string m_Defender_Name)
         {
-            this.Attacker = new Player(m_Attacker_Name, 16, Occupant.Attacker);
-            this.Defender = new Player(m_Defender_Name, 9, Occupant.Defender);
+            this.Attacker = new Player(m_Attacker_Name, 16, Player_Role.Attacker);
+            this.Defender = new Player(m_Defender_Name, 9, Player_Role.Defender);
             this.Current_Player = Defender;
             this.Phase = Game_Phase.picking;
             this.Over = false;
         }
 
         /// <summary>
-        /// Checks if the selected pawn is owned by the current player.
-        /// Then returns all the possible movements to display them.
+        /// Checks if the selected square contains a pawn and if the pawn is owned by the current player.
         /// </summary>
-        /// <param name="m_Square"></param>
-        /// <param name="m_board"></param>
-        /// <returns></returns>
+        /// <param name="m_Square">The clicked square.</param>
+        /// <param name="m_board">Dictionnary containing the actual board state.</param>
+        /// <returns> All the possible movements possible for the selected square </returns>
         public List<string> Pawn_Click(Square m_Square, Dictionary<string, Square> m_board)
         {
             possible_Move = new List<string>();
 
             //If the player doesn't own the pawn, exit without changing game phase.
-            //m_Square.occupant != Current_Player.role
             if (m_Square.Occupant == Occupant.King || m_Square.Occupant == Occupant.Defender)
             {
-                if(Current_Player.role != Occupant.Defender)
+                if(Current_Player.Role != Player_Role.Defender)
                 {
                     return possible_Move;
                 }
             }
             else if(m_Square.Occupant == Occupant.Attacker)
             {
-                if(Current_Player.role != Occupant.Attacker)
+                if(Current_Player.Role != Player_Role.Attacker)
                 {
                     return possible_Move;
                 }
@@ -66,7 +66,7 @@ namespace Tablut
 
             this.selected_Pawn = m_Square;
 
-            //Store the position of the square
+            //Stores the position of the square from 0 to 8
             int column = int.Parse(m_Square.Name.Substring(m_Square.Name.Length - 2,1));
             int row = int.Parse(m_Square.Name.Substring(m_Square.Name.Length - 1, 1));
 
@@ -76,9 +76,9 @@ namespace Tablut
             {
                 for(int row_num = row-1; row_num >= 0; row_num--)
                 {
-                    if(m_board["SQ"+column+""+row_num].Occupant == Occupant.Empty)
+                    if(m_board[column+""+row_num].Occupant == Occupant.Empty)
                     {
-                        possible_Move.Add(m_board["SQ" + column + "" + row_num].Name);
+                        possible_Move.Add(m_board[column + "" + row_num].Name);
                     }
                     else
                     {
@@ -92,9 +92,9 @@ namespace Tablut
             {
                 for (int column_num = column + 1; column_num <= 8; column_num++)
                 {
-                    if (m_board["SQ" + column_num + "" + row].Occupant == Occupant.Empty)
+                    if (m_board[column_num + "" + row].Occupant == Occupant.Empty)
                     {
-                        possible_Move.Add(m_board["SQ" + column_num + "" + row].Name);
+                        possible_Move.Add(m_board[column_num + "" + row].Name);
                     }
                     else
                     {
@@ -108,9 +108,9 @@ namespace Tablut
             {
                 for (int row_num = row + 1; row_num <= 8; row_num++)
                 {
-                    if (m_board["SQ" + column + "" + row_num].Occupant == Occupant.Empty)
+                    if (m_board[column + "" + row_num].Occupant == Occupant.Empty)
                     {
-                        possible_Move.Add(m_board["SQ" + column + "" + row_num].Name);
+                        possible_Move.Add(m_board[column + "" + row_num].Name);
                     }
                     else
                     {
@@ -124,9 +124,9 @@ namespace Tablut
             {
                 for (int column_num = column - 1; column_num >= 0; column_num--)
                 {
-                    if (m_board["SQ" + column_num + "" + row].Occupant == Occupant.Empty)
+                    if (m_board[column_num + "" + row].Occupant == Occupant.Empty)
                     {
-                        possible_Move.Add(m_board["SQ" + column_num + "" + row].Name);
+                        possible_Move.Add(m_board[column_num + "" + row].Name);
                     }
                     else
                     {
@@ -137,15 +137,15 @@ namespace Tablut
             }
             #endregion Getting available squares
 
-            //If the selected pawn can't move, doesn't change game phase.
+            //If the selected pawn can move, change game phase.
             if(possible_Move.Count() > 0)
             {
                 this.Phase = Game_Phase.moving;
 
                 //Only the king can go on the middle square
-                if(this.selected_Pawn.Occupant != Occupant.King && possible_Move.Contains("SQ44"))
+                if(this.selected_Pawn.Occupant != Occupant.King && possible_Move.Contains("44"))
                 {
-                    possible_Move.Remove("SQ44");
+                    possible_Move.Remove("44");
                 }
             }
 
@@ -156,9 +156,13 @@ namespace Tablut
         /// Checks if the player clicks again on the selected pawn, then reset the possible moves.
         /// Then if the player clicks on a possible moves, allow the move.
         /// </summary>
-        /// <param name="m_Square"></param>
-        /// <param name="m_Possible_Move"></param>
-        /// <returns></returns>
+        /// <param name="m_Square"> The clicked square.</param>
+        /// <param name="m_Possible_Move"> The list containing all the possible moves.</param>
+        /// <returns>Return an string explaining to the view how to update the board
+        /// reset: the selected pawn is clicked again. The player can change the pawn he wants to move.
+        /// move: the plaver clicked a valid square.
+        /// invalide: the player clicked a wrong square.
+        /// </returns>
         public string Square_Click(Square m_Square, List<string> m_Possible_Move)
         {
             if(m_Square == selected_Pawn)
@@ -169,7 +173,7 @@ namespace Tablut
             }
             else if(m_Square.Occupant == Occupant.Empty && m_Possible_Move.Contains(m_Square.Name))
             {
-                if(Current_Player.role == Occupant.Attacker)
+                if(Current_Player.Role == Player_Role.Attacker)
                 {
                     Attacker.add_Moves();
                 }
@@ -190,52 +194,52 @@ namespace Tablut
         /// <summary>
         /// Checks if any pawn must be eliminated.
         /// </summary>
-        /// <param name="m_Square"></param>
-        /// <param name="m_board"></param>
-        /// <returns></returns>
+        /// <param name="m_Square">The clicked square (new position of a moved pawn). </param>
+        /// <param name="m_board">Dictionnary containing the actual board state.</param>
+        /// <returns> The list of the eliminated pawns.</returns>
         public List<String> search_Eliminated_Pawn(Square m_Square, Dictionary<string, Square> m_board)
         {
             List<string> eliminated_Pawn = new List<string>();
 
-            //Store the position of the square
+            //Store the position of the square.
             int column = int.Parse(m_Square.Name.Substring(m_Square.Name.Length - 2, 1));
             int row = int.Parse(m_Square.Name.Substring(m_Square.Name.Length - 1, 1));
 
             #region Elimination conditions
-            if(Current_Player.role == Occupant.Attacker)
+            if(Current_Player.Role == Player_Role.Attacker)
             {
                 //checks if there is any adjacent enemy pawn and if the elimination condition if filled.
-                //(Surrounded by two pawn vertically or horizontally)
+                //(Surrounded by two pawns vertically or horizontally)
                 //Top
                 if (row > 1)
                 {
-                    if (m_board["SQ" + column + "" + (row - 1)].Occupant == Occupant.Defender && m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.Attacker)
+                    if (m_board[column + "" + (row - 1)].Occupant == Occupant.Defender && m_board[column + "" + (row - 2)].Occupant == Occupant.Attacker)
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + column + "" + (row - 1)].Name);
+                        eliminated_Pawn.Add(m_board[column + "" + (row - 1)].Name);
                     }
                 }
                 //Right
                 if (column < 7)
                 {
-                    if (m_board["SQ" + (column+1) + "" + row].Occupant == Occupant.Defender && m_board["SQ" + (column+2) + "" + row ].Occupant == Occupant.Attacker)
+                    if (m_board[(column+1) + "" + row].Occupant == Occupant.Defender && m_board[(column+2) + "" + row ].Occupant == Occupant.Attacker)
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + (column + 1) + "" + row].Name);
+                        eliminated_Pawn.Add(m_board[(column + 1) + "" + row].Name);
                     }
                 }
                 //Bottom
                 if (row < 7)
                 {
-                    if (m_board["SQ" + column + "" + (row + 1)].Occupant == Occupant.Defender && m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.Attacker)
+                    if (m_board[column + "" + (row + 1)].Occupant == Occupant.Defender && m_board[column + "" + (row + 2)].Occupant == Occupant.Attacker)
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + column + "" + (row + 1)].Name);
+                        eliminated_Pawn.Add(m_board[column + "" + (row + 1)].Name);
                     }
                 }
                 //Left
                 if (column > 1)
                 {
-                    if (m_board["SQ" + (column - 1) + "" + row].Occupant == Occupant.Defender && m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.Attacker)
+                    if (m_board[(column - 1) + "" + row].Occupant == Occupant.Defender && m_board[(column - 2) + "" + row].Occupant == Occupant.Attacker)
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + (column - 1) + "" + row].Name);
+                        eliminated_Pawn.Add(m_board[(column - 1) + "" + row].Name);
                     }
                 }
 
@@ -246,55 +250,55 @@ namespace Tablut
                 column = int.Parse(m_board[king_Key].Name.Substring(m_board[king_Key].Name.Length - 2, 1));
                 row = int.Parse(m_board[king_Key].Name.Substring(m_board[king_Key].Name.Length - 1, 1));
 
-                //If the king has a sufficient space around him
+                //If the king has a sufficient space around him to be surrounded
                 if(column > 0 && column < 8 && row > 0 && row < 8)
                 {
                     //Checking top && bottom
-                    if(m_board["SQ"+column+""+(row+1)].Occupant == Occupant.Attacker && m_board["SQ" + column + "" + (row - 1)].Occupant == Occupant.Attacker)
+                    if(m_board[column+""+(row+1)].Occupant == Occupant.Attacker && m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker)
                     {
                         //Checking right and left
-                        if(m_board["SQ"+(column + 1)+""+row].Occupant == Occupant.Attacker && m_board["SQ" + (column - 1) + "" + row].Occupant == Occupant.Attacker)
+                        if(m_board[(column + 1)+""+row].Occupant == Occupant.Attacker && m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker)
                         {
-                            eliminated_Pawn.Add(m_board["SQ" + column + "" + row].Name);
+                            eliminated_Pawn.Add(m_board[column + "" + row].Name);
 
                             this.Over = true;
                         }
                     }
                 }
             }
-            else if(Current_Player.role == Occupant.Defender)
+            else if(Current_Player.Role == Player_Role.Defender)
             {
                 //checks if there is any adjacent enemy pawn and if the elimination condition if filled
                 //Top
                 if (row > 1)
                 {
-                    if (m_board["SQ" + column + "" + (row - 1)].Occupant == Occupant.Attacker && (m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.Defender|| m_board["SQ" + column + "" + (row - 2)].Occupant == Occupant.King))
+                    if (m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker && (m_board[column + "" + (row - 2)].Occupant == Occupant.Defender|| m_board[column + "" + (row - 2)].Occupant == Occupant.King))
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + column + "" + (row - 1)].Name);
+                        eliminated_Pawn.Add(m_board[column + "" + (row - 1)].Name);
                     }
                 }
                 //Right
                 if (column < 7)
                 {
-                    if (m_board["SQ" + (column + 1) + "" + row].Occupant == Occupant.Attacker && (m_board["SQ" + (column + 2) + "" + row].Occupant == Occupant.Defender || m_board["SQ" + (column + 2) + "" + row].Occupant == Occupant.King))
+                    if (m_board[(column + 1) + "" + row].Occupant == Occupant.Attacker && (m_board[(column + 2) + "" + row].Occupant == Occupant.Defender || m_board[(column + 2) + "" + row].Occupant == Occupant.King))
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + (column + 1) + "" + row].Name);
+                        eliminated_Pawn.Add(m_board[(column + 1) + "" + row].Name);
                     }
                 }
                 //Bottom
                 if (row < 7)
                 {
-                    if (m_board["SQ" + column + "" + (row + 1)].Occupant == Occupant.Attacker && (m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.Defender || m_board["SQ" + column + "" + (row + 2)].Occupant == Occupant.King))
+                    if (m_board[column + "" + (row + 1)].Occupant == Occupant.Attacker && (m_board[column + "" + (row + 2)].Occupant == Occupant.Defender || m_board[column + "" + (row + 2)].Occupant == Occupant.King))
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + column + "" + (row + 1)].Name);
+                        eliminated_Pawn.Add(m_board[column + "" + (row + 1)].Name);
                     }
                 }
                 //Left
                 if (column > 1)
                 {
-                    if (m_board["SQ" + (column - 1) + "" + row].Occupant == Occupant.Attacker && (m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.Defender || m_board["SQ" + (column - 2) + "" + row].Occupant == Occupant.King))
+                    if (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker && (m_board[(column - 2) + "" + row].Occupant == Occupant.Defender || m_board[(column - 2) + "" + row].Occupant == Occupant.King))
                     {
-                        eliminated_Pawn.Add(m_board["SQ" + (column - 1) + "" + row].Name);
+                        eliminated_Pawn.Add(m_board[(column - 1) + "" + row].Name);
                     }
                 }
             }
@@ -305,7 +309,7 @@ namespace Tablut
             {
                 Current_Player.add_Enemy_Pawn_Eliminated(eliminated_Pawn.Count);
 
-                if(Current_Player.role == Occupant.Attacker)
+                if(Current_Player.Role == Player_Role.Attacker)
                 {
                     Defender.remove_Pawn(eliminated_Pawn.Count);
                 }
@@ -320,9 +324,9 @@ namespace Tablut
 
         /// <summary>
         /// Checks if the game is over.
-        /// If a name (the winner's one) is returned, the game is over.
         /// </summary>
-        /// <param name="m_board"></param>
+        /// <param name="m_board"> Dictionnary containing the actual board state.</param>
+        /// <returns> if false the games keep going.</returns>
         public bool is_Over(Dictionary<string, Square> m_board)
         {
             //Over == if king is eliminated. It is set in the 'search_Eliminated_Pawn' function.
@@ -348,7 +352,7 @@ namespace Tablut
             }
 
             //End of turn, change current player
-            if (this.Current_Player.role == Occupant.Attacker)
+            if (this.Current_Player.Role == Player_Role.Attacker)
             {
                 this.Current_Player = this.Defender;
             }

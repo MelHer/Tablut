@@ -254,7 +254,7 @@ namespace Tablut
         /// </summary>
         /// <param name="m_Profile_Name">The winner of the game</param>
         /// <param name="m_Role">His role: attacker or defender</param>
-        public void Add_Victory(string m_Profile_Name, Occupant m_Role)
+        public void Add_Victory(string m_Profile_Name, Player_Role m_Role)
         {
             //Checking if connection not already opened
             if (connection != null && connection.State == System.Data.ConnectionState.Closed)
@@ -266,7 +266,7 @@ namespace Tablut
             //Creating the querry
             MySqlCommand cmd = this.connection.CreateCommand();
 
-            if (m_Role == Occupant.Attacker)
+            if (m_Role == Player_Role.Attacker)
             {
                 cmd.CommandText = "UPDATE Tablut.profile SET Won_Attack = Won_Attack + 1 WHERE Name=(@m_Name)";
             }
@@ -290,7 +290,7 @@ namespace Tablut
         /// </summary>
         /// <param name="m_Profile_Name">The loser of the game</param>
         /// <param name="m_Role">His role: attacker or defender</param>
-        public void Add_Defeat(string m_Profile_Name, Occupant m_Role)
+        public void Add_Defeat(string m_Profile_Name, Player_Role m_Role)
         {
             //Checking if connection not already opened
             if (connection != null && connection.State == System.Data.ConnectionState.Closed)
@@ -302,7 +302,7 @@ namespace Tablut
             //Creating the querry
             MySqlCommand cmd = this.connection.CreateCommand();
 
-            if (m_Role == Occupant.Attacker)
+            if (m_Role == Player_Role.Attacker)
             {
                 cmd.CommandText = "UPDATE Tablut.profile SET Lost_Attack = Lost_Attack + 1 WHERE Name=(@m_Name)";
             }

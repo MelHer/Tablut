@@ -93,6 +93,15 @@ namespace Tablut.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Menu_Banjo_LOOP {
+            get {
+                return ResourceManager.GetStream("Menu_Banjo_LOOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Menu_Click {
             get {
                 return ResourceManager.GetStream("Menu_Click", resourceCulture);

@@ -6,13 +6,11 @@ using System.Text;
 namespace Tablut
 {
     /// <summary>
-    /// Enumeration used to define the diffrent state of a square. What is inside the square ? 
+    /// Defines the player's role. Attacker or Defender.
     /// </summary>
-    enum Occupant
+    enum Player_Role
     {
         Attacker,
-        Defender,
-        King,
-        Empty
+        Defender
     }
 }

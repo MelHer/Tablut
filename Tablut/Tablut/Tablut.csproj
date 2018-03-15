@@ -72,6 +72,7 @@
     <Compile Include="Game_Phase.cs" />
     <Compile Include="Occupant.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Player_Role.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Square.cs">
@@ -79,9 +80,11 @@
     </Compile>
     <EmbeddedResource Include="form_Confirmation.resx">
       <DependentUpon>form_Confirmation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Renaming.resx">
       <DependentUpon>form_Renaming.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Tablut.resx">
       <DependentUpon>form_Tablut.cs</DependentUpon>
@@ -147,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\square_Highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_Banjo_LOOP.WAV" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
