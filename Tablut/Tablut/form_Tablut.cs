@@ -52,7 +52,7 @@ namespace Tablut
             db_link = new DB_Connect();
 
             //Initializing event
-            
+
             //Sound cues
             //menu
             pic_Menu_Create_Profile.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
