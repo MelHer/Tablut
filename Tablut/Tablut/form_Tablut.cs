@@ -22,6 +22,26 @@ namespace Tablut
         System.Media.SoundPlayer sound_Player;
 
         /// <summary>
+        /// Music player to play sound while in the menus or in game.
+        /// </summary>
+        System.Windows.Media.MediaPlayer music_Player;
+
+        /// <summary>
+        /// Get the execution folder.
+        /// </summary>
+        string root_Location = AppDomain.CurrentDomain.BaseDirectory;
+
+        /// <summary>
+        /// Store the path to the diffrent sounds.
+        /// </summary>
+        string sound_Path;
+
+        /// <summary>
+        /// If false, the music player will play music menu.
+        /// </summary>
+        bool is_In_Game;
+
+        /// <summary>
         /// Connection with database.
         /// </summary>
         DB_Connect db_link;
@@ -51,6 +71,16 @@ namespace Tablut
 
             db_link = new DB_Connect();
 
+
+            //Background sound
+            is_In_Game = false;
+            music_Player = new System.Windows.Media.MediaPlayer();
+            music_Player.MediaEnded += new System.EventHandler(this.sound_Ended);
+            sound_Path = System.IO.Path.Combine(root_Location, @"Content\Menu_Fantasy.WAV");
+            music_Player.Open(new Uri(sound_Path));
+
+            music_Player.Play();
+
             //Initializing event
 
             //Sound cues
@@ -77,6 +107,9 @@ namespace Tablut
             //Game
             pic_Game_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
             pic_Game_Close.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+
+            //Game over
+            pic_Game_Over_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
 
         #region Main_Menu
@@ -128,6 +161,11 @@ namespace Tablut
             try
             {
                 List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+
+                if (lbl_Player_Selection_Fail.Visible == true)
+                {
+                    lbl_Player_Selection_Fail.Visible = false;
+                }
 
                 foreach (string name in profile_Name)
                 {
@@ -499,6 +537,9 @@ namespace Tablut
             //Can potentially include a loading screen because it may takes a few sec to generate the board.
             pnl_Play_Profile_Selection.Visible = false;
             pnl_Game.Visible = true;
+
+            is_In_Game = true;
+            sound_Ended(music_Player, EventArgs.Empty); //Force sound switching
         }
 
         /// <summary>
@@ -717,6 +758,9 @@ namespace Tablut
                 pnl_Menu.Visible = true;
 
                 reset_Game();
+
+                is_In_Game = false;
+                sound_Ended(music_Player, EventArgs.Empty); //Force sound switching
             }
 
             confirmation.Dispose();
@@ -766,8 +810,13 @@ namespace Tablut
         /// <param name="e">Contains informations about the raised event.</param>
         private void pic_Game_Over_Menu_Click(object sender, EventArgs e)
         {
+            play_Sound_Click();
+
             pnl_Game_Over.Visible = false;
             pnl_Menu.Visible = true;
+
+            is_In_Game = false;
+            sound_Ended(music_Player, EventArgs.Empty); //Force sound switching
         }
 
         #endregion Game_Over
@@ -793,6 +842,69 @@ namespace Tablut
             sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);
             sound_Player.Play();
         }
-        #endregion Sound_Players
+
+        /// <summary>
+        /// Switch the game sounds between menu or in game.
+        /// </summary>
+        /// <param name="sender">The music_Player object</param>
+        /// <param name="e">Details about the event raised</param>
+        private void sound_Ended(object sender, EventArgs e)
+        {
+            if (is_In_Game == false)
+            {
+                sound_Path = System.IO.Path.Combine(root_Location, @"Content\Menu_Fantasy.wav");
+            }
+            else
+            {
+                sound_Path = game_Sound_Switch();
+            }
+            music_Player.Open(new Uri(sound_Path));
+            music_Player.Play();
+        }
+
+        /// <summary>
+        /// Gets a random game track.
+        /// </summary>
+        /// <returns>Returns the path of the track to play.</returns>
+        private string game_Sound_Switch()
+        {
+            Random random = new Random();
+            int track = random.Next(1, 3);
+            string track_Path = "";
+
+            switch (track)
+            {
+                case 1:
+                    track_Path = System.IO.Path.Combine(root_Location, @"Content\IG_Nordic_Landscape.wav");
+                    break;
+                case 2:
+                    track_Path = System.IO.Path.Combine(root_Location, @"Content\IG_Nordic_Title.wav");
+                    break;
+                case 3:
+                    track_Path = System.IO.Path.Combine(root_Location, @"Content\IG_Village.wav");
+                    break;
+            }
+            return track_Path;
+        }
+
+        /// <summary>
+        /// Mute the sound or unmute.
+        /// </summary>
+        /// <param name="sender">pic_Speaker</param>
+        /// <param name="e">Details about the Click event</param>
+        private void pic_Speaker_Click(object sender, EventArgs e)
+        {
+            if (music_Player.Volume > 0)
+            {
+                music_Player.Volume = 0;
+                pic_Speaker.BackgroundImage = Tablut.Properties.Resources.loudspeaker_Mute;
+            }
+            else
+            {
+                music_Player.Volume = 0.5;
+                pic_Speaker.BackgroundImage = Tablut.Properties.Resources.loudspeaker;
+            }
+        }
+        #endregion Sound_Player
     }
 }

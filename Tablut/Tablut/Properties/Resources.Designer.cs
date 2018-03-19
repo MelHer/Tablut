@@ -91,11 +91,22 @@ namespace Tablut.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Menu_Banjo_LOOP {
+        internal static System.Drawing.Bitmap loudspeaker {
             get {
-                return ResourceManager.GetStream("Menu_Banjo_LOOP", resourceCulture);
+                object obj = ResourceManager.GetObject("loudspeaker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loudspeaker_Mute {
+            get {
+                object obj = ResourceManager.GetObject("loudspeaker_Mute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

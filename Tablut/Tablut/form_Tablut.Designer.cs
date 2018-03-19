@@ -90,6 +90,7 @@
             this.lbl_Game_Over_Atttack = new System.Windows.Forms.Label();
             this.pic_Game_Over_Menu = new System.Windows.Forms.PictureBox();
             this.lbl_Game_Over_Winner = new System.Windows.Forms.Label();
+            this.pic_Speaker = new System.Windows.Forms.PictureBox();
             this.pnl_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Menu_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Menu_Play)).BeginInit();
@@ -111,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Menu)).BeginInit();
             this.pnl_Game_Over.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Over_Menu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Speaker)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_Menu
@@ -873,12 +875,24 @@
             this.lbl_Game_Over_Winner.TabIndex = 44;
             this.lbl_Game_Over_Winner.Text = "Victoire des attaquants";
             // 
+            // pic_Speaker
+            // 
+            this.pic_Speaker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_Speaker.BackgroundImage")));
+            this.pic_Speaker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_Speaker.Location = new System.Drawing.Point(895, 585);
+            this.pic_Speaker.Name = "pic_Speaker";
+            this.pic_Speaker.Size = new System.Drawing.Size(50, 50);
+            this.pic_Speaker.TabIndex = 13;
+            this.pic_Speaker.TabStop = false;
+            this.pic_Speaker.Click += new System.EventHandler(this.pic_Speaker_Click);
+            // 
             // frm_Tablut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(973, 658);
+            this.Controls.Add(this.pic_Speaker);
             this.Controls.Add(this.pnl_Game_Over);
             this.Controls.Add(this.pnl_Game);
             this.Controls.Add(this.pnl_Play_Profile_Selection);
@@ -918,6 +932,7 @@
             this.pnl_Game_Over.ResumeLayout(false);
             this.pnl_Game_Over.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Game_Over_Menu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Speaker)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -984,6 +999,7 @@
         private System.Windows.Forms.Label lbl_Game_Over_Num_Elimination_Defence;
         private System.Windows.Forms.Label lbl_Game_Over_Num_Move_Defence;
         private System.Windows.Forms.Label lbl_Game_Over_Num_Elimination_Attack;
+        private System.Windows.Forms.PictureBox pic_Speaker;
     }
 }
 
