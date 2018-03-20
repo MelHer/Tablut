@@ -21,8 +21,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D43DAFF865EC6805992BE8841628CC4"
-        "OwnerKey" = "8:_206EA7CE81D34D0A870EA5734922AC7C"
+        "MsmKey" = "8:_26A41DAF301041EA96B5CB5635642D30"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6BF6B16AAE459834770BEB423A6D32D0"
+        "OwnerKey" = "8:_206EA7CE81D34D0A870EA5734922AC7C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7A743F45CA5C4E77ABAF2E86914C8C06"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,14 +63,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C62DD5129C4A4023B67FE97043E9349B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2D43DAFF865EC6805992BE8841628CC4"
+        "OwnerKey" = "8:_6BF6B16AAE459834770BEB423A6D32D0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,6 +130,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -160,23 +168,12 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2D43DAFF865EC6805992BE8841628CC4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_26A41DAF301041EA96B5CB5635642D30"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.6.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2D43DAFF865EC6805992BE8841628CC4"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\..\\Design\\Icone\\App_Icon.ico"
+            "TargetName" = "8:App_Icon.ico"
             "Tag" = "8:"
-            "Folder" = "8:_954B220F185340BA9AB8D0AA5AC24276"
+            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -188,7 +185,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3EA4C7B40E334F2680F199D56DDC9174"
@@ -196,7 +193,7 @@
             "SourcePath" = "8:..\\Tablut\\bin\\Debug\\Content\\Menu_Fantasy.wav"
             "TargetName" = "8:Menu_Fantasy.wav"
             "Tag" = "8:"
-            "Folder" = "8:_9A866754D93A4D29890102C0EE33D450"
+            "Folder" = "8:_CBC25B9B90D243749DC29AA371B0C5BD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -216,7 +213,7 @@
             "SourcePath" = "8:..\\Tablut\\bin\\Debug\\Content\\IG_Village.wav"
             "TargetName" = "8:IG_Village.wav"
             "Tag" = "8:"
-            "Folder" = "8:_9A866754D93A4D29890102C0EE33D450"
+            "Folder" = "8:_CBC25B9B90D243749DC29AA371B0C5BD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -236,7 +233,7 @@
             "SourcePath" = "8:..\\Tablut\\bin\\Debug\\Content\\IG_Nordic_Landscape.wav"
             "TargetName" = "8:IG_Nordic_Landscape.wav"
             "Tag" = "8:"
-            "Folder" = "8:_9A866754D93A4D29890102C0EE33D450"
+            "Folder" = "8:_CBC25B9B90D243749DC29AA371B0C5BD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -251,12 +248,43 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6BF6B16AAE459834770BEB423A6D32D0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.6.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_6BF6B16AAE459834770BEB423A6D32D0"
+                    {
+                    "Name" = "8:MySql.Data.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A743F45CA5C4E77ABAF2E86914C8C06"
             {
             "SourcePath" = "8:..\\Tablut\\bin\\Debug\\Content\\IG_Nordic_Title.wav"
             "TargetName" = "8:IG_Nordic_Title.wav"
             "Tag" = "8:"
-            "Folder" = "8:_9A866754D93A4D29890102C0EE33D450"
+            "Folder" = "8:_CBC25B9B90D243749DC29AA371B0C5BD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -276,27 +304,7 @@
             "SourcePath" = "8:..\\..\\MHG_DB_Data.sql"
             "TargetName" = "8:Tablut_Database.sql"
             "Tag" = "8:"
-            "Folder" = "8:_954B220F185340BA9AB8D0AA5AC24276"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C62DD5129C4A4023B67FE97043E9349B"
-            {
-            "SourcePath" = "8:C:\\Users\\Melvyn.HERZIG\\Downloads\\favicon.ico"
-            "TargetName" = "8:icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_954B220F185340BA9AB8D0AA5AC24276"
+            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -338,26 +346,15 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_954B220F185340BA9AB8D0AA5AC24276"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_CBC25B9B90D243749DC29AA371B0C5BD"
                     {
-                    "Name" = "8:Tablut"
+                    "Name" = "8:Content"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_2E44310C6FA647688136430DC030B81D"
+                    "Property" = "8:_E254C7FC4F714FA982F7087F0774D5F1"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_9A866754D93A4D29890102C0EE33D450"
-                            {
-                            "Name" = "8:Content"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_E254C7FC4F714FA982F7087F0774D5F1"
-                                "Folders"
-                                {
-                                }
-                            }
                         }
                     }
                 }
@@ -388,9 +385,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup_Tablut"
+        "ProductName" = "8:Tablut"
         "ProductCode" = "8:{E433B70A-05A0-407B-B5FE-0D0EC0263851}"
-        "PackageCode" = "8:{258576DA-73A1-4DA8-94EC-66C31830BB9F}"
+        "PackageCode" = "8:{68ED22D1-C88C-46A1-A0E9-A6A1B45B6998}"
         "UpgradeCode" = "8:{1826BFF1-09D3-4C25-9F7B-DD69932CDF78}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -398,7 +395,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Wizz'art"
+        "Manufacturer" = "8:Wizz art"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Tablut"
@@ -407,7 +404,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_C62DD5129C4A4023B67FE97043E9349B"
+        "ARPPRODUCTICON" = "8:_26A41DAF301041EA96B5CB5635642D30"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -516,12 +513,12 @@
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
+            "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_206EA7CE81D34D0A870EA5734922AC7C"
             "Folder" = "8:_A7A3325F433941A3A9388E7BCE6E738F"
             "WorkingFolder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
-            "Icon" = "8:_206EA7CE81D34D0A870EA5734922AC7C"
+            "Icon" = "8:_26A41DAF301041EA96B5CB5635642D30"
             "Feature" = "8:"
             }
         }
@@ -928,7 +925,7 @@
             "SourcePath" = "8:..\\Tablut\\obj\\Debug\\Tablut.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_954B220F185340BA9AB8D0AA5AC24276"
+            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
