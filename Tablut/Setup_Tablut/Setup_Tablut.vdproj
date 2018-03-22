@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3A8B4D281A164BD3B12C12954514FC4C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3EA4C7B40E334F2680F199D56DDC9174"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -52,12 +58,6 @@
         "Entry"
         {
         "MsmKey" = "8:_7A743F45CA5C4E77ABAF2E86914C8C06"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C1213A3929BB490E9724E102642FA921"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -188,6 +188,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A8B4D281A164BD3B12C12954514FC4C"
+            {
+            "SourcePath" = "8:..\\..\\MHG_DB_Tablut.sql"
+            "TargetName" = "8:Tablut_Database.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3EA4C7B40E334F2680F199D56DDC9174"
             {
             "SourcePath" = "8:..\\Tablut\\bin\\Debug\\Content\\Menu_Fantasy.wav"
@@ -285,26 +305,6 @@
             "TargetName" = "8:IG_Nordic_Title.wav"
             "Tag" = "8:"
             "Folder" = "8:_CBC25B9B90D243749DC29AA371B0C5BD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1213A3929BB490E9724E102642FA921"
-            {
-            "SourcePath" = "8:..\\..\\MHG_DB_Data.sql"
-            "TargetName" = "8:Tablut_Database.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_9A549BECA601420BBBCE5F0458398A4C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

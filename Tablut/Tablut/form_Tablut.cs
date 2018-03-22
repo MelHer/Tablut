@@ -175,7 +175,7 @@ namespace Tablut
             }
             catch (MySqlException ex)
             {
-                if (ex.Number == 1042)
+                if (ex.Number == 1042 | ex.Number == 0)
                 {
                     lbl_Player_Selection_Fail.Text = "Connexion à la base de données impossible.";
                     lbl_Player_Selection_Fail.Visible = true;
@@ -222,7 +222,7 @@ namespace Tablut
             }
             catch(MySqlException ex)
             {
-                if(ex.Number == 1042)
+                if(ex.Number == 1042 | ex.Number == 0)
                 {
                     display_Error_Create_Profile("Connexion à la base de données impossible.");
                 }
@@ -344,14 +344,30 @@ namespace Tablut
 
             frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment réinitialiser les statistiques de: \n" + cbo_Manage_Profile_Name.SelectedItem.ToString());
 
-            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            try
             {
-                db_link.Reset_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
-                reset_Stat_Board();
-                populate_Stat_Board();
+                if (confirmation.ShowDialog(this) == DialogResult.OK)
+                {
+                    db_link.Reset_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
+
+                    reset_Stat_Board();
+                    populate_Stat_Board();
+
+                    //Hides error.
+                    if(lbl_Manage_Profile_Fail.Visible == true)
+                    {
+                        lbl_Manage_Profile_Fail.Visible = false;
+                    }
+                }
             }
-
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1042 | ex.Number == 0)
+                {
+                    lbl_Manage_Profile_Fail.Visible = true;
+                }
+            }
             confirmation.Dispose();
         }
 
@@ -365,17 +381,32 @@ namespace Tablut
             play_Sound_Click();
 
             frm_Confirmation confirmation = new frm_Confirmation("Voulez vous vraiment supprimer le profil: \n"+cbo_Manage_Profile_Name.SelectedItem.ToString());
-            
 
-            if (confirmation.ShowDialog(this) == DialogResult.OK)
+            try
             {
-                db_link.Remove_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
+                if (confirmation.ShowDialog(this) == DialogResult.OK)
+                {
+                    db_link.Remove_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
-                cbo_Manage_Profile_Name.Items.Clear();
-                populate_Profile_List();
-                reset_Stat_Board();
+                    cbo_Manage_Profile_Name.Items.Clear();
+                    populate_Profile_List();
+                    reset_Stat_Board();
+
+                    //Hides error
+                    if (lbl_Manage_Profile_Fail.Visible == true)
+                    {
+                        lbl_Manage_Profile_Fail.Visible = false;
+                    }
+                }
+
             }
-
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1042 | ex.Number == 0)
+                {
+                    lbl_Manage_Profile_Fail.Visible = true;
+                }
+            }
             confirmation.Dispose();
         }
 
@@ -395,7 +426,7 @@ namespace Tablut
             }
             catch (MySqlException ex)
             {
-                if (ex.Number == 1042)
+                if (ex.Number == 1042 | ex.Number == 0)
                 {
                     lbl_Manage_Profile_Fail.Visible = true;
                 }
@@ -540,6 +571,9 @@ namespace Tablut
 
             is_In_Game = true;
             sound_Ended(music_Player, EventArgs.Empty); //Force sound switching
+
+            pic_Player_Selection_Start.Enabled = false;
+            pic_Player_Selection_Start.Image = Tablut.Properties.Resources.btn_Start_Disable;
         }
 
         /// <summary>

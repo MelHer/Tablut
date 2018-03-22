@@ -362,7 +362,7 @@ namespace Tablut
             }
 
             //If the attacker doesn't have pawn left
-            if (Defender.Pawn_Left <= 0)
+            if (Defender.Pawn_Left <= 0 || Attacker.Pawn_Left <= 0) ;
             {
                 return true;
             }

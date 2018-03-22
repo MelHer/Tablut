@@ -78,7 +78,7 @@ namespace Tablut
             }
             catch (MySqlException ex)
             {
-                if (ex.Number == 1042)
+                if (ex.Number == 1042 | ex.Number == 0)
                 {
                     display_Error_Renaming("Connexion à la base de données impossible.");
                 }
