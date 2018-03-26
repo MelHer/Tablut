@@ -19,47 +19,47 @@ namespace Tablut
         /// <summary>
         /// Sound player used when click on button(picture box).
         /// </summary>
-        System.Media.SoundPlayer sound_Player;
+        private System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Music player to play sound while in the menus or in game.
         /// </summary>
-        System.Windows.Media.MediaPlayer music_Player;
+        private System.Windows.Media.MediaPlayer music_Player;
 
         /// <summary>
         /// Get the execution folder.
         /// </summary>
-        string root_Location = AppDomain.CurrentDomain.BaseDirectory;
+        private string root_Location = AppDomain.CurrentDomain.BaseDirectory;
 
         /// <summary>
         /// Store the path to the diffrent sounds.
         /// </summary>
-        string sound_Path;
+        private string sound_Path;
 
         /// <summary>
         /// If false, the music player will play music menu.
         /// </summary>
-        bool is_In_Game;
+        private bool is_In_Game;
 
         /// <summary>
         /// Connection with database.
         /// </summary>
-        DB_Connect db_link;
+        private DB_Connect db_Link;
 
         /// <summary>
         /// Contains the movement algorithms and the player, created at every beginning of a game.
         /// </summary>
-        Game game;
+        private Game game;
 
         /// <summary>
         /// Contains all the squares of the board. 
         /// </summary>
-        Dictionary<string, Square> board;
+        private Dictionary<string, Square> board;
 
         /// <summary>
         /// Contains the name of all highlighted squares.  
         /// </summary>
-        List<string> possible_Move;
+        private List<string> possible_Move;
 
         /// <summary>
         /// Constructor. Instantiates the sound player and the even handlers.
@@ -69,7 +69,7 @@ namespace Tablut
         {
             InitializeComponent();   
 
-            db_link = new DB_Connect();
+            db_Link = new DB_Connect();
 
 
             //Background sound
@@ -120,8 +120,8 @@ namespace Tablut
         /// <summary>
         /// Closes the menu and open the profile creation.
         /// </summary>
-        /// <param name="sender">The button in main menu "Create profile".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Create profile" button in main menu.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Menu_Create_Profile_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -133,8 +133,8 @@ namespace Tablut
         /// <summary>
         /// Closes the menu and open the profile managment
         /// </summary>
-        /// <param name="sender"> The button in main menu "Manage profile".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender"> The "Manage profile" button in main menu.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Menu_Manage_Profile_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -148,8 +148,8 @@ namespace Tablut
         /// <summary>
         /// Closes the menu and open the profile selection screen.
         /// </summary>
-        /// <param name="sender"> The button in main menu "Play".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender"> The "Play" button in main menu.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Menu_Play_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -160,7 +160,7 @@ namespace Tablut
             //populating both combo box in the player selection
             try
             {
-                List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+                List<string> profile_Name = new List<String>(db_Link.get_Profile_Name());
 
                 if (lbl_Player_Selection_Fail.Visible == true)
                 {
@@ -186,8 +186,8 @@ namespace Tablut
         /// <summary>
         /// Exits the application.
         /// </summary>
-        /// <param name="sender"> The button in main menu "Play".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender"> The "Leave" button in main menu.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Menu_Close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -202,15 +202,15 @@ namespace Tablut
         /// <summary>
         /// Sends a profile creation request to the DB_Connect object.
         /// </summary>
-        /// <param name="sender">The button in profile creation "Create".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Create" button in profile creation.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Create_Profile_Create_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
 
             try
             {
-                db_link.Add_Profile(txt_Profile_Creation_Name.Text);
+                db_Link.Add_Profile(txt_Profile_Creation_Name.Text);
                 txt_Profile_Creation_Name.Text = "";
 
                 lbl_Create_Profile_Fail.Visible = false;
@@ -237,8 +237,8 @@ namespace Tablut
         /// <summary>
         /// Closes the profile creation and return to the menu.
         /// </summary>
-        /// <param name="sender">The button in profile creation "Cancel".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Cancel" button in profile creation.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Create_Profile_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -257,7 +257,7 @@ namespace Tablut
         /// that the creation of the profile failed.
         /// Called only in the profile creation.
         /// </summary>
-        /// <param name="m_Message">The message display to th user about the error</param>
+        /// <param name="m_Message">The message display to th user about the error.</param>
         private void display_Error_Create_Profile(string m_Message)
         {
             lbl_Create_Profile_Fail.Text = m_Message;
@@ -274,8 +274,8 @@ namespace Tablut
         /// <summary>
         /// Closes the profile managment tab and opens the main menu.
         /// </summary>
-        /// <param name="sender">The button in profile managment "Menu".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Menu" button in profile managment.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Manage_Profile_Menu_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -300,7 +300,7 @@ namespace Tablut
         /// Gets the actual name to query the database for statistics
         /// </summary>
         /// <param name="sender">The drop down list to chose a profile in the profile managment menu.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "index changed" event.</param>
         private void cbo_Manage_Profile_Name_Selected_Index_Changed(object sender, EventArgs e)
         {
             manage_Profile_Button_Locker(true);
@@ -314,8 +314,8 @@ namespace Tablut
         /// <summary>
         /// Allows to rename the selected profile.
         /// </summary>
-        /// <param name="sender">The button in profile managment "Rename".</param>
-        /// <param name="e">Contains informations about the raised event.<param>
+        /// <param name="sender">The "Rename" button in profile managment.</param>
+        /// <param name="e">Contains informations about the raised "click" event.<param>
         private void pic_Manage_Profile_Rename_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -336,8 +336,8 @@ namespace Tablut
         /// <summary>
         /// Resets the stats of the selected profile.
         /// </summary>
-        /// <param name="sender">The button in profile managment "Reset".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Reset" button in profile managment.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Manage_Profile_Reset_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -349,7 +349,7 @@ namespace Tablut
 
                 if (confirmation.ShowDialog(this) == DialogResult.OK)
                 {
-                    db_link.Reset_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
+                    db_Link.Reset_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
                     reset_Stat_Board();
                     populate_Stat_Board();
@@ -374,8 +374,8 @@ namespace Tablut
         /// <summary>
         /// Deletes the selected profile in the database.
         /// </summary>
-        /// <param name="sender">The button in profile managment "Delete".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Delete" button in profile managment.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Manage_Profile_Delete_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -386,7 +386,7 @@ namespace Tablut
             {
                 if (confirmation.ShowDialog(this) == DialogResult.OK)
                 {
-                    db_link.Remove_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
+                    db_Link.Remove_Profile(cbo_Manage_Profile_Name.SelectedItem.ToString());
 
                     cbo_Manage_Profile_Name.Items.Clear();
                     populate_Profile_List();
@@ -417,7 +417,7 @@ namespace Tablut
         {
             try
             {
-                List<string> profile_Name = new List<String>(db_link.get_Profile_Name());
+                List<string> profile_Name = new List<String>(db_Link.get_Profile_Name());
 
                 foreach (string name in profile_Name)
                 {
@@ -441,7 +441,7 @@ namespace Tablut
         {
    
             int[] statistics = new int[4];
-            db_link.get_Profile_Stats(cbo_Manage_Profile_Name.SelectedItem.ToString()).CopyTo(statistics, 0);
+            db_Link.get_Profile_Stats(cbo_Manage_Profile_Name.SelectedItem.ToString()).CopyTo(statistics, 0);
 
             lbl_Num_Attack_Victories.Text = statistics[0].ToString();
             lbl_Num_Attack_Loses.Text = statistics[1].ToString();
@@ -501,8 +501,8 @@ namespace Tablut
         /// <summary>
         /// Launches the game when both profiles are selected and set the game.
         /// </summary>
-        /// <param name="sender">The button in the player selection menu "Start".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Start" button in the player selection menu.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Player_Selection_Start_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -565,7 +565,6 @@ namespace Tablut
             cbo_Player_Selection_Attack.Items.Clear();
             cbo_Player_Selection_Defence.Items.Clear();
 
-            //Can potentially include a loading screen because it may takes a few sec to generate the board.
             pnl_Play_Profile_Selection.Visible = false;
             pnl_Game.Visible = true;
 
@@ -579,8 +578,8 @@ namespace Tablut
         /// <summary>
         /// Exits the player selection and return to the main menu.
         /// </summary>
-        /// <param name="sender">The button in the player selection menu "Cancel".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Cancel" button in the player selection menu.</param>
+        /// <param name="e">Contains informations about the raised click event.</param>
         private void pic_Player_Selection_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -602,7 +601,7 @@ namespace Tablut
         /// and check if "Launch" button can be unlocked
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "index changed" event.</param>
         private void cbo_Player_Selection_Attack_Selected_Index_Changed(object sender, EventArgs e)
         {
             profile_Selection_Checker();
@@ -613,7 +612,7 @@ namespace Tablut
         /// and check if "Launch" button can be unlocked
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "index changed" event.</param>
         private void cbo_Player_Selection_Defence_Selected_Index_Changed(object sender, EventArgs e)
         {
             profile_Selection_Checker();
@@ -667,7 +666,7 @@ namespace Tablut
         /// like "should some pawn be destroyed ?" or "Is the movement valid ?" 
         /// </summary>
         /// <param name="sender">A clicked square of the board</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void square_Click(object sender, EventArgs e)
         {
             
@@ -739,8 +738,8 @@ namespace Tablut
                             if(game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
                             {
                                 lbl_Game_Over_Winner.Text = "Victoire des attaquants";
-                                db_link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
-                                db_link.Add_Defeat(game.Defender.Name, game.Defender.Role);
+                                db_Link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
+                                db_Link.Add_Defeat(game.Defender.Name, game.Defender.Role);
                             }
                         }
                         else
@@ -750,8 +749,8 @@ namespace Tablut
                             if (game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
                             {
                                 lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
-                                db_link.Add_Victory(game.Defender.Name, game.Defender.Role);
-                                db_link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
+                                db_Link.Add_Victory(game.Defender.Name, game.Defender.Role);
+                                db_Link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
                             }
                         }
 
@@ -778,8 +777,8 @@ namespace Tablut
         /// <summary>
         /// Leaves the game, doesn't save anything and brings back the main menu after raising confirmation form.
         /// </summary>
-        /// <param name="sender">The button in game "Menu".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Menu" button in game.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Game_Menu_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -803,8 +802,8 @@ namespace Tablut
         /// <summary>
         /// Leaves the game without saving and close the application after raising confirmation form.
         /// </summary>
-        /// <param name="sender">The button in game "Menu".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Leave" button in game.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Game_Close_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -840,8 +839,8 @@ namespace Tablut
         /// <summary>
         /// Leaves the game over screen and returns to the main menu.
         /// </summary>
-        /// <param name="sender">The button in game over screen "Menu".</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The  "Menu" button in game over screen.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Game_Over_Menu_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -870,7 +869,7 @@ namespace Tablut
         /// It applies only to the buttons.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
             sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);

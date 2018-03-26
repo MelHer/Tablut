@@ -43,7 +43,7 @@ namespace Tablut
         /// <summary>
         /// List containing all possible square to move the selected pawn.
         /// </summary>
-        private List<string> possible_Move; 
+        public List<string> possible_Move; 
 
         /// <summary>
         /// Constructor. It creates the two players and sets the game.

@@ -18,7 +18,7 @@ namespace Tablut
         /// <summary>
         /// Sound player used when click on button(picture box).
         /// </summary>
-        System.Media.SoundPlayer sound_Player;
+        private System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Constructor. Displays the confirmation message and instantiates
@@ -39,8 +39,8 @@ namespace Tablut
         /// <summary>
         /// Confirms the previous action from the player.
         /// </summary>
-        /// <param name="sender">The control that called the function.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "confirmation" button.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Confirmation_Confirm_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -50,8 +50,8 @@ namespace Tablut
         /// <summary>
         /// Cancels the previous action from the player.
         /// </summary>
-        /// <param name="sender">The control that called the function.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="sender">The "Cancel" button.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Confirmation_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -73,7 +73,7 @@ namespace Tablut
         /// It applies only to the buttons.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
             sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);

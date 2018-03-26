@@ -19,7 +19,7 @@ namespace Tablut
         /// <summary>
         /// Sound player used when click on button(picture box).
         /// </summary>
-        System.Media.SoundPlayer sound_Player;
+        private System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Constructor. Sets the form message.
@@ -41,7 +41,7 @@ namespace Tablut
         /// Confirms leaving the game.
         /// </summary>
         /// <param name="sender">The "finish" button.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Confirmation_Game_Over_Finish_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -64,7 +64,7 @@ namespace Tablut
         /// It applies only to the buttons.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {
             sound_Player = new System.Media.SoundPlayer(Tablut.Properties.Resources.Menu_Move);
