@@ -33,7 +33,7 @@ namespace Tablut
         /// to determine the occupant of the square and update the property.
         /// </summary>
         /// <param name="m_Occupant">Define what is inside the square</param>
-        public void change_Image(Occupant m_Occupant)
+        public void Change_Image(Occupant m_Occupant)
         {
             if (m_Occupant == Occupant.King)
             {
@@ -60,7 +60,7 @@ namespace Tablut
         /// <summary>
         /// Clear the image of the square and set it as emply.
         /// </summary>
-        public void clear_Image()
+        public void Clear_Image()
         {
             this.BackgroundImage = null;
             this.Occupant = Occupant.Empty;

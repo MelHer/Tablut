@@ -269,7 +269,7 @@ namespace Tablut
                     }
                 }
 
-                //Checking if the King is captured (surrounded by 4 attacker)
+                //Checking if the King is captured (surrounded by 4 attacker or throne + 3 attacker)
 
                 //Getting king positions
                 string king_Key = m_board.FirstOrDefault(x => x.Value.Occupant == Occupant.King).Key;
@@ -280,10 +280,10 @@ namespace Tablut
                 if(column > 0 && column < 8 && row > 0 && row < 8)
                 {
                     //Checking top && bottom
-                    if(m_board[column+""+(row+1)].Occupant == Occupant.Attacker && m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker)
+                    if((m_board[column+""+(row+1)].Occupant == Occupant.Attacker || m_board[column + "" + (row + 1)] == m_board["44"])&&( m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row - 1)] == m_board["44"]))
                     {
                         //Checking right and left
-                        if(m_board[(column + 1)+""+row].Occupant == Occupant.Attacker && m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker)
+                        if((m_board[(column + 1)+""+row].Occupant == Occupant.Attacker || m_board[(column + 1) + "" + row] == m_board["44"]) && (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column - 1) + "" + row] == m_board["44"]))
                         {
                             eliminated_Pawn.Add(m_board[column + "" + row].Name);
 
@@ -362,7 +362,7 @@ namespace Tablut
             }
 
             //If the attacker doesn't have pawn left
-            if (Defender.Pawn_Left <= 0 || Attacker.Pawn_Left <= 0)
+            if (Attacker.Pawn_Left <= 0)
             {
                 return true;
             }

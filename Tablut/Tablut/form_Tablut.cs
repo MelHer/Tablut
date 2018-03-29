@@ -532,34 +532,34 @@ namespace Tablut
 
             //Putting images in the initial state of the board
             //Attackers (Black pawns)
-            board["30"].change_Image(Occupant.Attacker);
-            board["30"].change_Image(Occupant.Attacker);
-            board["40"].change_Image(Occupant.Attacker);
-            board["50"].change_Image(Occupant.Attacker);
-            board["41"].change_Image(Occupant.Attacker);
-            board["03"].change_Image(Occupant.Attacker);
-            board["83"].change_Image(Occupant.Attacker);
-            board["04"].change_Image(Occupant.Attacker);
-            board["14"].change_Image(Occupant.Attacker);
-            board["74"].change_Image(Occupant.Attacker);
-            board["84"].change_Image(Occupant.Attacker);
-            board["05"].change_Image(Occupant.Attacker);
-            board["85"].change_Image(Occupant.Attacker);
-            board["47"].change_Image(Occupant.Attacker);
-            board["38"].change_Image(Occupant.Attacker);
-            board["48"].change_Image(Occupant.Attacker);
-            board["58"].change_Image(Occupant.Attacker);
+            board["30"].Change_Image(Occupant.Attacker);
+            board["30"].Change_Image(Occupant.Attacker);
+            board["40"].Change_Image(Occupant.Attacker);
+            board["50"].Change_Image(Occupant.Attacker);
+            board["41"].Change_Image(Occupant.Attacker);
+            board["03"].Change_Image(Occupant.Attacker);
+            board["83"].Change_Image(Occupant.Attacker);
+            board["04"].Change_Image(Occupant.Attacker);
+            board["14"].Change_Image(Occupant.Attacker);
+            board["74"].Change_Image(Occupant.Attacker);
+            board["84"].Change_Image(Occupant.Attacker);
+            board["05"].Change_Image(Occupant.Attacker);
+            board["85"].Change_Image(Occupant.Attacker);
+            board["47"].Change_Image(Occupant.Attacker);
+            board["38"].Change_Image(Occupant.Attacker);
+            board["48"].Change_Image(Occupant.Attacker);
+            board["58"].Change_Image(Occupant.Attacker);
 
             //Defenders (White pawns)
-            board["42"].change_Image(Occupant.Defender);
-            board["43"].change_Image(Occupant.Defender);
-            board["24"].change_Image(Occupant.Defender);
-            board["34"].change_Image(Occupant.Defender);
-            board["44"].change_Image(Occupant.King);
-            board["54"].change_Image(Occupant.Defender);
-            board["64"].change_Image(Occupant.Defender);
-            board["45"].change_Image(Occupant.Defender);
-            board["46"].change_Image(Occupant.Defender);
+            board["42"].Change_Image(Occupant.Defender);
+            board["43"].Change_Image(Occupant.Defender);
+            board["24"].Change_Image(Occupant.Defender);
+            board["34"].Change_Image(Occupant.Defender);
+            board["44"].Change_Image(Occupant.King);
+            board["54"].Change_Image(Occupant.Defender);
+            board["64"].Change_Image(Occupant.Defender);
+            board["45"].Change_Image(Occupant.Defender);
+            board["46"].Change_Image(Occupant.Defender);
 
             //Reseting combo box
             cbo_Player_Selection_Attack.Items.Clear();
@@ -680,7 +680,7 @@ namespace Tablut
 
                 foreach(String square_Name in possible_Move)
                 {
-                    board[square_Name].change_Image(Occupant.Empty);
+                    board[square_Name].Change_Image(Occupant.Empty);
                 }
             }
             else if(game.Phase == Game_Phase.moving)
@@ -692,7 +692,7 @@ namespace Tablut
                     //resets possible moves indications. 
                     foreach (String square_Name in possible_Move)
                     {
-                        board[square_Name].clear_Image();
+                        board[square_Name].Clear_Image();
                     }
                 }
                 
@@ -701,27 +701,27 @@ namespace Tablut
                     //Update the board after the move
                     if(game.Current_Player.Role == Player_Role.Attacker)
                     {
-                        ((Square)sender).change_Image(Occupant.Attacker);
+                        ((Square)sender).Change_Image(Occupant.Attacker);
                     }
                     else
                     {
                         if (game.selected_Pawn.Occupant == Occupant.King)
                         {
-                            ((Square)sender).change_Image(Occupant.King);
+                            ((Square)sender).Change_Image(Occupant.King);
                         }
                         else
                         {
-                            ((Square)sender).change_Image(Occupant.Defender);
+                            ((Square)sender).Change_Image(Occupant.Defender);
                         }
                     }
                     //Resets the pawn ancient location
-                    board[game.selected_Pawn.Name].clear_Image();
+                    board[game.selected_Pawn.Name].Clear_Image();
 
                     List<string> pawn_To_Remove = new List<string>(game.search_Eliminated_Pawn((Square)sender, board));
 
                     foreach (string pawn_Name in pawn_To_Remove)
                     {
-                        board[pawn_Name].clear_Image();
+                        board[pawn_Name].Clear_Image();
                     }
 
                     if (game.is_Over(board))

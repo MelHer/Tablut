@@ -11,7 +11,7 @@ namespace Tablut
     /// <summary>
     /// This class connects to the MySQL database to interract
     /// with the different profiles. The functions work mainly with
-    /// profile's name since their are unique in the database.
+    /// profile's names since they are unique in the database.
     /// </summary>
     class DB_Connect
     {
