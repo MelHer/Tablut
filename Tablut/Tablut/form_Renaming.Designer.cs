@@ -105,6 +105,7 @@
             this.Controls.Add(this.lbl_Renaming_Fail);
             this.Controls.Add(this.txt_Renaming_Profile_Name);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_Renaming";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

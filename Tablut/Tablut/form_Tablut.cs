@@ -110,6 +110,9 @@ namespace Tablut
 
             //Game over
             pic_Game_Over_Menu.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
+
+            //Sound control
+            pic_Speaker.MouseEnter += new System.EventHandler(this.play_Sound_Enter);
         }
 
         #region Main_Menu
@@ -729,32 +732,41 @@ namespace Tablut
 
                         frm_Confirmation_Game_Over game_Over_Confirmation;
 
-
-                        //Updating victory banner and database stats
-                        if(game.Current_Player.Role == Player_Role.Attacker)
+                        try
                         {
-                            game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des attaquants");
-
-                            if(game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
+                            //Updating victory banner and database stats
+                            if (game.Current_Player.Role == Player_Role.Attacker)
                             {
-                                lbl_Game_Over_Winner.Text = "Victoire des attaquants";
-                                db_Link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
-                                db_Link.Add_Defeat(game.Defender.Name, game.Defender.Role);
+                                game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des attaquants");
+
+                                if (game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
+                                {
+                                    lbl_Game_Over_Winner.Text = "Victoire des attaquants";
+                                    db_Link.Add_Victory(game.Attacker.Name, game.Attacker.Role);
+                                    db_Link.Add_Defeat(game.Defender.Name, game.Defender.Role);
+                                }
+                            }
+                            else
+                            {
+                                game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des défenseurs");
+
+                                if (game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
+                                {
+                                    lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
+                                    db_Link.Add_Victory(game.Defender.Name, game.Defender.Role);
+                                    db_Link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
+                                }
+                            }
+
+                            game_Over_Confirmation.Dispose();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            if (ex.Number == 1042 | ex.Number == 0)
+                            {
+                               MessageBox.Show("Connexion à la base de données impossible.\nLes profils n'ont pas été modifiés.","Erreur");
                             }
                         }
-                        else
-                        {
-                            game_Over_Confirmation = new frm_Confirmation_Game_Over("Victoire des défenseurs");
-
-                            if (game_Over_Confirmation.ShowDialog(this) == DialogResult.OK)
-                            {
-                                lbl_Game_Over_Winner.Text = "Victoire des défenseurs";
-                                db_Link.Add_Victory(game.Defender.Name, game.Defender.Role);
-                                db_Link.Add_Defeat(game.Attacker.Name, game.Attacker.Role);
-                            }
-                        }
-
-                        game_Over_Confirmation.Dispose();
 
                         //Updating stats
                         lbl_Game_Over_Num_Move_Attack.Text = game.Attacker.Total_Moves.ToString();
@@ -927,6 +939,8 @@ namespace Tablut
         /// <param name="e">Details about the Click event</param>
         private void pic_Speaker_Click(object sender, EventArgs e)
         {
+            play_Sound_Click();
+
             if (music_Player.Volume > 0)
             {
                 music_Player.Volume = 0;

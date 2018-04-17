@@ -51,7 +51,7 @@ namespace Tablut
             if (!rgx.IsMatch(m_Profile_Name))
             {
                 this.connection.Close();
-                throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z et '_'");
+                throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z,'_' et les nombres de 0 à 9.");
             }
 
             //Checking if connection not already opened
@@ -228,7 +228,7 @@ namespace Tablut
             if (!rgx.IsMatch(m_New_Name))
             {
                 this.connection.Close();
-                throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z et '_'");
+                throw new Exception_Invalid_Name("Le nom peut contenir les lettres allant de A-Z, a-z, '_' \net les nombres de 0 à 9.");
             }
 
             //Checking if connection not already opened

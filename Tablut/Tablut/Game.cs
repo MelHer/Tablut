@@ -277,13 +277,13 @@ namespace Tablut
                 row = int.Parse(m_board[king_Key].Name.Substring(m_board[king_Key].Name.Length - 1, 1));
 
                 //If the king has a sufficient space around him to be surrounded
-                if(column > 0 && column < 8 && row > 0 && row < 8)
+                if (column > 0 && column < 8 && row > 0 && row < 8)
                 {
                     //Checking top && bottom
-                    if((m_board[column+""+(row+1)].Occupant == Occupant.Attacker || m_board[column + "" + (row + 1)] == m_board["44"])&&( m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row - 1)] == m_board["44"]))
+                    if ((m_board[column + "" + (row + 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row + 1)] == m_board["44"]) && (m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row - 1)] == m_board["44"]))
                     {
                         //Checking right and left
-                        if((m_board[(column + 1)+""+row].Occupant == Occupant.Attacker || m_board[(column + 1) + "" + row] == m_board["44"]) && (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column - 1) + "" + row] == m_board["44"]))
+                        if ((m_board[(column + 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column + 1) + "" + row] == m_board["44"]) && (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column - 1) + "" + row] == m_board["44"]))
                         {
                             eliminated_Pawn.Add(m_board[column + "" + row].Name);
 
@@ -325,6 +325,28 @@ namespace Tablut
                     if (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker && (m_board[(column - 2) + "" + row].Occupant == Occupant.Defender || m_board[(column - 2) + "" + row].Occupant == Occupant.King))
                     {
                         eliminated_Pawn.Add(m_board[(column - 1) + "" + row].Name);
+                    }
+                }
+
+                //Checking if the King captured himself (going into 3 enemies and neighboring the throne).
+                if (m_Square.Occupant == Occupant.King)
+                {
+                    //If the king has a sufficient space around him to be surrounded
+                    if (column > 0 && column < 8 && row > 0 && row < 8)
+                    {
+                        //Checking top && bottom
+                        if ((m_board[column + "" + (row + 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row + 1)] == m_board["44"]) && (m_board[column + "" + (row - 1)].Occupant == Occupant.Attacker || m_board[column + "" + (row - 1)] == m_board["44"]))
+                        {
+                            //Checking right and left
+                            if ((m_board[(column + 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column + 1) + "" + row] == m_board["44"]) && (m_board[(column - 1) + "" + row].Occupant == Occupant.Attacker || m_board[(column - 1) + "" + row] == m_board["44"]))
+                            {
+                                eliminated_Pawn.Add(m_board[column + "" + row].Name);
+
+                                Current_Player = Attacker;
+
+                                this.Over = true;
+                            }
+                        }
                     }
                 }
             }
