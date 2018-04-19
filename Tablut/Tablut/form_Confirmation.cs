@@ -16,13 +16,13 @@ namespace Tablut
     public partial class frm_Confirmation : Form
     {
         /// <summary>
-        /// Sound player used when click on button(picture box).
+        /// Sound player used when a button is clicked or overriden (picture box).
         /// </summary>
         private System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Constructor. Displays the confirmation message and instantiates
-        /// the sound player and the even handlers.
+        /// the event handlers.
         /// </summary>
         /// <param name="m_Message"></param>
         public frm_Confirmation(string m_Message)
@@ -37,9 +37,9 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Confirms the previous action from the player.
+        /// Confirms the previous action of the player.
         /// </summary>
-        /// <param name="sender">The "confirmation" button.</param>
+        /// <param name="sender">The "Confirmation" button.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Confirmation_Confirm_Click(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Cancels the previous action from the player.
+        /// Cancels the previous action of the player.
         /// </summary>
         /// <param name="sender">The "Cancel" button.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -60,7 +60,8 @@ namespace Tablut
 
         #region Sound_Players
         /// <summary>
-        /// Plays the click sound for each button.
+        /// Instantiates the sound player.
+        /// Plays the click sound for each button clicked.
         /// </summary>
         private void play_Sound_Click()
         {
@@ -69,10 +70,10 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Plays a sound when the mouse enters the controls.
-        /// It applies only to the buttons.
+        /// Instantiates the sound player.
+        /// Plays a sound when the mouse enters a button.
         /// </summary>
-        /// <param name="sender">The control that called the function.</param>
+        /// <param name="sender">The button that called the function.</param>
         /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
         private void play_Sound_Enter(object sender, EventArgs e)
         {

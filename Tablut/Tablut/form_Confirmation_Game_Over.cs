@@ -10,19 +10,20 @@ using System.Windows.Forms;
 namespace Tablut
 {
     /// <summary>
-    /// Form raised at the end of a game before the statistics screen
-    /// to let the players see the final board state before exiting.
+    /// Form raised at the end of a game before the statistics screen.
+    /// It lets the players see the final board state before exiting.
     /// </summary>
     public partial class frm_Confirmation_Game_Over : Form
     {
 
         /// <summary>
-        /// Sound player used when click on button(picture box).
+        /// Sound player used when a button is clicked or overriden (picture box).
         /// </summary>
         private System.Media.SoundPlayer sound_Player;
 
         /// <summary>
         /// Constructor. Sets the form message.
+        /// Instantiates the event handler.
         /// </summary>
         /// <param name="m_Message">Message saying who is the winner.</param>
         public frm_Confirmation_Game_Over(string m_Message)
@@ -51,6 +52,7 @@ namespace Tablut
 
         #region Sound_Players
         /// <summary>
+        /// Instantiates the sound player.
         /// Plays the click sound for each button.
         /// </summary>
         private void play_Sound_Click()
@@ -60,8 +62,8 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Plays a sound when the mouse enters the controls.
-        /// It applies only to the buttons.
+        /// Instantiates the sound player.
+        /// Plays a sound when the mouse enters a button.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
         /// <param name="e">Contains informations about the raised "mouse enter" event.</param>

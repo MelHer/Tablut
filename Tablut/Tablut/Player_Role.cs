@@ -6,7 +6,7 @@ using System.Text;
 namespace Tablut
 {
     /// <summary>
-    /// Defines the player's role. Attacker or Defender.
+    /// Defines the player's role. 'Attacker' or 'Defender'.
     /// </summary>
     enum Player_Role
     {

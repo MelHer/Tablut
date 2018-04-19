@@ -7,6 +7,7 @@ namespace Tablut
 {
     /// <summary>
     /// Enumeration used to define what is the player doing.
+    /// He player can be 'picking' a pawn or 'moving' a selected one.
     /// </summary>
     enum Game_Phase
     {

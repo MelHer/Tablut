@@ -22,17 +22,17 @@ namespace Tablut
         private MySqlConnection connection;
 
         /// <summary>
-        /// Constructor. Calls the connexion initializing function.
+        /// Constructor. Calls the Init_Connection function.
         /// </summary>
         public DB_Connect()
         {
-            this.Init_Connecton();
+            this.Init_Connection();
         }
 
         /// <summary>
         /// Initializes the connexion with the database.
         /// </summary>
-        private void Init_Connecton()
+        private void Init_Connection()
         {
             //Creating the connection
             string connection_String = "SERVER=127.0.0.1; DATABASE=tablut; UID=Tablut_User; PASSWORD=T@blutI5gr8";
@@ -43,7 +43,7 @@ namespace Tablut
         /// Checks if the name is syntactically correct.
         /// Then adds the profile in the database.
         /// </summary>
-        /// <param name="m_Profile_Name">Value from the text box in the profile creation menu.</param>
+        /// <param name="m_Profile_Name">The name of the profile to create. Value from the text box in the profile creation menu.</param>
         public void Add_Profile(string m_Profile_Name)
         {
             //Verifying the syntax of the name
@@ -76,8 +76,9 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Returns all the profile's name from the database
+        /// Returns all the profile's name from the database.
         /// </summary>
+        /// <returns> List of strings containing all the names.</returns>
         public List<string> get_Profile_Name()
         {
             //Checking if connection not already opened
@@ -117,7 +118,7 @@ namespace Tablut
         /// <summary>
         /// For a given profile, returns all his statistics.
         /// </summary>
-        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
+        /// <param name="m_Profile_Name">Name of the profile to get stats. Value from the drop down list in the profile managment menu.</param>
         /// <returns>Int array containing the number of [0] attacks won, [1] attacks lost, [2] defence won, [3] Defence lost.</returns>
         public int[] get_Profile_Stats(string m_Profile_Name)
         {
@@ -165,7 +166,7 @@ namespace Tablut
         /// <summary>
         /// Deletes the given profile in the database.
         /// </summary>
-        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
+        /// <param name="m_Profile_Name">Name of the profile to delete. Value from the drop down list in the profile managment menu.</param>
         public void Remove_Profile(string m_Profile_Name)
         {
             //Checking if connection not already opened
@@ -190,9 +191,9 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Reset to 0 all statistics of the given profile.
+        /// Resets to 0 all statistics for the given profile.
         /// </summary>
-        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu.</param>
+        /// <param name="m_Profile_Name">Name of the profile to reset. Value from the drop down list in the profile managment menu.</param>
         public void Reset_Profile(string m_Profile_Name)
         {
             //Checking if connection not already opened
@@ -219,8 +220,8 @@ namespace Tablut
         /// <summary>
         /// Renames the given profile.
         /// </summary>
-        /// <param name="m_New_Name"> Value from the text box in the renaming form. (New name)</param>
-        /// <param name="m_Profile_Name">Value from the drop down list in the profile managment menu. (Old name)</param>
+        /// <param name="m_New_Name">New name for the profile. Value from the text box in the renaming form.</param>
+        /// <param name="m_Profile_Name">Old name of the profile to rename. Value from the drop down list in the profile managment menu.</param>
         public void Rename_Profile(string m_New_Name, string m_Profile_Name)
         {
             //Verifying the syntax of the name
@@ -256,8 +257,8 @@ namespace Tablut
         /// <summary>
         /// Adds a victory to the given player for his previous role.
         /// </summary>
-        /// <param name="m_Profile_Name">The winner of the game</param>
-        /// <param name="m_Role">His role: attacker or defender</param>
+        /// <param name="m_Profile_Name">Profile name of the winner of the game.</param>
+        /// <param name="m_Role">His role: attacker or defender.</param>
         public void Add_Victory(string m_Profile_Name, Player_Role m_Role)
         {
             //Checking if connection not already opened
@@ -292,8 +293,8 @@ namespace Tablut
         /// <summary>
         /// Adds a defeat to the given player for his previous role.
         /// </summary>
-        /// <param name="m_Profile_Name">The loser of the game</param>
-        /// <param name="m_Role">His role: attacker or defender</param>
+        /// <param name="m_Profile_Name">Profile name of the the loser of the game.</param>
+        /// <param name="m_Role">His role: attacker or defender.</param>
         public void Add_Defeat(string m_Profile_Name, Player_Role m_Role)
         {
             //Checking if connection not already opened

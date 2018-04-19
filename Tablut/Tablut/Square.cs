@@ -9,14 +9,14 @@ using System.Drawing;
 namespace Tablut
 {
     /// <summary>
-    /// Class herited from PictureBox. Simulate the board square.
+    /// Simulate the board squares. One object equal one square.
     /// This can be clicked and it holds an image.
     /// </summary>
     class Square : PictureBox
     {
 
         /// <summary>
-        /// Defining the content of the square 
+        /// Defines the content of the square.
         /// </summary>
         public Occupant Occupant { get; private set; }
 
@@ -30,9 +30,10 @@ namespace Tablut
 
         /// <summary>
         /// Change the background image of the picture box.
-        /// to determine the occupant of the square and update the property.
+        /// The occupant what image is in the square.
+        /// Change his state.
         /// </summary>
-        /// <param name="m_Occupant">Define what is inside the square</param>
+        /// <param name="m_Occupant">Define what will be inside the square.</param>
         public void Change_Image(Occupant m_Occupant)
         {
             if (m_Occupant == Occupant.King)
@@ -58,7 +59,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Clear the image of the square and set it as emply.
+        /// Clears the image of the square and sets it as empty.
         /// </summary>
         public void Clear_Image()
         {

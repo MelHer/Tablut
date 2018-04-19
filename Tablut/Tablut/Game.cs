@@ -27,26 +27,27 @@ namespace Tablut
 
         /// <summary>
         /// Store the game phase of the current player.
+        /// Is he picking or moving ? 
         /// </summary>
         public Game_Phase Phase { get; private set; }
 
         /// <summary>
-        /// Store the selected pawn.
+        /// Stores the selected pawn.
         /// </summary>
         public Square selected_Pawn { get; private set; }
 
         /// <summary>
-        /// Is the game over ?
+        /// Is the game over?
         /// </summary>
         public bool Over { get; set; }
 
         /// <summary>
-        /// List containing all possible square to move the selected pawn.
+        /// List containing all possible squares to move the selected pawn on.
         /// </summary>
         public List<string> possible_Move; 
 
         /// <summary>
-        /// Constructor. It creates the two players and sets the game.
+        /// Constructor. It creates the two player objects and sets the game.
         /// The first player is always the defender.
         /// </summary>
         /// <param name="m_Attacker_Name"> Attacker's name from player selection attacker drop down list.</param>
@@ -65,7 +66,7 @@ namespace Tablut
         /// </summary>
         /// <param name="m_Square">The clicked square.</param>
         /// <param name="m_board">Dictionnary containing the actual board state.</param>
-        /// <returns> All the possible movements possible for the selected square </returns>
+        /// <returns>Sends back the name of all the possible squares on which movements are possible for the selected square.</returns>
         public List<string> Pawn_Click(Square m_Square, Dictionary<string, Square> m_board)
         {
             possible_Move = new List<string>();
@@ -179,15 +180,15 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Checks if the player clicks again on the selected pawn, then reset the possible moves.
-        /// Then if the player clicks on a possible moves, allow the move.
+        /// Checks if the player clicks again on the selected pawn, then resets the possible moves.
+        /// Else if the player clicks on a possible moves, allow the move.
         /// </summary>
         /// <param name="m_Square"> The clicked square.</param>
         /// <param name="m_Possible_Move"> The list containing all the possible moves.</param>
         /// <returns>Return an string explaining to the view how to update the board
         /// reset: the selected pawn is clicked again. The player can change the pawn he wants to move.
-        /// move: the plaver clicked a valid square.
-        /// invalide: the player clicked a wrong square.
+        /// move: the plaver clicked on a valid square.
+        /// invalide: the player clicked on a wrong square.
         /// </returns>
         public string Square_Click(Square m_Square, List<string> m_Possible_Move)
         {
@@ -222,7 +223,7 @@ namespace Tablut
         /// </summary>
         /// <param name="m_Square">The clicked square (new position of a moved pawn). </param>
         /// <param name="m_board">Dictionnary containing the actual board state.</param>
-        /// <returns> The list of the eliminated pawns.</returns>
+        /// <returns> Returns a list containing the name of the eliminated pawns.</returns>
         public List<String> search_Eliminated_Pawn(Square m_Square, Dictionary<string, Square> m_board)
         {
             List<string> eliminated_Pawn = new List<string>();
@@ -374,7 +375,7 @@ namespace Tablut
         /// Checks if the game is over.
         /// </summary>
         /// <param name="m_board"> Dictionnary containing the actual board state.</param>
-        /// <returns> if false the games keep going.</returns>
+        /// <returns>Return a bool. If it is false, the game keeps going.</returns>
         public bool is_Over(Dictionary<string, Square> m_board)
         {
             //Over == if king is eliminated. It is set in the 'search_Eliminated_Pawn' function.

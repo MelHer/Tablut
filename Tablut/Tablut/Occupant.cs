@@ -7,6 +7,8 @@ namespace Tablut
 {
     /// <summary>
     /// Enumeration used to define the diffrent state of a square. What is inside the square ? 
+    /// Attacker, Defender, King or Empty.
+    /// 
     /// </summary>
     enum Occupant
     {

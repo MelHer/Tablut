@@ -11,13 +11,14 @@ using MySql.Data.MySqlClient;
 namespace Tablut
 {
     /// <summary>
-    /// Class updating the view. Listend to the diffrent event raised
-    /// by the form controls.
+    /// Class updating the view. Listens for the diffrent events raised
+    /// by the form controls. Displays the menus and the game. This is the main
+    /// form of the application.
     /// </summary>
     public partial class frm_Tablut : Form
     {
         /// <summary>
-        /// Sound player used when click on button(picture box).
+        /// Sound player used when a button is clicked or overriden (picture box).
         /// </summary>
         private System.Media.SoundPlayer sound_Player;
 
@@ -27,12 +28,12 @@ namespace Tablut
         private System.Windows.Media.MediaPlayer music_Player;
 
         /// <summary>
-        /// Get the execution folder.
+        /// Gets the execution folder.
         /// </summary>
         private string root_Location = AppDomain.CurrentDomain.BaseDirectory;
 
         /// <summary>
-        /// Store the path to the diffrent sounds.
+        /// Stores the path to the diffrent sounds.
         /// </summary>
         private string sound_Path;
 
@@ -47,7 +48,7 @@ namespace Tablut
         private DB_Connect db_Link;
 
         /// <summary>
-        /// Contains the movement algorithms and the player, created at every beginning of a game.
+        /// Contains the movement algorithm and the player objects, created at every beginning of a game.
         /// </summary>
         private Game game;
 
@@ -57,13 +58,13 @@ namespace Tablut
         private Dictionary<string, Square> board;
 
         /// <summary>
-        /// Contains the name of all highlighted squares.  
+        /// Contains the name of all highlighted squares.  Those are possible movements. 
         /// </summary>
         private List<string> possible_Move;
 
         /// <summary>
-        /// Constructor. Instantiates the sound player and the even handlers.
-        /// Create the database connection object.
+        /// Constructor. Instantiates the database connection and the event handlers.
+        /// Instantiates the music player aswell and gets the sounds location then launch the first music.
         /// </summary>
         public frm_Tablut()
         {
@@ -121,7 +122,7 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Closes the menu and open the profile creation.
+        /// Closes the main menu and open the profile creation.
         /// </summary>
         /// <param name="sender">The "Create profile" button in main menu.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -134,7 +135,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Closes the menu and open the profile managment
+        /// Closes the main menu and open the profile managment.
         /// </summary>
         /// <param name="sender"> The "Manage profile" button in main menu.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -149,7 +150,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Closes the menu and open the profile selection screen.
+        /// Closes the main menu and open the profiles selection screen.
         /// </summary>
         /// <param name="sender"> The "Play" button in main menu.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -199,7 +200,7 @@ namespace Tablut
 
         #region Profile_Creation
         ////////////////////////////////////
-        //      Controls Create Prolfile  //
+        //         Create Prolfile        //
         ////////////////////////////////////
 
         /// <summary>
@@ -238,7 +239,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Closes the profile creation and return to the menu.
+        /// Closes the profile creation and returns to the main menu.
         /// </summary>
         /// <param name="sender">The "Cancel" button in profile creation.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -260,7 +261,7 @@ namespace Tablut
         /// that the creation of the profile failed.
         /// Called only in the profile creation.
         /// </summary>
-        /// <param name="m_Message">The message display to th user about the error.</param>
+        /// <param name="m_Message">The message to display to the user about the error.</param>
         private void display_Error_Create_Profile(string m_Message)
         {
             lbl_Create_Profile_Fail.Text = m_Message;
@@ -275,7 +276,7 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Closes the profile managment tab and opens the main menu.
+        /// Closes the profile managment and opens the main menu.
         /// </summary>
         /// <param name="sender">The "Menu" button in profile managment.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -300,7 +301,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Gets the actual name to query the database for statistics
+        /// Gets the name of the selected profile to query the database for statistics.
         /// </summary>
         /// <param name="sender">The drop down list to chose a profile in the profile managment menu.</param>
         /// <param name="e">Contains informations about the raised "index changed" event.</param>
@@ -375,7 +376,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Deletes the selected profile in the database.
+        /// Deletes the selected profile from the database.
         /// </summary>
         /// <param name="sender">The "Delete" button in profile managment.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -414,7 +415,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Populates the drop down list (of the profile managment menu) with every name of the profiles.
+        /// Populates the drop down list from the profile managment menu with every profile names.
         /// </summary>
         private void populate_Profile_List()
         {
@@ -502,7 +503,8 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Launches the game when both profiles are selected and set the game.
+        /// Launches the game when both profiles are selected and sets the game.
+        /// Sets the board, the game and the players.
         /// </summary>
         /// <param name="sender">The "Start" button in the player selection menu.</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -579,7 +581,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Exits the player selection and return to the main menu.
+        /// Exits the player selection and returns to the main menu.
         /// </summary>
         /// <param name="sender">The "Cancel" button in the player selection menu.</param>
         /// <param name="e">Contains informations about the raised click event.</param>
@@ -594,14 +596,14 @@ namespace Tablut
             pnl_Play_Profile_Selection.Visible = false;
             pnl_Menu.Visible = true;
 
-            //Reset start button and lists
+            //Resets start button and lists
             pic_Player_Selection_Start.Enabled = false;
             pic_Player_Selection_Start.Image = Tablut.Properties.Resources.btn_Start_Disable;
         }
 
         /// <summary>
-        /// Select a profile to be the attacker
-        /// and check if "Launch" button can be unlocked
+        /// Selects a profile to be the attacker
+        /// and checks if "Launch" button can be unlocked.
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
         /// <param name="e">Contains informations about the raised "index changed" event.</param>
@@ -611,8 +613,8 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Select a profile to be the defender
-        /// and check if "Launch" button can be unlocked
+        /// Selects a profile to be the defender
+        /// and checks if "Launch" button can be unlocked.
         /// </summary>
         /// <param name="sender">The drop down list to select the attacker profile.</param>
         /// <param name="e">Contains informations about the raised "index changed" event.</param>
@@ -622,7 +624,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Check if selected profiles are diffrent.
+        /// Checks if selected profiles are diffrent.
         /// Else "Start" button keeps disabled and
         /// print an error message.
         /// </summary>
@@ -664,9 +666,9 @@ namespace Tablut
         ////////////////////////////////////
 
         /// <summary>
-        /// Updates were the pawn are on the board.
+        /// Updates were the pawns are on the board.
         /// Calls the diffrents game checker of the game class
-        /// like "should some pawn be destroyed ?" or "Is the movement valid ?" 
+        /// like "should some pawns be destroyed ?" or "Is this movement valid ?" 
         /// </summary>
         /// <param name="sender">A clicked square of the board</param>
         /// <param name="e">Contains informations about the raised "click" event.</param>
@@ -832,7 +834,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Resets the game (for a new game) after returning to the menu
+        /// Resets the game for a new game after returning to the menu
         /// or ending a game.
         /// </summary>
         private void reset_Game()
@@ -868,7 +870,8 @@ namespace Tablut
 
         #region Sound_Players
         /// <summary>
-        /// Plays the click sound for each button.
+        /// Instantiates the sound player.
+        /// Plays the click sound for each button clicked.
         /// </summary>
         private void play_Sound_Click()
         {
@@ -877,8 +880,8 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Plays a sound when the mouse enters the controls.
-        /// It applies only to the buttons.
+        /// Instantiates the sound player.
+        /// Plays a sound when the mouse enters a button.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
         /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
@@ -935,7 +938,7 @@ namespace Tablut
         /// <summary>
         /// Mute the sound or unmute.
         /// </summary>
-        /// <param name="sender">pic_Speaker</param>
+        /// <param name="sender">The "Speaker" button on the bottom right corner of the application.</param>
         /// <param name="e">Details about the Click event</param>
         private void pic_Speaker_Click(object sender, EventArgs e)
         {

@@ -12,12 +12,12 @@ using MySql.Data.MySqlClient;
 namespace Tablut
 {
     /// <summary>
-    /// Form raised to rename a profile.
+    /// Form raised to rename a profile. It is called in the profile managment menu when clicking on "Rename" button.
     /// </summary>
     public partial class frm_Renaming : Form
     {
         /// <summary>
-        /// Sound player used when click on button(picture box).
+        /// Sound player used when a button is clicked or overriden (picture box).
         /// </summary>
         private System.Media.SoundPlayer sound_Player; 
 
@@ -27,18 +27,17 @@ namespace Tablut
         private DB_Connect db_Link; 
 
         /// <summary>
-        /// Store the name of the current profile we are renaming. 
+        /// Stores the name of the profile we are renaming. 
         /// </summary>
         private string current_Name;
 
         /// <summary>
-        /// The profile's new name after validation. 
+        /// The new name of the profile.
         /// </summary>
         public string validated_New_Name{ get; private set; }
 
         /// <summary>
-        /// Constructor. Instantiates the sound player and the even handlers.
-        /// Create the database connection object.
+        /// Constructor. Instantiates the event handlers and the database connection.
         /// </summary>
         /// <param name="m_Current_Name"> The old name of the profile. </param>
         public frm_Renaming(string m_Current_Name)
@@ -55,7 +54,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Confirm the renaming.
+        /// Confirms the renaming.
         /// After checking if the name is correct, submits the new name to the database.
         /// </summary>
         /// <param name="sender">The "Rename" button.</param>
@@ -94,7 +93,7 @@ namespace Tablut
         /// Cancels the renaming.
         /// </summary>
         /// <param name="sender">The "Cancel" button.</param>
-        /// <param name="e">Contains informations about the raised event.</param>
+        /// <param name="e">Contains informations about the raised "click" event.</param>
         private void pic_Renaming_Cancel_Click(object sender, EventArgs e)
         {
             play_Sound_Click();
@@ -103,7 +102,7 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Gets the message in parameter and print it on the screen to warn user
+        /// Gets the message in parameter and prints it on the screen to warn user
         /// that the renaming of the profile failed.
         /// </summary>
         /// <param name="m_Message"> The message of the error displayed to the user.</param>
@@ -115,6 +114,7 @@ namespace Tablut
 
         #region Sound_Players
         /// <summary>
+        /// Instantiates the sound player.
         /// Plays the click sound for each button.
         /// </summary>
         private void play_Sound_Click()
@@ -124,8 +124,8 @@ namespace Tablut
         }
 
         /// <summary>
-        /// Plays a sound when the mouse enters the controls.
-        /// It applies only to the buttons.
+        /// Instantiates the sound player.
+        /// Plays a sound when the mouse enters a button.
         /// </summary>
         /// <param name="sender">The control that called the function.</param>
         /// <param name="e">Contains informations about the raised "mouse enter" event.</param>
