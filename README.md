@@ -21,7 +21,7 @@ Here is the structure of the repository:
 ### Tablut:
 - This directory holds the C# solution that contains two projects:
     - Setup_Tablut: this one creates the installer
-    - Tablut: it is the main project containing the game. To launch the software from the solution file, download mysql connector and   reference it.
+    - Tablut: it is the main project containing the game. Since I placed the library in the bin folder, Git ignored it. To launch the solution without error, juste reference MySQL.data.dll in the "Tablut" folder. To do so, in Visual Studio, on the tool bar, click "Project" and then "Add reference".
     
 ### .SQL files:
 - MHG_DB_Tablut.sql is the main sql files. He is provided when the game is installed using the .msi.
